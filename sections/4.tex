@@ -1,0 +1,260 @@
+\documentclass[12pt,a4paper]{report}
+\RequirePackage[english,spanish,brazil,portuguese]{babel}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{graphicx}
+\graphicspath{{./logotipos/}{./figuras/}}
+\PassOptionsToPackage{table}{xcolor}
+\RequirePackage{pdfpages}
+\RequirePackage{xspace}
+\RequirePackage{setspace}
+\RequirePackage{geometry}
+\geometry{a4paper,top=30mm,bottom=20mm,left=30mm,right=20mm}
+\RequirePackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{longtable} 
+\begin{document}
+
+\chapter{MATERIAIS E MÉTODOS}
+
+Nesse capítulo são apresentados as ferramentas computacionais que foram utilizadas para o desenvolvimento desse trabalho, o caso de estudo definido para a aplicação dos AGs propostos anteriormente e a metodologia utilizada para a execução dos experimentos. 
+
+\section{FERRAMENTAS COMPUTACIONAIS}
+
+Para obter os indicadores técnicos e econômicos para a avaliação de uma estratégia de produção é necessário o uso de algumas ferramentas computacionais como o IMEX\footnote{Mais informações em: https://www.cmgl.ca/imex} , utilizado para a simulação de campo de petróleo, e o MERO\footnote{Mais informações em: https://goo.gl/J7WD22} , que interpreta os resultados da simulação e obtém os indicadores econômicos e de poços. Para a implementação dos AGs e dos operadores de busca foi utilizado como base o \textit{framework} JMetal\footnote{Mais informações em: http://jmetal.sourceforge.net/}  e, por fim, para comparação dos resultados obtidos pelos AGs foi utilizado a ferramenta de otimização CMOST\footnote{Mais informações em: https://www.cmgl.ca/cmost-ai} . Os tópicos a seguir apresentam com mais detalhes a ferramentas citadas.
+
+\subsection{IMEX}
+
+O desenvolvimento deste trabalho exigiu o uso de um simulador comercial de reservatórios para que a qualidade geral das estratégias de produção propostas e seus efeitos no comportamento do reservatório ao longo do tempo pudessem ser avaliados. Sendo assim, foi utilizado aqui o software IMEX, na versão 2012.1, que é um simulador black oil desenvolvido pela CMG. 
+
+\subsection{MERO}
+
+Além do simulador IMEX, também foi utilizado neste trabalho o software MERO, desenvolvido pelo UNISIM. Este software é formado por uma série de módulos auxiliares responsáveis pela interface entre a implementação das meta-heurísticas que foram feitas neste trabalho e o simulador IMEX. Além disso, o MERO também possui módulos que complementam os resultados retornados pelo IMEX, sendo capaz de, a partir dos resultados da simulação do campo de petróleo para uma dada estratégia de produção, calcular o VPL total que será obtido ao final do período de concessão, retornando este valor para o algoritmo de otimização implementado. Quatro módulos do MERO foram utilizados neste trabalho:
+
+\subsubsection{Módulo de Geração de Eventos}
+
+Este módulo é responsável por gerar um arquivo contendo dados de eventos relacionados à estratégia de produção como, por exemplo, a definição de datas para a instalação da plataforma, para o início e abandono das operações no campo de petróleo, para abertura e fechamento dos poços e os dados de localização, tipo e direção destes poços. Para utilizar esta ferramenta é necessário definir um arquivo de entrada listando os eventos da estratégia de produção. Este arquivo de eventos é utilizado posteriormente para a criação dos arquivos de simulação e cálculo dos indicadores econômicos da estratégia de produção.
+
+\subsubsection{Módulo de Geração de Estratégia de Produção}
+
+Este módulo é responsável por criar os arquivos de simulação que serão enviados para o software de simulação IMEX. Para que tal ferramenta funcione adequadamente é necessário indicar um arquivo com os eventos da estratégia de produção, um arquivo contendo informações econômicas, como impostos e valores do mercado, e um arquivo com informações do reservatório de petróleo cujo comportamento deverá ser simulado. 
+
+\subsubsection{Módulo de Cálculo da Função de Desempenho}
+
+Este módulo realiza o cálculo dos indicadores econômicos e técnicos relacionados à simulação da estratégia de produção. Para tal é necessário indicar, para a ferramenta, o arquivo de simulação, o arquivo contendo os eventos da estratégia de produção e o arquivo com os dados econômicos.
+
+\subsubsection{Módulo de Composição de Fluxos de Trabalho }
+
+Este módulo permite criar um fluxo de trabalho com as ferramentas do Mero, sendo possível indicar, sequencialmente, quais ferramentas deseja-se utilizar e estabelecer os dados necessários para cada ferramenta em um arquivo de entrada pré-definido. Neste trabalho, esta ferramenta foi utilizada para executar sequencialmente os módulos de Geração de Eventos, Geração da Estratégia de Produção e de Cálculo da Função de Desempenho.
+
+\subsection{JMetal}
+
+JMetal é um framework e uma biblioteca de código livre, escrito em Java, que pode ser utilizado para resolver problemas de otimização multiobjetivo com meta-heurísticas (Durillo e Nebro 2011). Apesar do seu foco em problemas multiobjetivo, esta biblioteca também fornece algoritmos para problemas de objetivo único, como o que será tratado neste trabalho. Foi utilizada aqui a versão 5.1 do JMetal, que foi revisada e simplificada para facilitar a implementação de algoritmos para solução de diversos problemas (Nebro, Durillo, e Vergne 2015). Especificamente no contexto deste trabalho, em um primeiro momento foi utilizada a implementação das versões clássicas do AG e dos operadores que esse framework oferece. Posteriormente a estrutura que o JMetal oferece foi utilizada como base para implementação das versões modificadas do algoritmo genético e dos operadores de recombinação e mutação específicos para o problema de DEP, apresentados no capítulo anterior. 
+
+\subsection{CMOST}
+
+Também desenvolvido pela CMG, o CMOST é uma ferramenta para resolver problemas de otimização que foi utilizada neste trabalho para que os resultados obtidos pelos algoritmos implementados pudessem ser comparados com os obtidos por uma ferramenta comercial. A versão utilizada nesse trabalho foi a versão 2012.10.
+
+Essa ferramenta utiliza um método proprietário para realizar o processo de otimização. Tal método é dominando como DECE (Designed Exploration and Controlled Evolution) e, em resumo, o processo é dividido em duas etapas (i) exploração projetada e (ii) evolução controlada. Durante a primeira etapa, o objetivo é explorar o espaço de busca de uma maneira aleatória, utilizando técnicas de Design Experimental e Busca Tabu, para adquirir um conjunto de dados dos valores de parâmetros e criar um conjunto representativo de simulações. A segunda etapa análises estatísticas são realizadas sobre o conjunto de dados levantado durante a etapa anterior para definir se há chances de melhorar a qualidade das soluções ao impedir que alguns valores dos parâmetros sejam escolhidos. Afim de minimizar as chances de cair em uma solução de ótimo local, o DECE verifica de tempos em tempos os valores marcados como rejeitados para garantir que tais rejeições ainda são válidas, caso não seja os valores são considerados novamente para o processo de otimização.
+
+Além do DECE, o CMOST permite utilizar outros algoritmos de otimização tal qual o Hipercubo Latino, Enxame de Partículas, Busca por Força Bruta e Busca Aleatória. Vale ressaltar que nesse trabalho o CMOST foi configurado para utilizar o algoritmo proprietário DECE.
+
+\section{CASO DE ESTUDO}
+
+Os experimentos realizados nesse trabalho utilizaram um modelo de reservatório cedido pelo grupo UNISIM, correspondente a um campo sintético baseado no campo de Namorado, localizado no Rio de Janeiro. O modelo em questão foi construído com base nos dados obtidos através de quatro poços exploratórios verticais que foram perfurados no campo e da sísmica disponível para a área (Silva, 2015), resultando em um campo sintético com 8568 blocos, sendo 5174 blocos ativos. A Figura 5 apresenta as visões em 2D e 3D do modelo utilizado.
+
+\begin{figure}[htb]
+
+\caption{Visualização em 2D (a) e 3D (b) do modelo de reservatório sintético baseado no campo de Namorado.}
+
+
+\end{figure}
+
+Os parâmetros do problema de DEP a ser otimizado para esse campo sintético, utilizando os algoritmos desenvolvidos nesse trabalho, foi definido em conjunto com os engenheiros do grupo UNISIM. Segundo Pedroso Jr. (1999), o posicionamento dos poços de uma estratégia de produção é um dos principais parâmetros a ser definido para o sistema de produção, sendo assim, o problema definido aqui consiste em otimizar a posição de 18 poços de uma estratégia de produção, no qual dez desses poços são do tipo produtor e oito poços do tipo injetor. Cada um desses poços é do tipo horizontal e ocupa três blocos do modelo do reservatório. A Tabela 1 apresenta os parâmetros utilizados para a os cálculos dos indicadores econômicos durante a simulação de campo de petróleo.
+
+\begin{table}[H]
+\centering
+\caption{Parâmetros econômicos utilizados para a simulação de campo de petróleo.}
+
+ \begin{tabular}{|c|c|c|} 
+\hline
+ \multicolumn{3}{|c|}{\textbf{Parâmetros}} \\ \hline
+ \multicolumn{2}{|c|}{Parâmetro} & Valor \\ \hline
+ \multirow{3}{*}{Custos de Produção e Injeção} & Produção de Óleo (US\$/ m3) & $62,90$ \\
+ & Produção de Água (US\$/ m3) & $6,29$ \\ 
+ & Injeção de Água (US\$/ m3) & $6,29$\\ \hline
+ \multirow{2}{*}{Impostos} & PIS/Cofins (\%) & $0,09$ \\
+ & Imposto de Renda / Contribuição Social (\%) & $0,34$ \\ \hline
+ 
+\end{tabular}
+\end{table}
+
+\section{METODOLOGIA EXPERIMENTAL}
+
+Os experimentos desse trabalho foram divididos em duas etapas, sendo a principal diferença entre as etapas está no uso do operador de busca local em conjunto com o AG. Tal operador foi considerado somente na segunda etapa. Ao todo foram realizados sete experimentos, sendo cinco para a primeira etapa e dois para a segunda. Em cada um dos experimentos procurou-se avaliar uma versão do AG, dentre as apresentadas no Capitulo 3.2, com um conjunto de parâmetros e operadores específicos. Para fim de comparação, durante a primeira etapa foram executados o CMOST e uma Busca Aleatória. Já para a segunda etapa os AGs com busca local foram comparados, novamente, com o CMOST e com a melhor versão do AG da primeira etapa. De forma sucinta, a Tabela 2 apresenta as versões do AG e os operadores que foram utilizadas em cada experimento. Além dos operadores, a Tabela 2 também apresenta o conjunto de parâmetros que deve ser definido para funcionarem adequadamente. Para os AGs são quatro os parâmetros necessários: número máximo de avaliações da função objetivo, tamanho da população, probabilidade de recombinação e probabilidade de mutação.
+
+\begin{table}[H]
+\centering
+\caption{Versões do AG e os operadores de busca utilizados em cada experimento}
+
+\begin{tabular}{|c|p{10cm}|}
+\hline
+ \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
+ \multicolumn{2}{|c|}{Experimento 1} \\ \hline
+ {Algoritmo} & AG Geracional Clássico ($AG^{GC-1}$) e AG de Regime Permanente Clássico ($AG^{RPC-1}$) \\ \hline
+ Operador de seleção & Torneio Binário \\ \hline
+ Operador de Recombinação & Recombinação Uniforme \\  \hline
+ Operador de Mutação & Pontual \\ \hline
+ Número Total de Avaliações & 500 \\ \hline
+ Tamanho da População & 10 \\ \hline
+ Probabilidade de Recombinação (\%) & 100 \\ \hline
+ Probabilidade de Mutação (\%) & 1 \\ \hline 
+\end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{Versões do AG e os operadores de busca utilizados em cada experimento}
+
+\begin{tabular}{|c|p{10cm}|}
+ \hline
+ \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
+ \multicolumn{2}{|c|}{Experimento 2} \\ \hline
+{Algoritmo} & AG Geracional Clássico ($AG^{GC-2}$) e AG de Regime Permanente Clássico ($AG^{RPC-2}$) \\ \hline
+ Operador de seleção & Torneio Binário \\ \hline
+ Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ Operador de Mutação & Pontual \\ \hline
+ Número Total de Avaliações & 500 \\ \hline
+ Tamanho da População & 10 \\ \hline
+ Probabilidade de Recombinação (\%) & 100 \\ \hline
+ Probabilidade de Mutação (\%) & 1 \\ \hline 
+ 
+\end{tabular}
+\end{table} 
+ 
+ 
+ \begin{table}[H]
+\centering
+\caption{Versões do AG e os operadores de busca utilizados em cada experimento}
+
+ \begin{tabular}{|c|p{10cm}|}
+\hline
+ \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
+ \multicolumn{2}{|c|}{Experimento 3} \\ \hline
+{Algoritmo} & AG Geracional Clássico ($AG^{GC-3}$) e AG de Regime Permanente Clássico ($AG^{RPC-3}$) \\ \hline
+ Operador de seleção & Torneio Binário \\ \hline
+ Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ Operador de Mutação & Pontual \\ \hline
+ Número Total de Avaliações & 500 \\ \hline
+ Tamanho da População & 100 \\ \hline
+ Probabilidade de Recombinação (\%) & 100 \\ \hline
+ Probabilidade de Mutação (\%) & 1 \\ \hline 
+ 
+ 
+ 
+\end{tabular}
+\end{table} 
+ 
+ \begin{table}[H]
+\centering
+\caption{Versões do AG e os operadores de busca utilizados em cada experimento}
+
+\begin{tabular}{|c|p{10cm}|}
+ \hline
+  \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
+  \multicolumn{2}{|c|}{Experimento 4} \\ \hline
+{Algoritmo} & AG Primeira Modificação do AG de Regime Permanente ($AG^{RPM}$) \\ \hline
+ Operador de seleção & Torneio Binário \\ \hline
+ Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ Operador de Mutação & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
+ Número Total de Avaliações & 500 \\ \hline
+ Tamanho da População & 100 \\ \hline
+ Probabilidade de Recombinação (\%) & 100 \\ \hline
+ 
+ 
+ 
+\end{tabular}
+\end{table} 
+ 
+ \begin{table}[H]
+\centering
+\caption{Versões do AG e os operadores de busca utilizados em cada experimento}
+
+\begin{tabular}{|c|p{10cm}|}
+ \hline
+  \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
+  \multicolumn{2}{|c|}{Experimento 5} \\ \hline
+{Algoritmo} &AG de Regime Permanente com o Operador de Contagem de Ocorrências ($AG^{CO}$) \\ \hline
+ Operador de seleção & Torneio Binário \\ \hline
+ Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ Operador de Mutação & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
+ Número Total de Avaliações & 500 \\ \hline
+ Tamanho da População & 100 e 50 \\ \hline
+ Probabilidade de Recombinação (\%) & 100 \\ \hline
+ 
+ 
+\end{tabular}
+\end{table} 
+ 
+ \begin{table}[H]
+\centering
+\caption{Versões do AG e os operadores de busca utilizados em cada experimento}
+
+\begin{tabular}{|c|p{10cm}|}
+ \hline
+ \multicolumn{2}{|c|}{ETAPA 2} \\ \hline
+ \multicolumn{2}{|c|}{Experimento 1} \\ \hline
+ {Algoritmo} & Primeira versão modificada do AG de Regime Permanente  \\ \hline
+ Operador de seleção & Torneio Binário \\ \hline
+ Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ Operador de Mutação & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
+ Operador de Busca Local & Primeira versão do operador de Busca Local ($AG^{BL-1}$) \\ \hline
+ Número Total de Avaliações & 720 \\ \hline
+ Tamanho da População & 100 \\ \hline
+ Probabilidade de Recombinação (\%) & 100 \\ \hline
+ 
+ 
+\end{tabular}
+\end{table} 
+ 
+ \begin{table}[H]
+\centering
+\caption{Versões do AG e os operadores de busca utilizados em cada experimento}
+
+\begin{tabular}{|c|p{10cm}|}
+ \hline
+ \multicolumn{2}{|c|}{ETAPA 2} \\ \hline
+ \multicolumn{2}{|c|}{Experimento 2} \\ \hline
+ {Algoritmo} & Primeira versão modificada do AG de Regime Permanente \\ \hline
+ Operador de seleção & Torneio Binário \\ \hline
+ Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ Operador de Mutação & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
+ Operador de Busca Local & Segunda versão do operador de Busca Local ($AG^{BL-2}$) \\ \hline
+ Número Total de Avaliações & 5720 \\ \hline
+ Tamanho da População & 100 \\ \hline
+ Probabilidade de Recombinação (\%) & 100 \\ \hline
+ 
+ 
+ 
+\end{tabular}
+\end{table}
+
+Quando se trata de meta-heurísticas populacionais, é comum que o número máximo de avaliações da função objetivo seja muito maior que o utilizado aqui. Facilmente encontra-se trabalhos onde tal valor chega a 106 (Elsayed, Hamza, and Sarker 2016; Tangherloni, Rundo, and Nobile 2017; Kumar, Misra, and Singh 2017; Zamuda 2017). Outro exemplo disso são os próprios valores pré-definidos pelo JMetal, que nesse caso é de 25.000 avaliações. No entanto, adotar um número tão alto nesse trabalho tornaria inviável o uso dos algoritmos genéticos para a solução do problema estudado, dado a dificuldade de se avaliar uma estratégia de produção, principalmente em relação ao tempo computacional necessário para concluir uma simulação de campo de petróleo. Por esse motivo, um valor consideravelmente baixo foi definido para esse parâmetro. Para a segunda etapa dos experimentos, também foi atribuído o máximo de 500 avaliações para o AG, no entanto o número total de avaliações dos experimentos dessa etapa é maior por conta do operador de busca local que realiza mais avaliações ao fim da execução do AG. Como será possível ver no Capitulo 6, tal operador precisou de cerca de 220 avaliações para concluir sua execução. Sendo assim, em média, o total foi de aproximadamente 720 avaliações.
+
+Vale ressaltar ainda que o número máximo de avaliações da função objetivo foi estabelecido como critério de parada para os algoritmos. Essa escolha foi feita para que a comparação entre os algoritmos aqui utilizados seja mais justa, uma vez que todos os algoritmos possuem a mesma quantidade de iterações para encontrar a melhor solução possível para o problema. 
+
+Como discutido no Capítulo 2.1, o operador de recombinação apresenta um papel importante durante a execução do algoritmo genético. Sendo assim, optou-se por atribuir uma probabilidade de 100\% para a execução desse operador. Dessa forma garante-se que, para cada par de indivíduos selecionados para a recombinação, um novo indivíduo será gerado pelo operador. Para o operador de mutação foi atribuído a probabilidade de 1\%, segundo a recomendação da literatura de manter baixa tal probabilidade. Esse valor de 1\% também corresponde ao valor padrão definido para os operadores encontrados no JMetal. A partir do terceiro experimento, no entanto, não há atribuição para tal operador. Isso ocorre porque a partir desse experimento é utilizado o operador de mutação proposto no Capítulo 3.4, sendo que para tal operador não é necessário atribuir um valor de probabilidade para ser executado uma vez que esse operador só é executado caso a solução candidata venha a ser descartada da população após sua avaliação.
+
+Para verificar se as diferenças observadas entre os resultados obtidos pelos AGs, o CMOST e a Busca Aleatória são estatisticamente significativas, o teste estatístico não-paramétrico de Mann-Whitney-Wilcoxon (CORDER \& FOREMAN, 2014) foi aplicado considerando-se um limiar de 5\%. Em outras palavras, caso o resultado do teste (denominado p-value) apresente um valor maior que o limiar de 5\%, os dois conjuntos que foram aplicados ao teste não diferem entre si. Nesse caso, tanto faz utilizar um algoritmo ou outro. Além disso, para cada algoritmo foram calculados a média do melhor VPL encontrado em cada execução, o desvio padrão e o tempo médio gasto para que cada execução fosse concluída. Por fim, a máquina utilizada para os testes possuía a seguinte configuração:  
+
+\begin{itemize}
+\item Sistema Operacional: Windows 10 Pro;
+\item Processador: Intel Core i5-4590 de 3,3GHz;
+\item Memória RAM: 8 GB de 800MHz;
+\item Disco rígido: 500 GB de 7200 RPM;
+\item Placa de Vídeo Integrada: Intel HD \textit{Graphics} 4000.
+\end{itemize}
+
+\end{document}
