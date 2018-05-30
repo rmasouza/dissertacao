@@ -1,26 +1,8 @@
-\documentclass[12pt,a4paper]{report}
-\RequirePackage[english,spanish,brazil,portuguese]{babel}
-\RequirePackage[T1]{fontenc}
-\RequirePackage{graphicx}
-\graphicspath{{./logotipos/}{./figuras/}}
-\PassOptionsToPackage{table}{xcolor}
-\RequirePackage{pdfpages}
-\RequirePackage{xspace}
-\RequirePackage{setspace}
-\RequirePackage{geometry}
-\geometry{a4paper,top=30mm,bottom=20mm,left=30mm,right=20mm}
-\RequirePackage[utf8]{inputenc}
-\usepackage{indentfirst}
-\usepackage{multirow}
-\usepackage{float}
-\usepackage{longtable} 
-\begin{document}
-
-\chapter{MATERIAIS E MÉTODOS}
+\chapter{Materiais e Métodos}
 
 Nesse capítulo são apresentados as ferramentas computacionais que foram utilizadas para o desenvolvimento desse trabalho, o caso de estudo definido para a aplicação dos AGs propostos anteriormente e a metodologia utilizada para a execução dos experimentos. 
 
-\section{FERRAMENTAS COMPUTACIONAIS}
+\section{Ferramentas Computacionais}
 
 Para obter os indicadores técnicos e econômicos para a avaliação de uma estratégia de produção é necessário o uso de algumas ferramentas computacionais como o IMEX\footnote{Mais informações em: https://www.cmgl.ca/imex} , utilizado para a simulação de campo de petróleo, e o MERO\footnote{Mais informações em: https://goo.gl/J7WD22} , que interpreta os resultados da simulação e obtém os indicadores econômicos e de poços. Para a implementação dos AGs e dos operadores de busca foi utilizado como base o \textit{framework} JMetal\footnote{Mais informações em: http://jmetal.sourceforge.net/}  e, por fim, para comparação dos resultados obtidos pelos AGs foi utilizado a ferramenta de otimização CMOST\footnote{Mais informações em: https://www.cmgl.ca/cmost-ai} . Os tópicos a seguir apresentam com mais detalhes a ferramentas citadas.
 
@@ -256,5 +238,3 @@ Para verificar se as diferenças observadas entre os resultados obtidos pelos AG
 \item Disco rígido: 500 GB de 7200 RPM;
 \item Placa de Vídeo Integrada: Intel HD \textit{Graphics} 4000.
 \end{itemize}
-
-\end{document}
