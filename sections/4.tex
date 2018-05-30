@@ -1,14 +1,14 @@
-\chapter{Materiais e Métodos}
+\chapter{MATERIAIS E MÉTODOS}
 
 Nesse capítulo são apresentados as ferramentas computacionais que foram utilizadas para o desenvolvimento desse trabalho, o caso de estudo definido para a aplicação dos AGs propostos anteriormente e a metodologia utilizada para a execução dos experimentos. 
 
-\section{Ferramentas Computacionais}
+\section{FERRAMENTAS COMPUTACIONAIS}
 
 Para obter os indicadores técnicos e econômicos para a avaliação de uma estratégia de produção é necessário o uso de algumas ferramentas computacionais como o IMEX\footnote{Mais informações em: https://www.cmgl.ca/imex} , utilizado para a simulação de campo de petróleo, e o MERO\footnote{Mais informações em: https://goo.gl/J7WD22} , que interpreta os resultados da simulação e obtém os indicadores econômicos e de poços. Para a implementação dos AGs e dos operadores de busca foi utilizado como base o \textit{framework} JMetal\footnote{Mais informações em: http://jmetal.sourceforge.net/}  e, por fim, para comparação dos resultados obtidos pelos AGs foi utilizado a ferramenta de otimização CMOST\footnote{Mais informações em: https://www.cmgl.ca/cmost-ai} . Os tópicos a seguir apresentam com mais detalhes a ferramentas citadas.
 
 \subsection{IMEX}
 
-O desenvolvimento deste trabalho exigiu o uso de um simulador comercial de reservatórios para que a qualidade geral das estratégias de produção propostas e seus efeitos no comportamento do reservatório ao longo do tempo pudessem ser avaliados. Sendo assim, foi utilizado aqui o software IMEX, na versão 2012.1, que é um simulador black oil desenvolvido pela CMG. 
+O desenvolvimento deste trabalho exigiu o uso de um simulador comercial de reservatórios para que a qualidade geral das estratégias de produção propostas e seus efeitos no comportamento do reservatório ao longo do tempo pudessem ser avaliados. Sendo assim, foi utilizado aqui o software IMEX, na versão 2012.1, que é um simulador \textit{black oil} desenvolvido pela CMG. 
 
 \subsection{MERO}
 
@@ -32,13 +32,13 @@ Este módulo permite criar um fluxo de trabalho com as ferramentas do Mero, send
 
 \subsection{JMetal}
 
-JMetal é um framework e uma biblioteca de código livre, escrito em Java, que pode ser utilizado para resolver problemas de otimização multiobjetivo com meta-heurísticas (Durillo e Nebro 2011). Apesar do seu foco em problemas multiobjetivo, esta biblioteca também fornece algoritmos para problemas de objetivo único, como o que será tratado neste trabalho. Foi utilizada aqui a versão 5.1 do JMetal, que foi revisada e simplificada para facilitar a implementação de algoritmos para solução de diversos problemas (Nebro, Durillo, e Vergne 2015). Especificamente no contexto deste trabalho, em um primeiro momento foi utilizada a implementação das versões clássicas do AG e dos operadores que esse framework oferece. Posteriormente a estrutura que o JMetal oferece foi utilizada como base para implementação das versões modificadas do algoritmo genético e dos operadores de recombinação e mutação específicos para o problema de DEP, apresentados no capítulo anterior. 
+JMetal é um \textit{framework} e uma biblioteca de código livre, escrito em Java, que pode ser utilizado para resolver problemas de otimização multiobjetivo com meta-heurísticas (Durillo e Nebro 2011). Apesar do seu foco em problemas multiobjetivo, esta biblioteca também fornece algoritmos para problemas de objetivo único, como o que será tratado neste trabalho. Foi utilizada aqui a versão 5.1 do JMetal, que foi revisada e simplificada para facilitar a implementação de algoritmos para solução de diversos problemas (Nebro, Durillo, e Vergne 2015). Especificamente no contexto deste trabalho, em um primeiro momento foi utilizada a implementação das versões clássicas do AG e dos operadores que esse \textit{framework} oferece. Posteriormente a estrutura que o JMetal oferece foi utilizada como base para implementação das versões modificadas do algoritmo genético e dos operadores de recombinação e mutação específicos para o problema de DEP, apresentados no capítulo anterior. 
 
 \subsection{CMOST}
 
 Também desenvolvido pela CMG, o CMOST é uma ferramenta para resolver problemas de otimização que foi utilizada neste trabalho para que os resultados obtidos pelos algoritmos implementados pudessem ser comparados com os obtidos por uma ferramenta comercial. A versão utilizada nesse trabalho foi a versão 2012.10.
 
-Essa ferramenta utiliza um método proprietário para realizar o processo de otimização. Tal método é dominando como DECE (Designed Exploration and Controlled Evolution) e, em resumo, o processo é dividido em duas etapas (i) exploração projetada e (ii) evolução controlada. Durante a primeira etapa, o objetivo é explorar o espaço de busca de uma maneira aleatória, utilizando técnicas de Design Experimental e Busca Tabu, para adquirir um conjunto de dados dos valores de parâmetros e criar um conjunto representativo de simulações. A segunda etapa análises estatísticas são realizadas sobre o conjunto de dados levantado durante a etapa anterior para definir se há chances de melhorar a qualidade das soluções ao impedir que alguns valores dos parâmetros sejam escolhidos. Afim de minimizar as chances de cair em uma solução de ótimo local, o DECE verifica de tempos em tempos os valores marcados como rejeitados para garantir que tais rejeições ainda são válidas, caso não seja os valores são considerados novamente para o processo de otimização.
+Essa ferramenta utiliza um método proprietário para realizar o processo de otimização. Tal método é dominando como DECE (\textit{Designed Exploration and Controlled Evolution}) e, em resumo, o processo é dividido em duas etapas (i) exploração projetada e (ii) evolução controlada. Durante a primeira etapa, o objetivo é explorar o espaço de busca de uma maneira aleatória, utilizando técnicas de Design Experimental e Busca Tabu, para adquirir um conjunto de dados dos valores de parâmetros e criar um conjunto representativo de simulações. A segunda etapa análises estatísticas são realizadas sobre o conjunto de dados levantado durante a etapa anterior para definir se há chances de melhorar a qualidade das soluções ao impedir que alguns valores dos parâmetros sejam escolhidos. Afim de minimizar as chances de cair em uma solução de ótimo local, o DECE verifica de tempos em tempos os valores marcados como rejeitados para garantir que tais rejeições ainda são válidas, caso não seja os valores são considerados novamente para o processo de otimização.
 
 Além do DECE, o CMOST permite utilizar outros algoritmos de otimização tal qual o Hipercubo Latino, Enxame de Partículas, Busca por Força Bruta e Busca Aleatória. Vale ressaltar que nesse trabalho o CMOST foi configurado para utilizar o algoritmo proprietário DECE.
 
@@ -47,6 +47,8 @@ Além do DECE, o CMOST permite utilizar outros algoritmos de otimização tal qu
 Os experimentos realizados nesse trabalho utilizaram um modelo de reservatório cedido pelo grupo UNISIM, correspondente a um campo sintético baseado no campo de Namorado, localizado no Rio de Janeiro. O modelo em questão foi construído com base nos dados obtidos através de quatro poços exploratórios verticais que foram perfurados no campo e da sísmica disponível para a área (Silva, 2015), resultando em um campo sintético com 8568 blocos, sendo 5174 blocos ativos. A Figura 5 apresenta as visões em 2D e 3D do modelo utilizado.
 
 \begin{figure}[htb]
+
+\includegraphics[scale=0.7]{5.png}
 
 \caption{Visualização em 2D (a) e 3D (b) do modelo de reservatório sintético baseado no campo de Namorado.}
 
@@ -57,17 +59,21 @@ Os parâmetros do problema de DEP a ser otimizado para esse campo sintético, ut
 
 \begin{table}[H]
 \centering
+
 \caption{Parâmetros econômicos utilizados para a simulação de campo de petróleo.}
 
  \begin{tabular}{|c|c|c|} 
 \hline
- \multicolumn{3}{|c|}{\textbf{Parâmetros}} \\ \hline
- \multicolumn{2}{|c|}{Parâmetro} & Valor \\ \hline
- \multirow{3}{*}{Custos de Produção e Injeção} & Produção de Óleo (US\$/ m3) & $62,90$ \\
+ \multicolumn{2}{|c|}{\textbf{Parâmetro}} & \textbf{Valor} \\ \hline
+ \multirow{3}{*}{\textbf{Custos de Produção e Injeção}} & Produção de Óleo (US\$/ m3) & $62,90$ \\
  & Produção de Água (US\$/ m3) & $6,29$ \\ 
  & Injeção de Água (US\$/ m3) & $6,29$\\ \hline
- \multirow{2}{*}{Impostos} & PIS/Cofins (\%) & $0,09$ \\
- & Imposto de Renda / Contribuição Social (\%) & $0,34$ \\ \hline
+ \multirow{3}{*}{\textbf{Impostos}} & PIS/Cofins (\%) & $0,09$ \\
+ & Imposto de Renda / Contribuição Social(\%) & $0,34$ \\
+ & Royalty (\%) & 0,10 \\ \hline
+ \multirow{3}{*}{\textbf{Valores de Mercado}} & Taxa de Atratividade(\%) & 0,09 \\
+ & Preço do Petróleo (US\$/ m3) & 314,50 \\
+ & Custo do Poço (Milhões de US\$)& 2,34 \\ \hline
  
 \end{tabular}
 \end{table}
@@ -80,80 +86,76 @@ Os experimentos desse trabalho foram divididos em duas etapas, sendo a principal
 \centering
 \caption{Versões do AG e os operadores de busca utilizados em cada experimento}
 
-\begin{tabular}{|c|p{10cm}|}
+\begin{tabular}{|c|p{9cm}|}
 \hline
  \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
- \multicolumn{2}{|c|}{Experimento 1} \\ \hline
- {Algoritmo} & AG Geracional Clássico ($AG^{GC-1}$) e AG de Regime Permanente Clássico ($AG^{RPC-1}$) \\ \hline
- Operador de seleção & Torneio Binário \\ \hline
- Operador de Recombinação & Recombinação Uniforme \\  \hline
- Operador de Mutação & Pontual \\ \hline
- Número Total de Avaliações & 500 \\ \hline
- Tamanho da População & 10 \\ \hline
- Probabilidade de Recombinação (\%) & 100 \\ \hline
- Probabilidade de Mutação (\%) & 1 \\ \hline 
+ \multicolumn{2}{|c|}{\textbf{Experimento 1}} \\ \hline
+ {\textbf{Algoritmo}} & AG Geracional Clássico ($AG^{GC-1}$) e AG de Regime Permanente Clássico ($AG^{RPC-1}$) \\ \hline
+ \textbf{Operador de seleção} & Torneio Binário \\ \hline
+ \textbf{Operador de Recombinação} & Recombinação Uniforme \\  \hline
+ \textbf{Operador de Mutação} & Pontual \\ \hline
+ \textbf{Número Total de Avaliações} & 500 \\ \hline
+ \textbf{Tamanho da População} & 10 \\ \hline
+ \textbf{Probabilidade de Recombinação (\%)} & 100 \\ \hline
+ \textbf{Probabilidade de Mutação (\%)} & 1 \\ \hline 
 \end{tabular}
 \end{table}
-
 
 \begin{table}[H]
 \centering
 \caption{Versões do AG e os operadores de busca utilizados em cada experimento}
 
-\begin{tabular}{|c|p{10cm}|}
+\begin{tabular}{|c|p{9cm}|}
  \hline
  \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
- \multicolumn{2}{|c|}{Experimento 2} \\ \hline
-{Algoritmo} & AG Geracional Clássico ($AG^{GC-2}$) e AG de Regime Permanente Clássico ($AG^{RPC-2}$) \\ \hline
- Operador de seleção & Torneio Binário \\ \hline
- Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
- Operador de Mutação & Pontual \\ \hline
- Número Total de Avaliações & 500 \\ \hline
- Tamanho da População & 10 \\ \hline
- Probabilidade de Recombinação (\%) & 100 \\ \hline
- Probabilidade de Mutação (\%) & 1 \\ \hline 
+ \multicolumn{2}{|c|}{\textbf{Experimento 2}} \\ \hline
+{\textbf{Algoritmo}} & AG Geracional Clássico ($AG^{GC-2}$) e AG de Regime Permanente Clássico ($AG^{RPC-2}$) \\ \hline
+ \textbf{Operador de seleção} & Torneio Binário \\ \hline
+ \textbf{Operador de Recombinação} & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ \textbf{Operador de Mutação} & Pontual \\ \hline
+ \textbf{Número Total de Avaliações} & 500 \\ \hline
+ \textbf{Tamanho da População} & 10 \\ \hline
+ \textbf{Probabilidade de Recombinação (\%)} & 100 \\ \hline
+ \textbf{Probabilidade de Mutação (\%)} & 1 \\ \hline 
  
 \end{tabular}
 \end{table} 
- 
- 
+
  \begin{table}[H]
 \centering
 \caption{Versões do AG e os operadores de busca utilizados em cada experimento}
 
- \begin{tabular}{|c|p{10cm}|}
+ \begin{tabular}{|c|p{9cm}|}
 \hline
  \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
- \multicolumn{2}{|c|}{Experimento 3} \\ \hline
-{Algoritmo} & AG Geracional Clássico ($AG^{GC-3}$) e AG de Regime Permanente Clássico ($AG^{RPC-3}$) \\ \hline
- Operador de seleção & Torneio Binário \\ \hline
- Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
- Operador de Mutação & Pontual \\ \hline
- Número Total de Avaliações & 500 \\ \hline
- Tamanho da População & 100 \\ \hline
- Probabilidade de Recombinação (\%) & 100 \\ \hline
- Probabilidade de Mutação (\%) & 1 \\ \hline 
- 
- 
- 
+ \multicolumn{2}{|c|}{\textbf{Experimento 3}} \\ \hline
+\textbf{Algoritmo} & AG Geracional Clássico ($AG^{GC-3}$) e AG de Regime Permanente Clássico ($AG^{RPC-3}$) \\ \hline
+ \textbf{Operador de seleção} & Torneio Binário \\ \hline
+ \textbf{Operador de Recombinação} & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ \textbf{Operador de Mutação} & Pontual \\ \hline
+ \textbf{Número Total de Avaliações} & 500 \\ \hline
+ \textbf{Tamanho da População} & 100 \\ \hline
+ \textbf{Probabilidade de Recombinação (\%)} & 100 \\ \hline
+ \textbf{Probabilidade de Mutação (\%)} & 1 \\ \hline 
+  
 \end{tabular}
-\end{table} 
+\end{table}
  
  \begin{table}[H]
 \centering
 \caption{Versões do AG e os operadores de busca utilizados em cada experimento}
 
-\begin{tabular}{|c|p{10cm}|}
+\begin{tabular}{|c|p{9cm}|}
  \hline
   \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
-  \multicolumn{2}{|c|}{Experimento 4} \\ \hline
-{Algoritmo} & AG Primeira Modificação do AG de Regime Permanente ($AG^{RPM}$) \\ \hline
- Operador de seleção & Torneio Binário \\ \hline
- Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
- Operador de Mutação & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
- Número Total de Avaliações & 500 \\ \hline
- Tamanho da População & 100 \\ \hline
- Probabilidade de Recombinação (\%) & 100 \\ \hline
+  \multicolumn{2}{|c|}{\textbf{Experimento 4}} \\ \hline
+\textbf{Algoritmo} & AG Primeira Modificação do AG de Regime Permanente ($AG^{RPM}$) \\ \hline
+ \textbf{Operador de seleção} & Torneio Binário \\ \hline
+ \textbf{Operador de Recombinação} & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ \textbf{Operador de Mutação} & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
+ \textbf{Número Total de Avaliações} & 500 \\ \hline
+ \textbf{Tamanho da População} & 100 \\ \hline
+ \textbf{Probabilidade de Recombinação (\%)} & 100 \\ \hline
  
  
  
@@ -164,17 +166,17 @@ Os experimentos desse trabalho foram divididos em duas etapas, sendo a principal
 \centering
 \caption{Versões do AG e os operadores de busca utilizados em cada experimento}
 
-\begin{tabular}{|c|p{10cm}|}
+\begin{tabular}{|c|p{9cm}|}
  \hline
   \multicolumn{2}{|c|}{ETAPA 1} \\ \hline
-  \multicolumn{2}{|c|}{Experimento 5} \\ \hline
-{Algoritmo} &AG de Regime Permanente com o Operador de Contagem de Ocorrências ($AG^{CO}$) \\ \hline
- Operador de seleção & Torneio Binário \\ \hline
- Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
- Operador de Mutação & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
- Número Total de Avaliações & 500 \\ \hline
- Tamanho da População & 100 e 50 \\ \hline
- Probabilidade de Recombinação (\%) & 100 \\ \hline
+  \multicolumn{2}{|c|}{\textbf{Experimento 5}} \\ \hline
+\textbf{Algoritmo} &AG de Regime Permanente com o Operador de Contagem de Ocorrências ($AG^{CO}$) \\ \hline
+ \textbf{Operador de seleção} & Torneio Binário \\ \hline
+ \textbf{Operador de Recombinação} & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ \textbf{Operador de Mutação} & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
+ \textbf{Número Total de Avaliações} & 500 \\ \hline
+ \textbf{Tamanho da População} & 100 e 50 \\ \hline
+ \textbf{Probabilidade de Recombinação (\%)} & 100 \\ \hline
  
  
 \end{tabular}
@@ -184,18 +186,18 @@ Os experimentos desse trabalho foram divididos em duas etapas, sendo a principal
 \centering
 \caption{Versões do AG e os operadores de busca utilizados em cada experimento}
 
-\begin{tabular}{|c|p{10cm}|}
+\begin{tabular}{|c|p{9cm}|}
  \hline
  \multicolumn{2}{|c|}{ETAPA 2} \\ \hline
- \multicolumn{2}{|c|}{Experimento 1} \\ \hline
- {Algoritmo} & Primeira versão modificada do AG de Regime Permanente  \\ \hline
- Operador de seleção & Torneio Binário \\ \hline
- Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
- Operador de Mutação & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
- Operador de Busca Local & Primeira versão do operador de Busca Local ($AG^{BL-1}$) \\ \hline
- Número Total de Avaliações & 720 \\ \hline
- Tamanho da População & 100 \\ \hline
- Probabilidade de Recombinação (\%) & 100 \\ \hline
+ \multicolumn{2}{|c|}{\textbf{Experimento 1}} \\ \hline
+ \textbf{Algoritmo} & Primeira versão modificada do AG de Regime Permanente  \\ \hline
+ \textbf{Operador de seleção} & Torneio Binário \\ \hline
+ \textbf{Operador de Recombinação} & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ \textbf{Operador de Mutação} & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
+ \textbf{Operador de Busca Local} & Primeira versão do operador de Busca Local ($AG^{BL-1}$) \\ \hline
+ \textbf{Número Total de Avaliações} & 720 \\ \hline
+ \textbf{Tamanho da População} & 100 \\ \hline
+ \textbf{Probabilidade de Recombinação (\%)} & 100 \\ \hline
  
  
 \end{tabular}
@@ -205,18 +207,18 @@ Os experimentos desse trabalho foram divididos em duas etapas, sendo a principal
 \centering
 \caption{Versões do AG e os operadores de busca utilizados em cada experimento}
 
-\begin{tabular}{|c|p{10cm}|}
+\begin{tabular}{|c|p{9cm}|}
  \hline
  \multicolumn{2}{|c|}{ETAPA 2} \\ \hline
- \multicolumn{2}{|c|}{Experimento 2} \\ \hline
- {Algoritmo} & Primeira versão modificada do AG de Regime Permanente \\ \hline
- Operador de seleção & Torneio Binário \\ \hline
- Operador de Recombinação & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
- Operador de Mutação & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
- Operador de Busca Local & Segunda versão do operador de Busca Local ($AG^{BL-2}$) \\ \hline
- Número Total de Avaliações & 5720 \\ \hline
- Tamanho da População & 100 \\ \hline
- Probabilidade de Recombinação (\%) & 100 \\ \hline
+ \multicolumn{2}{|c|}{\textbf{Experimento 2}} \\ \hline
+ \textbf{Algoritmo} & Primeira versão modificada do AG de Regime Permanente \\ \hline
+ \textbf{Operador de seleção} & Torneio Binário \\ \hline
+ \textbf{Operador de Recombinação} & Gera os novos indivíduos (filhos) aleatoriamente dentro da região delimitada pelas coordenadas dos dois pais \\  \hline
+ \textbf{Operador de Mutação} & Altera aleatoriamente a posição dos poços de acordo com o IEP do poço \\ \hline
+ \textbf{Operador de Busca Local} & Segunda versão do operador de Busca Local ($AG^{BL-2}$) \\ \hline
+ \textbf{Número Total de Avaliações} & 5720 \\ \hline
+ \textbf{Tamanho da População} & 100 \\ \hline
+ \textbf{Probabilidade de Recombinação (\%)} & 100 \\ \hline
  
  
  
@@ -227,9 +229,9 @@ Quando se trata de meta-heurísticas populacionais, é comum que o número máxi
 
 Vale ressaltar ainda que o número máximo de avaliações da função objetivo foi estabelecido como critério de parada para os algoritmos. Essa escolha foi feita para que a comparação entre os algoritmos aqui utilizados seja mais justa, uma vez que todos os algoritmos possuem a mesma quantidade de iterações para encontrar a melhor solução possível para o problema. 
 
-Como discutido no Capítulo 2.1, o operador de recombinação apresenta um papel importante durante a execução do algoritmo genético. Sendo assim, optou-se por atribuir uma probabilidade de 100\% para a execução desse operador. Dessa forma garante-se que, para cada par de indivíduos selecionados para a recombinação, um novo indivíduo será gerado pelo operador. Para o operador de mutação foi atribuído a probabilidade de 1\%, segundo a recomendação da literatura de manter baixa tal probabilidade. Esse valor de 1\% também corresponde ao valor padrão definido para os operadores encontrados no JMetal. A partir do terceiro experimento, no entanto, não há atribuição para tal operador. Isso ocorre porque a partir desse experimento é utilizado o operador de mutação proposto no Capítulo 3.4, sendo que para tal operador não é necessário atribuir um valor de probabilidade para ser executado uma vez que esse operador só é executado caso a solução candidata venha a ser descartada da população após sua avaliação.
+Como discutido no Capítulo 2.1, o operador de recombinação apresenta um papel importante durante a execução do algoritmo genético. Sendo assim, optou-se por atribuir uma probabilidade de 100\% para a execução desse operador. Dessa forma garante-se que, para cada par de indivíduos selecionados para a recombinação, um novo indivíduo será gerado pelo operador. Para o operador de mutação foi atribuído a probabilidade de 1\%, segundo a recomendação da literatura de manter baixa tal probabilidade. Esse valor de 1\% também corresponde ao valor padrão definido para os operadores encontrados no \textit{JMetal}. A partir do terceiro experimento, no entanto, não há atribuição para tal operador. Isso ocorre porque a partir desse experimento é utilizado o operador de mutação proposto no Capítulo 3.4, sendo que para tal operador não é necessário atribuir um valor de probabilidade para ser executado uma vez que esse operador só é executado caso a solução candidata venha a ser descartada da população após sua avaliação.
 
-Para verificar se as diferenças observadas entre os resultados obtidos pelos AGs, o CMOST e a Busca Aleatória são estatisticamente significativas, o teste estatístico não-paramétrico de Mann-Whitney-Wilcoxon (CORDER \& FOREMAN, 2014) foi aplicado considerando-se um limiar de 5\%. Em outras palavras, caso o resultado do teste (denominado p-value) apresente um valor maior que o limiar de 5\%, os dois conjuntos que foram aplicados ao teste não diferem entre si. Nesse caso, tanto faz utilizar um algoritmo ou outro. Além disso, para cada algoritmo foram calculados a média do melhor VPL encontrado em cada execução, o desvio padrão e o tempo médio gasto para que cada execução fosse concluída. Por fim, a máquina utilizada para os testes possuía a seguinte configuração:  
+Para verificar se as diferenças observadas entre os resultados obtidos pelos AGs, o CMOST e a Busca Aleatória são estatisticamente significativas, o teste estatístico não-paramétrico de Mann-Whitney-Wilcoxon (CORDER \& FOREMAN, 2014) foi aplicado considerando-se um limiar de 5\%. Em outras palavras, caso o resultado do teste (denominado p-\textit{value}) apresente um valor maior que o limiar de 5\%, os dois conjuntos que foram aplicados ao teste não diferem entre si. Nesse caso, tanto faz utilizar um algoritmo ou outro. Além disso, para cada algoritmo foram calculados a média do melhor VPL encontrado em cada execução, o desvio padrão e o tempo médio gasto para que cada execução fosse concluída. Por fim, a máquina utilizada para os testes possuía a seguinte configuração:  
 
 \begin{itemize}
 \item Sistema Operacional: Windows 10 Pro;
