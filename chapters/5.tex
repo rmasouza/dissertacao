@@ -62,29 +62,29 @@ As próximas seções apresentam, com mais detalhes, cada um dos experimentos re
 
 Nesse primeiro experimento foram utilizadas as versões clássicas do Algoritmo Genético Geracional ($AG^{GC-1}$) e do Algoritmo Genético de Regime Permanente ($AG^{RPC-1}$), bem como versões clássicas dos operadores de seleção, recombinação e mutação. Ao observar os resultados obtidos pelo $AG^{GC-1}$ e o $AG^{RPC-1}$ é possível notar que o desempenho das versões clássicas do AG, com os operadores clássicos, foi aquém do esperado. Os AGs com as configurações propostas não foram capazes de obter soluções superiores às da busca aleatória.  A BA conseguiu obter soluções com VPL 32\% melhor às do $AG^{RPC-1}$ e 27\% melhor que as do $AG^{GC-1}$, uma diferença considerável. Ao comparar os AGs com o $CMOST^{500}$ a diferença foi ainda maior. O VPL médio das soluções obtidas pelo $CMOST^{500}$ é cerca de 2,5 vezes superior aos resultados obtidos pelos AGs.
 
-As figuras 6 e 7, apresentam a evolução da melhor solução, da pior solução e da média da população durante a 4ª execução do $AG^{RPC-1}$ e da 1ª execução do $AG^{GC-1}$. Os gráficos para as demais execuções são apresentados no Apêndice A.
+As Figuras \ref{fig:graph1_1} e \ref{fig:graph1_2}, apresentam a evolução da melhor solução, da pior solução e da média da população durante a 4ª execução do $AG^{RPC-1}$ e da 1ª execução do $AG^{GC-1}$. Os gráficos para as demais execuções são apresentados no Apêndice A.
 
-Pelas figuras \ref{fig:graph1_1} e \ref{fig:graph1_2}, é possível notar a forma como a estratégia de busca adotada por cada AG impacta na qualidade dos indivíduos da população no decorrer das gerações. Enquanto no $AG^{RPC-1}$ o \textit{fitness} médio da população ou se mantém constante ou apresenta melhoria no decorrer das gerações, com o $AG^{GC-1}$ há sempre uma grande variação do fitness médio, isso é um reflexo da abordagem para a manutenção da população adotada por cada versão do AG. Na abordagem geracional do algoritmo genético, utilizada pelo $AG^{GC-1}$, uma nova população é gerada a cada iteração, isso permite que soluções ruins façam parte da população, por isso essa versão do AG apresenta grande variação no \textit{fitness} médio durante as iterações. O mesmo não ocorre com a abordagem de regime permanente: como só é gerada uma solução por iteração e essa solução só é incluída na população caso apresente um VPL melhor que algum indivíduo, observa-se uma evolução mais consistente da média do VPL da população.
+Pelas Figuras \ref{fig:graph1_1} e \ref{fig:graph1_2}, é possível notar a forma como a estratégia de busca adotada por cada AG impacta na qualidade dos indivíduos da população no decorrer das gerações. Enquanto no $AG^{RPC-1}$ o \textit{fitness} médio da população ou se mantém constante ou apresenta melhoria no decorrer das gerações, com o $AG^{GC-1}$ há sempre uma grande variação do fitness médio, isso é um reflexo da abordagem para a manutenção da população adotada por cada versão do AG. Na abordagem geracional do algoritmo genético, utilizada pelo $AG^{GC-1}$, uma nova população é gerada a cada iteração, isso permite que soluções ruins façam parte da população, por isso essa versão do AG apresenta grande variação no \textit{fitness} médio durante as iterações. O mesmo não ocorre com a abordagem de regime permanente: como só é gerada uma solução por iteração e essa solução só é incluída na população caso apresente um VPL melhor que algum indivíduo, observa-se uma evolução mais consistente da média do VPL da população.
 
 \begin{figure}[htb]
     \includegraphics[scale=1]{6}
-    \caption{Figura 6 – Quarta execução da versão clássica Algoritmo Genético de Regime Permanente com operadores de busca clássicos.}
+    \caption{Quarta execução da versão clássica Algoritmo Genético de Regime Permanente com operadores de busca clássicos.}
     \label{fig:graph1_1}
 \end{figure}
 
 \begin{figure}[htb]
     \includegraphics[scale=1]{7}
-    \caption{Figura 7 - Primeira execução da versão clássica Algoritmo Genético Geracional com operadores de busca clássicos.}
+    \caption{Primeira execução da versão clássica Algoritmo Genético Geracional com operadores de busca clássicos.}
     \label{fig:graph1_2}
 \end{figure}
 
-Ainda é possível notar, pelas figuras \ref{fig:graph1_1} e \ref{fig:graph1_2}, que em ambos os AGs a melhor solução foi encontrada no início do processo de busca (gerações iniciais). É provável que os AGs, com os operadores e parâmetros utilizados nesse experimento, não tenham sido capazes de explorar de forma satisfatória o espaço de busca. Essa ideia é reforçada ao observar evolução do VPL médio e do pior VPL obtido pelo $AG^{RPC-1}$, durante várias gerações tanto o VPL médio quanto o pior VPL da população mantiveram-se os mesmos. Diante disso, é possível inferir que a população foi perdendo a diversidade e que as soluções geradas não foram suficientemente boas para serem incluídas na população.
+Ainda é possível notar, pelas Figuras \ref{fig:graph1_1} e \ref{fig:graph1_2}, que em ambos os AGs a melhor solução foi encontrada no início do processo de busca (gerações iniciais). É provável que os AGs, com os operadores e parâmetros utilizados nesse experimento, não tenham sido capazes de explorar de forma satisfatória o espaço de busca. Essa ideia é reforçada ao observar evolução do VPL médio e do pior VPL obtido pelo $AG^{RPC-1}$, durante várias gerações tanto o VPL médio quanto o pior VPL da população mantiveram-se os mesmos. Diante disso, é possível inferir que a população foi perdendo a diversidade e que as soluções geradas não foram suficientemente boas para serem incluídas na população.
 
 Para verificar o quão significativo foram os resultados obtidos nesse experimento, foi aplicado o teste de Mann-Whitney-Wilcoxon, considerando-se um limiar de 5\%. Os resultados dos testes são apresentados na Tabela \ref{tab:mw1_1}.
 
 \begin{table}[H]
 \centering
-\caption{Tabela 5 – Resultados obtidos ao aplicar o teste não-paramétrico de Mann-Whitney-Wilcoxon}
+\caption{Resultados obtidos ao aplicar o teste não-paramétrico de Mann-Whitney-Wilcoxon}
 \label{tab:mw1_1}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -112,7 +112,7 @@ Ao aplicar o teste de Mann-Whitney-Wilcoxon entre o $AG^{RPC-2}$ e o $AG^{GC-2}$
 
 \begin{table}[H]
 \centering
-\caption{Tabela 6 - Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-2}$, os AGs do Experimento 1, o $CMOST^{500}$ e a BA}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-2}$, os AGs do Experimento 1, o $CMOST^{500}$ e a BA}
 \label{tab:mw2_1}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -128,7 +128,7 @@ Além do desempenho melhor do $AG^{RPC-2}$ em relação aos AGs do Experimento 1
 
 \begin{table}[htb]
 \centering
-\caption{Tabela 7 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-2}$, os AGs do Experimento 1, o $CMOST^500$ e a BA.}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-2}$, os AGs do Experimento 1, o $CMOST^500$ e a BA.}
 \label{tab:mw2_2}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -141,14 +141,14 @@ $AG^{GC-2}$ & BA & 2,32\% \\ \hline
 \end{tabular}
 \end{table}
 
-As figuras \ref{fig:graph2_1} e \ref{fig:fig:graph2_2} apresentam os gráficos da evolução do melhor VPL, do pior VPL e do valor médio da população ao longo da 10a execução do $AG^{RPC-2}$ e do $AG^{GC-2}$, respectivamente. Para as demais execuções, os gráficos são apresentados no Apêndice B.  Como é possível notar na Figura 8, o $AG^{RPC-2}$ ainda apresenta o mesmo problema observado no AG de Regime Permanente do experimento anterior, mesmo que em intensidade menor: apesar de alguns saltos de melhorias do decorrer do processo de busca, durante várias gerações tanto o VPL médio quanto o pior VPL da população do $AG^{RPC-2}$ mantiveram-se os mesmos. Diante disso, é possível reafirmar que, mesmo com a melhorias, essa versão do AG ainda gera uma quantidade considerável de soluções que não são suficientemente boas para serem incluídas na população, o que prejudicou o desempenho da busca do AG. Quando ao $AG^{GC-2}$, é possível notar, pela Figura 9, a grande variação de qualidade das soluções do decorrer das gerações. 
+As Figuras \ref{fig:graph2_1} e \ref{fig:graph2_2} apresentam os gráficos da evolução do melhor VPL, do pior VPL e do valor médio da população ao longo da 10a execução do $AG^{RPC-2}$ e do $AG^{GC-2}$, respectivamente. Para as demais execuções, os gráficos são apresentados no Apêndice B.  Como é possível notar na Figura \ref{fig:graph2_1}, o $AG^{RPC-2}$ ainda apresenta o mesmo problema observado no AG de Regime Permanente do experimento anterior, mesmo que em intensidade menor: apesar de alguns saltos de melhorias do decorrer do processo de busca, durante várias gerações tanto o VPL médio quanto o pior VPL da população do $AG^{RPC-2}$ mantiveram-se os mesmos. Diante disso, é possível reafirmar que, mesmo com a melhorias, essa versão do AG ainda gera uma quantidade considerável de soluções que não são suficientemente boas para serem incluídas na população, o que prejudicou o desempenho da busca do AG. Quando ao $AG^{GC-2}$, é possível notar, pela Figura \ref{fig:graph2_2}, a grande variação de qualidade das soluções do decorrer das gerações. 
 
 Como dito anteriormente, esse é um reflexo da abordagem escolhida para a manutenção da população.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{8}
-\caption{Figura 8 – Evolução do VPL obtido pela melhor solução, pala pior solução e a média da população obtida através da $10^a$ execução do $AG^{RPC-2}$.}
+\caption{Evolução do VPL obtido pela melhor solução, pala pior solução e a média da população obtida através da $10^a$ execução do $AG^{RPC-2}$.}
 \label{fig:graph2_1}
 \end{figure}
 
@@ -156,7 +156,7 @@ Como dito anteriormente, esse é um reflexo da abordagem escolhida para a manute
 \centering
 \includegraphics[scale=1]{9}
 \label{fig:graph2_2}
-\caption{Figura 9 – Evolução do VPL obtido pela melhor solução, pala pior solução e a média da população obtida através da $10^a$ execução do $AG^{GC-2}$.}
+\caption{Evolução do VPL obtido pela melhor solução, pala pior solução e a média da população obtida através da $10^a$ execução do $AG^{GC-2}$.}
 
 \end{figure}
 
@@ -170,7 +170,7 @@ Ao aplicar o teste de Mann-Whitney-Wilcoxon com limiar de 5\%, observou-se que a
 
 \begin{table}[H]
 \centering
-\caption{Tabela 8 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-3}$, os AGs do Experimento 2, o $CMOST^500$ e a BA.}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-3}$, os AGs do Experimento 2, o $CMOST^500$ e a BA.}
 \label{tab:mw3_1}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -187,7 +187,7 @@ Como é possível notar n Tabela \ref{tab:mw3_1}, a diferença entre os resultad
 
 \begin{table}[H]
 \centering
-\caption{Tabela 9 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-3}$, os AGs do Experimento 2, o $CMOST^500$ e a BA}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-3}$, os AGs do Experimento 2, o $CMOST^500$ e a BA}
 \label{tab:mw3_2}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -205,14 +205,14 @@ As Figuras \ref{fig:graph3_1} e \ref{fig:graph3_2} apresentam os gráficos da ev
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{10}
-\caption{Figura 10 – Evolução do VPL obtido pela melhor solução, pala pior solução e a média da população obtida na $5^a$ execução do $AG^{RPC-3}$}
+\caption{ Evolução do VPL obtido pela melhor solução, pala pior solução e a média da população obtida na $5^a$ execução do $AG^{RPC-3}$}
 \label{fig:graph3_1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{11}
-\caption{Figura 11 – Evolução do VPL obtido pela melhor solução, pala pior solução e a média da população obtida na $5^a$ execução do $AG^{GC-3}$}
+\caption{Evolução do VPL obtido pela melhor solução, pala pior solução e a média da população obtida na $5^a$ execução do $AG^{GC-3}$}
 \label{fig:graph3_2}
 \end{figure}
 
@@ -226,7 +226,7 @@ Utilizar o IEP como parâmetro para manipulação dos poços da Estratégia de P
 
 \begin{table}[H]
 \centering
-\caption{Tabela 10 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPM}$, os AGs do Experimento 3, o $CMOST^500$ e a BA}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPM}$, os AGs do Experimento 3, o $CMOST^500$ e a BA}
 \label{tab:mw4_1}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -249,7 +249,7 @@ A Figura \ref{fig:graph4_1} apresenta a evolução do VPL da melhor solução, d
 
 \includegraphics[scale=1]{12}
 
-\caption{Figura 12  – Evolução do VPL obtido pela melhor solução, para a pior solução e a média da população obtida na $1^a$ execução do $AG^{RPM}$}
+\caption{Evolução do VPL obtido pela melhor solução, para a pior solução e a média da população obtida na $1^a$ execução do $AG^{RPM}$}
 \label{fig:graph4_1}
 \end{figure}
 
@@ -262,14 +262,14 @@ O $AG^{CO-2}$ apresentou um VPL médio consideravelmente melhor que o $AG^{CO-1}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{13}
-\caption{Figura 13  – Evolução do VPL obtido pela melhor solução, pior solução e a média da população na $2^a$ execução do $AG^{CO-1}$}
+\caption{Evolução do VPL obtido pela melhor solução, pior solução e a média da população na $2^a$ execução do $AG^{CO-1}$}
 \label{fig:graph5_1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{14}
-\caption{Figura 14  – Evolução do VPL obtido pela melhor solução, pior solução e a média da população obtida na $2^a$ execução do $AG^{CO-2}$}
+\caption{Evolução do VPL obtido pela melhor solução, pior solução e a média da população obtida na $2^a$ execução do $AG^{CO-2}$}
 \label{fig:graph5_2}
 \end{figure}
 
@@ -277,7 +277,7 @@ Ao aplicar o teste de Mann-Whitney-Wilcoxon entre o $AG^{CO-1}$ e o $AG^{CO-2}$,
 
 \begin{table}[H]
 \centering
-\caption{Tabela 11 - Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{CO-1}$ e do $AG^{CO-2}$ com o $AG^RPM$}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{CO-1}$ e do $AG^{CO-2}$ com o $AG^RPM$}
 \label{tab:mw5_1}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -300,7 +300,7 @@ A Tabela \ref{tab:results2_1} apresenta o melhor VPL obtido por cada uma das dez
 
 \begin{table}[H]
 \centering
-\caption{Tabela 12- Resultados obtidos pela execução dos AGs com Busca Local, do melhor AG da Etapa 1 ($AG^{RPM}$) e do CMOST, ambos com 730 avaliações.}
+\caption{Resultados obtidos pela execução dos AGs com Busca Local, do melhor AG da Etapa 1 ($AG^{RPM}$) e do CMOST, ambos com 730 avaliações.}
 \label{tab:results2_1}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -332,11 +332,11 @@ Como descrito no Capítulo 4.3, nesse experimento o AG foi executado em conjunto
 
 A adição do operador de busca local ao algoritmo genético levou a um ganho de cerca de 29\% do VPL médio quando comparado com o $AG^{RPM}$, executado no Experimento 4 da etapa anterior. O AG com a busca local conseguiu um VPL médio de 1,52E+09 enquanto o $AG^{RPM}$ da Etapa 1 conseguiu um VPL de 1,18E+09. A diferença entre os resultados dessas duas versões do AG é significativa, conforme indica o teste de Mann-Whitney-Wilcoxon, com um limiar de 5\% (Tabela \ref{tab:mw6_1}). No entanto, para que tal resultado fosse obtido, foram necessárias cerca de 220 avaliações a mais e cerca do dobro do tempo utilizado até então.
 
-Em relação ao VPL médio obtido pelo $CMOST^{500}$ na etapa anterior, a diferença fica em torno de 3\%. Sendo que, apesar de ter utilizado um maior número de avaliações, o AG com a busca local precisou, em média, de 4 horas e 18 minutos para concluir uma execução, contra as 7 horas e 15 minutos exigidas pelo $CMOST^{500}$. O AG utiliza cerca de 59\% do tempo gasto pelo $CMOST^{500}$, o que é uma diferença considerável. Os resultados ainda se mostraram estatisticamente significativos conforme o teste de Mann-Whitney-Wilcoxon  (Tabela 13).
+Em relação ao VPL médio obtido pelo $CMOST^{500}$ na etapa anterior, a diferença fica em torno de 3\%. Sendo que, apesar de ter utilizado um maior número de avaliações, o AG com a busca local precisou, em média, de 4 horas e 18 minutos para concluir uma execução, contra as 7 horas e 15 minutos exigidas pelo $CMOST^{500}$. O AG utiliza cerca de 59\% do tempo gasto pelo $CMOST^{500}$, o que é uma diferença considerável. Os resultados ainda se mostraram estatisticamente significativos conforme o teste de Mann-Whitney-Wilcoxon  (Tabela \ref{tab:mw6_1}).
 
 \begin{table}[H]
 \centering
-\caption{Tabela 13 - Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{BL-1}$ com o $AG^{RPM}$ e o $CMOST^{500}$.}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{BL-1}$ com o $AG^{RPM}$ e o $CMOST^{500}$.}
 \label{tab:mw6_1}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -355,7 +355,7 @@ Por fim a diferença entre os resultados obtidos aqui se mostraram significativa
 
 \begin{table}[htb]
 \centering
-\caption{Tabela 14 - Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{BL-1}$ com o $AG^{RPM-730}$ e o $CMOST^{730}$}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{BL-1}$ com o $AG^{RPM-730}$ e o $CMOST^{730}$}
 \label{tab:mw6_2}
 \begin{tabular}{|c|c|c|}
 \hline
