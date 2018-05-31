@@ -50,7 +50,7 @@
 \RequirePackage[english,spanish,brazil,portuguese]{babel}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{graphicx}
-\graphicspath{{./logotipos/}{./images/chapters/}}
+\graphicspath{{./logotipos/}{./images/chapters/}{./images/appendix/}}
 \PassOptionsToPackage{table}{xcolor}
 \RequirePackage{pdfpages}
 \RequirePackage{xspace}
