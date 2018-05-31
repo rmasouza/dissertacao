@@ -1,14 +1,14 @@
-\chapter{RESULTADOS E DISCUÇÃO}
+\chapter{Resultados e diScução}
 
 Nesse Capítulo são apresentados os resultados obtidos pelos algoritmos e operadores propostos no Capítulo 3. Conforme mencionado no capítulo anterior, os testes foram estruturados em duas etapas, os resultados da primeira etapa são apresentados na Seção 5.1 enquanto que na Seção 5.2 são apresentados os resultados da segunda etapa.
 
-\section{ETAPA 1 – SEM BUSCA LOCAL}
+\section{Etapa 1 – Sem Busca Local}
 
-A Tabela 4 apresenta os resultados obtidos pela execução dos algoritmos durante a primeira etapa. Nessa tabela são apresentados o melhor VPL obtido em cada uma das dez execuções das versões do AG, da Busca Aleatória (BA) e do CMOST. Além disso também são apresentados o VPL médio, o desvio padrão e o tempo médio que cada algoritmo levou para atingir o critério de parada (realizar as 500 avaliações da função objetivo).
+A Tabela 4 apresenta os resultados obtidos pela execução das versões clássicas do algoritmo genético durante a primeira etapa. Nessa tabela são apresentados o melhor VPL obtido em cada uma das dez execuções das versões do AG. Além disso também são apresentados o VPL médio, o desvio padrão e o tempo médio que cada algoritmo levou para atingir o critério de parada (realizar as 500 avaliações da função objetivo). A Tabela apresenta os mesmo resultados para a execuçao das versões modoficadas do algortimo genético, bem como a Busca Aleatória (BA) e o CMOST realizando 500 avaliações da função objetivo ( $CMOST^500$).
 
 \begin{table}[H]
 \centering
-\caption{Tabela 4 -Resultados obtidos pela execução dos AGs, da Busca Aleatória (BA) e do CMOST}
+\caption{Tabela 4 -Resultados obtidos pela execução das versões clássicas do AG}
 
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -27,18 +27,16 @@ Execução & $AG^{RPC-1}$ & $AG^{GC-1}$ & $AG^{RPC-2}$ & $AG^{GC-2}$ & $AG^{RPC-
 Média & 6,19E+08 & 6,43E+08 & 7,81E+08 & 6,99E+08 & 9,71E+08 & 8,63E+08 \\ \hline
 Desvio padrão & 8,96E+07 & 9,72E+07 & 6,58E+07 & 1,12E+08 & 4,74E+07 & 3,14E+07 \\ \hline
 Tempo Médio & 02:39 & 02:36 & 02:34 & 02:31 & 02:44 & 02:10 \\ \hline
-
-
 \end{tabular}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Tabela 4 -Resultados obtidos pela execução dos AGs, da Busca Aleatória (BA) e do CMOST}
+\caption{Tabela 4 -Resultados obtidos pela execução das versões modificadas do AG, da Busca Aleatória (BA) e do CMOST}
 
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
-Execução & $AG^{RPM}$ &	$AG^{CO-1}$ & $AG^{CO-2}$ & BA & $CMOST^1$ \\ \hline
+Execução & $AG^{RPM}$ &	$AG^{CO-1}$ & $AG^{CO-2}$ & BA & $CMOST^500$ \\ \hline
 1  & 1,19E+09 & 1,07E+09 & 1,21E+09	 & 8,54E+08	 & 1,54E+09 \\ \hline
 2 & 1,21E+09 & 1,22E+09 & 1,18E+09	 & 7,06E+08	 & 1,67E+09 \\ \hline
 3  & 1,19E+09 & 1,06E+09 & 1,09E+09	 & 7,63E+08	 & 1,40E+09 \\ \hline
@@ -62,9 +60,9 @@ As próximas seções apresentam, com mais detalhes, cada um dos experimentos re
 
 \subsection{Experimento 1}
 
-Nesse primeiro experimento foram utilizadas as versões clássicas do Algoritmo Genético Geracional ($AG^{GC-1}$) e do Algoritmo Genético de Regime Permanente ($AG^{RPC-1}$), bem como versões clássicas dos operadores de seleção, recombinação e mutação. Ao observar os resultados obtidos pelo $AG^{GC-1}$ e o $AG^{RPC-1}$ é possível notar que o desempenho das versões clássicas do AG, com os operadores clássicos, foi aquém do esperado. Os AGs com as configurações propostas não foram capazes de obter soluções superiores às da busca aleatória.  A BA conseguiu obter soluções com VPL 32\% melhor às do $AG^{RPC-1}$ e 27\% melhor que as do $AG^{GC-1}$, uma diferença considerável. Ao comparar os AGs com o $CMOST^{1}$ a diferença foi ainda maior. O VPL médio das soluções obtidas pelo $CMOST^{1}$ é cerca de 2,5 vezes superior aos resultados obtidos pelos AGs.
+Nesse primeiro experimento foram utilizadas as versões clássicas do Algoritmo Genético Geracional ($AG^{GC-1}$) e do Algoritmo Genético de Regime Permanente ($AG^{RPC-1}$), bem como versões clássicas dos operadores de seleção, recombinação e mutação. Ao observar os resultados obtidos pelo $AG^{GC-1}$ e o $AG^{RPC-1}$ é possível notar que o desempenho das versões clássicas do AG, com os operadores clássicos, foi aquém do esperado. Os AGs com as configurações propostas não foram capazes de obter soluções superiores às da busca aleatória.  A BA conseguiu obter soluções com VPL 32\% melhor às do $AG^{RPC-1}$ e 27\% melhor que as do $AG^{GC-1}$, uma diferença considerável. Ao comparar os AGs com o $CMOST^{500}$ a diferença foi ainda maior. O VPL médio das soluções obtidas pelo $CMOST^{500}$ é cerca de 2,5 vezes superior aos resultados obtidos pelos AGs.
 
-As figuras 6 e 7, apresentam a evolução da melhor solução, da pior solução e da média da população durante a 4ª execução do AGRPC-1 e da 1ª execução do AGGC-1. Os gráficos para as demais execuções são apresentados no Apêndice A.
+As figuras 6 e 7, apresentam a evolução da melhor solução, da pior solução e da média da população durante a 4ª execução do $AG^{RPC-1}$ e da 1ª execução do $AG^{GC-1}$. Os gráficos para as demais execuções são apresentados no Apêndice A.
 
 Pelas figuras 6 e 7, é possível notar a forma como a estratégia de busca adotada por cada AG impacta na qualidade dos indivíduos da população no decorrer das gerações. Enquanto no $AG^{RPC-1}$ o \textit{fitness} médio da população ou se mantém constante ou apresenta melhoria no decorrer das gerações, com o $AG^{GC-1}$ há sempre uma grande variação do fitness médio, isso é um reflexo da abordagem para a manutenção da população adotada por cada versão do AG. Na abordagem geracional do algoritmo genético, utilizada pelo $AG^{GC-1}$, uma nova população é gerada a cada iteração, isso permite que soluções ruins façam parte da população, por isso essa versão do AG apresenta grande variação no \textit{fitness} médio durante as iterações. O mesmo não ocorre com a abordagem de regime permanente: como só é gerada uma solução por iteração e essa solução só é incluída na população caso apresente um VPL melhor que algum indivíduo, observa-se uma evolução mais consistente da média do VPL da população.
 
@@ -95,15 +93,15 @@ Para verificar o quão significativo foram os resultados obtidos nesse experimen
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{RPC-1}$ &	$AG^{GC-1}$ & 79,590\% \\ \hline
-$AG^{RPC-1}$ & $CMOST^1$ & 0,018\% \\ \hline
+$AG^{RPC-1}$ & $CMOST^500$ & 0,018\% \\ \hline
 $AG^{RPC-1}$ & BA & 0,032\% \\ \hline
-$AG^{GC-1}$ & $CMOST^1$ & 0,018\% \\ \hline
+$AG^{GC-1}$ & $CMOST^500$ & 0,018\% \\ \hline
 $AG^{GC-1}$ & BA & 0,049\% \\ \hline
 
 \end{tabular}
 \end{table}
 
-Pelos resultados reportados pela Tabela 5, podemos concluir que, além dos resultados inferiores aos obtidos pela BA e CMOST, não há diferença entre utilizar o AG Geracional ($AG^{GC-1}$) ou o AG de Regime Permanente ($AG^{RPC-1}$) com os parâmetros e operadores adotados nesse primeiro experimento. No entanto, a diferença entre os resultados dos AG e o $CMOST^1$ e a BA se mostraram  significativas.
+Pelos resultados reportados pela Tabela 5, podemos concluir que, além dos resultados inferiores aos obtidos pela BA e CMOST, não há diferença entre utilizar o AG Geracional ($AG^{GC-1}$) ou o AG de Regime Permanente ($AG^{RPC-1}$) com os parâmetros e operadores adotados nesse primeiro experimento. No entanto, a diferença entre os resultados dos AG e o $CMOST^500$ e a BA se mostraram  significativas.
 
 \subsection{Experimento 2}
 
@@ -111,38 +109,38 @@ Nesse experimento, a principal mudança realizada foi a alteração do operador 
 
 Como é possível perceber à partir dos resultados apresentados na Tabela 4, tanto o $AG^{RPC-2}$ quanto o $AG^{GC-2}$ apresentaram desempenho melhor que os obtidos pelos AGs do Experimento 1. A mudança do operador de recombinação se mostrou satisfatória, principalmente em relação à abordagem de regime permanente. Em média, os resultados do $AGR^{RPC-2}$ foram 23\% melhores que ao obtidos pelo $AG^{RPC-1}$. A versão geracional do AG utilizada nesse experimento também apresentou melhoras em relação ao experimento anterior, mas os resultados obtidos pelo $AG^{GC-2}$ foram, em média, apenas 9\% melhores.
 
-No entanto, apesar das melhorias observadas, ambas as versões do AG novamente tiveram um desempenho aquém da BA e, principalmente, do $CMOST^1$. Apesar dos AGs levarem cerca 36\% do tempo gasto pelo $CMOST^1$ para concluírem as 500 avaliações, o VPL médio obtido pelo $CMOST^1$ ainda chega a ser o dobro do VPL médio obtido pelos AGs. Com as configurações adotadas nesse experimento, os AGs ainda não foram capazes de explorar de forma adequada o espaço de busca para obter soluções de boa qualidade. 
+No entanto, apesar das melhorias observadas, ambas as versões do AG novamente tiveram um desempenho aquém da BA e, principalmente, do $CMOST^500$. Apesar dos AGs levarem cerca 36\% do tempo gasto pelo $CMOST^500$ para concluírem as 500 avaliações, o VPL médio obtido pelo $CMOST^500$ ainda chega a ser o dobro do VPL médio obtido pelos AGs. Com as configurações adotadas nesse experimento, os AGs ainda não foram capazes de explorar de forma adequada o espaço de busca para obter soluções de boa qualidade. 
 
 Ao aplicar o teste de Mann-Whitney-Wilcoxon entre o $AG^{RPC-2}$ e o $AG^{GC-2}$, a diferença entre os resultados se mostraram mais significativas obtendo o valor de 5,24\%, apesar do resultado ser acima do limiar de 5\%, aqui já é possível observar há uma diferença entre as abordagens geracional e de regime permanente. A Tabela 6 reporta o resultado do teste ao comparar os resultados do $AG^{RPC-2}$ com os AGs do Experimento 1, o CMOST e a BA. 
 
 \begin{table}[H]
 \centering
-\caption{Tabela 6 - Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-2}$, os AGs do Experimento 1, o $CMOST^1$ e a BA}
+\caption{Tabela 6 - Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-2}$, os AGs do Experimento 1, o $CMOST^500$ e a BA}
 
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{RPC-2}$ & $AG^{RPC-1}$ & 0,68\% \\ \hline
 $AG^{RPC-2}$ & $AG^{GC-1}$ & 0,21\% \\ \hline
-$AG^{RPC-2}$ & $CMOST^1$ & 0,02\% \\ \hline
+$AG^{RPC-2}$ & $CMOST^500$ & 0,02\% \\ \hline
 $AG^{RPC-2}$ & BA & 27,99\% \\ \hline
 
 
 \end{tabular}
 \end{table}
 
-Além do desempenho melhor do $AG^{RPC-2}$ em relação aos AGs do Experimento 1, a diferença entre o resultado obtido aqui e os obtidos anteriormente também se mostraram significativos segundo o teste realizado considerando um limiar de 5\%. O mesmo, no entanto, vale para o $CMOST^1$. Em relação à BA, apesar de ter uma média ainda melhor que o $AG^{RPC-2}$, não há uma diferença entre usar o AG e a BA, já que o resultado do teste ultrapassa o limiar de 5\%. Em relação ao $AG^{GC-2}$, os resultados do teste de Mann-Whitney-Wilcoxon indicam que os valores de VPL encontrados não foram semelhantes aos obtidos pelo $AG^{RPC-2}$. Segundo os resultados obtidos, não há diferenças estisticamente significativas entre o AG Geracional desse experimento e os AGs do experimento anterior. No entanto, ao se comparar o $AG^{GC-2}$ com o $CMOST^1$ e a BA, o teste mostrou que há uma diferença significativa entre os resultados obtidos pelo $AG^{GC-2}$ e os dessas ferramentas. A Tabela 7 apresenta os resultados do teste de Mann-Whitney-Wilcoxon aplicado ao $AG^{GC-1}$.
+Além do desempenho melhor do $AG^{RPC-2}$ em relação aos AGs do Experimento 1, a diferença entre o resultado obtido aqui e os obtidos anteriormente também se mostraram significativos segundo o teste realizado considerando um limiar de 5\%. O mesmo, no entanto, vale para o $CMOST^500$. Em relação à BA, apesar de ter uma média ainda melhor que o $AG^{RPC-2}$, não há uma diferença entre usar o AG e a BA, já que o resultado do teste ultrapassa o limiar de 5\%. Em relação ao $AG^{GC-2}$, os resultados do teste de Mann-Whitney-Wilcoxon indicam que os valores de VPL encontrados não foram semelhantes aos obtidos pelo $AG^{RPC-2}$. Segundo os resultados obtidos, não há diferenças estisticamente significativas entre o AG Geracional desse experimento e os AGs do experimento anterior. No entanto, ao se comparar o $AG^{GC-2}$ com o $CMOST^500$ e a BA, o teste mostrou que há uma diferença significativa entre os resultados obtidos pelo $AG^{GC-2}$ e os dessas ferramentas. A Tabela 7 apresenta os resultados do teste de Mann-Whitney-Wilcoxon aplicado ao $AG^{GC-1}$.
 
 \begin{table}[htb]
 \centering
-\caption{Tabela 7 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-2}$, os AGs do Experimento 1, o $CMOST^1$ e a BA.}
+\caption{Tabela 7 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-2}$, os AGs do Experimento 1, o $CMOST^500$ e a BA.}
 
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{GC-2}$ & $AG^{RPC-1}$ & 27,99\% \\ \hline
 $AG^{GC-2}$ & $AG^{GC-1}$ & 48,13\% \\ \hline
-$AG^{GC-2}$ & $CMOST^1$ & 0,02\% \\ \hline
+$AG^{GC-2}$ & $CMOST^500$ & 0,02\% \\ \hline
 $AG^{GC-2}$ & BA & 2,32\% \\ \hline
 
 \end{tabular}
@@ -176,43 +174,43 @@ Como dito anteriormente, esse é um reflexo da abordagem escolhida para a manute
 
 Para o terceiro experimento dessa etapa ainda foram consideradas as versões clássicas dos AGs. Tanto a abordagem de regime permanente ($AG^{RPC-3}$) quanto a geracional ($AG^{GC-3}$) foram mantidas, e o mesmo vale para os operadores de seleção, recombinação e mutação. A principal alteração realizada nesse terceiro experimento se deu em relação aos parâmetros utilizados pelos AGs. Analisando-se os parâmetros dos algoritmos, percebeu-se que um aumento no número de indivíduos da população inicial poderia distribuir melhor as soluções iniciais. Sendo assim, conforme apresentado no Capítulo 4.3, esse parâmetro passou de 10 para 100 indivíduos.
 
-Ao observar os resultados reportados na Tabela 4 nota-se uma melhora no VPL médio obtido pelos AGs utilizando os parâmetros propostos nesse terceiro experimento em relação ao VPL médio obtido anteriormente. Dessa vez os AGs conseguiram um VPL médio cerca de 24\% melhor que o apresentado pelos AGs do Experimento 2. Quando comparados com a BA, a melhora fica em cerca de 19\% para o AGRPC-3 e de 6\% para o $AG^{GC-3}$. No entanto, apesar dos resultados melhores, as duas versões do AG novamente não conseguiram superar as soluções obtidas pelo CMOST1. Ainda assim, é importante destacar que os AGs desse experimento completam as 500 avaliações com cerca de 37\% do tempo que o CMOST1 precisou para concluir a mesma quantidade de avaliações.
+Ao observar os resultados reportados na Tabela 4 nota-se uma melhora no VPL médio obtido pelos AGs utilizando os parâmetros propostos nesse terceiro experimento em relação ao VPL médio obtido anteriormente. Dessa vez os AGs conseguiram um VPL médio cerca de 24\% melhor que o apresentado pelos AGs do Experimento 2. Quando comparados com a BA, a melhora fica em cerca de 19\% para o $AG^{RPC-3}$ e de 6\% para o $AG^{GC-3}$. No entanto, apesar dos resultados melhores, as duas versões do AG novamente não conseguiram superar as soluções obtidas pelo $CMOST^{500}$. Ainda assim, é importante destacar que os AGs desse experimento completam as 500 avaliações com cerca de 37\% do tempo que o $CMOST^{500}$ precisou para concluir a mesma quantidade de avaliações.
 
-Ao aplicar o teste de Mann-Whitney-Wilcoxon com limiar de 5\%, observou-se que a diferença entre os resultados obtidos pelos AGs desse experimento é estatisticamente significativa (0,013\%). Assim como foi feito no experimento anteriores, os resultados obtidos aqui foram comparados com os resultados obtidos pelo CMOST1 e a B. Além disso os AGs desse experimento também foram comparados com os AGs do Experimento 2. A Tabela 8 apresenta o resultado do teste estatístico obtidos ao comparar o resultado do $AG^{RPC-3}$ com os algoritmos já citados.
+Ao aplicar o teste de Mann-Whitney-Wilcoxon com limiar de 5\%, observou-se que a diferença entre os resultados obtidos pelos AGs desse experimento é estatisticamente significativa (0,013\%). Assim como foi feito no experimento anteriores, os resultados obtidos aqui foram comparados com os resultados obtidos pelo $CMOST^{500}$ e a BA. Além disso os AGs desse experimento também foram comparados com os AGs do Experimento 2. A Tabela 8 apresenta o resultado do teste estatístico obtidos ao comparar o resultado do $AG^{RPC-3}$ com os algoritmos já citados.
 
 \begin{table}[H]
 \centering
-\caption{Tabela 8 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-3}$, os AGs do Experimento 2, o $CMOST^1$ e a BA.}
+\caption{Tabela 8 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-3}$, os AGs do Experimento 2, o $CMOST^500$ e a BA.}
 
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{RPC-3}$ & $AG^{RPC-2}$ & 0,0011\% \\ \hline
 $AG^{RPC-3}$ & $AG^{GC-2}$ & 0,0043\% \\ \hline
-$AG^{RPC-3}$ & $CMOST^1$ & 0,0182\% \\ \hline
+$AG^{RPC-3}$ & $CMOST^500$ & 0,0182\% \\ \hline
 $AG^{RPC-3}$ & BA & 0,0011\% \\ \hline
 
 \end{tabular}
 \end{table}
 
-Como é possível notar n Tabela 8, a diferença entre os resultados obtidos pelo $AG^{RPC-1}$ e os AGs do Experimento 2 é estatisticamente significativa, e o mesmo pode ser dito em relação à comparação do $AG^{RPC-1}$ com o $CMOST^1$ e a BA. O $AG^{GC-3}$ também obteve um resultado semelhante, conforme pode ser observado pela Tabela 9.
+Como é possível notar n Tabela 8, a diferença entre os resultados obtidos pelo $AG^{RPC-1}$ e os AGs do Experimento 2 é estatisticamente significativa, e o mesmo pode ser dito em relação à comparação do $AG^{RPC-1}$ com o $CMOST^500$ e a BA. O $AG^{GC-3}$ também obteve um resultado semelhante, conforme pode ser observado pela Tabela 9.
 
 \begin{table}[H]
 \centering
-\caption{Tabela 9 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-3}$, os AGs do Experimento 2, o $CMOST^1$ e a BA}
+\caption{Tabela 9 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-3}$, os AGs do Experimento 2, o $CMOST^500$ e a BA}
 
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{GC-3}$ & $AG^{RPC-2}$ & 0,6841\% \\ \hline
 $AG^{GC-3}$ & $AG^{GC-2}$ & 0,8931\% \\ \hline
-$AG^{GC-3}$ & $CMOST^1$ & 0,0182\% \\ \hline
+$AG^{GC-3}$ & $CMOST^500$ & 0,0182\% \\ \hline
 $AG^{GC-3}$ & BA & 1,8540\% \\ \hline
 
 \end{tabular}
 \end{table}
 
-As Figuras 10 e 11 apresentam os gráficos da evolução do melhor VPL, do pior VPL e o valor médio da população durante a 5a execução do AGRPC-3 e do AG GC-3, respectivamente. Os gráficos para as demais execuções são apresentados no Apêndice C. 
+As Figuras 10 e 11 apresentam os gráficos da evolução do melhor VPL, do pior VPL e o valor médio da população durante a 5a execução do $AG^{RPC-3}$ e do $AG^{GC-3}$, respectivamente. Os gráficos para as demais execuções são apresentados no Apêndice C. 
 
 \begin{figure}[H]
 \centering
@@ -229,7 +227,7 @@ As Figuras 10 e 11 apresentam os gráficos da evolução do melhor VPL, do pior 
 
 \end{figure}
 
-Ao comparar evolução do VPL médio da população e do pior VPL do AGRPC-3 (Figura 10) e comparar com a evolução da população do $AG^{RPC-2}$ (Figura 8), percebe-se que a população do $AG^{RPC-3}$ raramente passa alguma geração sem apresentar uma melhora no fitness médio da população ou no pior fitness, ao contrário do que acontece com o $AG^{RPC-2}$. Quanto à versão geracional do algoritmo, o $AG^{GC-3}$, nota-se que a quantidade de gerações foi consideravelmente reduzida, uma vez que, ao considerar-se uma população com 100 indivíduos, a cada geração, 100 novas avaliações da função objetivo são realizadas, sendo assim são necessários somente 5 gerações dessa versão do AG para atingir o limite de 500 avaliações. Apesar disso, o $AG^{GC-3}$ ainda apresentou um resultado melhor que o das duas versões de AG do experimento anterior. Sendo assim, pode-se afirmar que o aumento da população foi vantajoso para as duas versões do AG, uma vez que esses algoritmos utilizam a população como um repertório para explorar o espaço de busca. Com um repertório maior, a exploração tornou-se mais eficiente.
+Ao comparar evolução do VPL médio da população e do pior VPL do $AG^{RPC-3}$ (Figura 10) e comparar com a evolução da população do $AG^{RPC-2}$ (Figura 8), percebe-se que a população do $AG^{RPC-3}$ raramente passa alguma geração sem apresentar uma melhora no fitness médio da população ou no pior fitness, ao contrário do que acontece com o $AG^{RPC-2}$. Quanto à versão geracional do algoritmo, o $AG^{GC-3}$, nota-se que a quantidade de gerações foi consideravelmente reduzida, uma vez que, ao considerar-se uma população com 100 indivíduos, a cada geração, 100 novas avaliações da função objetivo são realizadas, sendo assim são necessários somente 5 gerações dessa versão do AG para atingir o limite de 500 avaliações. Apesar disso, o $AG^{GC-3}$ ainda apresentou um resultado melhor que o das duas versões de AG do experimento anterior. Sendo assim, pode-se afirmar que o aumento da população foi vantajoso para as duas versões do AG, uma vez que esses algoritmos utilizam a população como um repertório para explorar o espaço de busca. Com um repertório maior, a exploração tornou-se mais eficiente.
 
 \subsection{Experimento 4}
 
@@ -239,21 +237,21 @@ Utilizar o IEP como parâmetro para manipulação dos poços da Estratégia de P
 
 \begin{table}[H]
 \centering
-\caption{Tabela 10 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPM}$, os AGs do Experimento 3, o $CMOST^1$ e a BA}
+\caption{Tabela 10 – Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPM}$, os AGs do Experimento 3, o $CMOST^500$ e a BA}
 
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{RPM}$ & $AG^{RPC-3}$ & 0,0011\% \\ \hline
 $AG^{RPM}$ & $AG^{GC-3}$ & 0,0011\% \\ \hline
-$AG^{RPM}$ & $CMOST^1$ & 0,0182\% \\ \hline
+$AG^{RPM}$ & $CMOST^500$ & 0,0182\% \\ \hline
 $AG^{RPM}$ & BA & 0,0011\% \\ \hline
 
 
 \end{tabular}
 \end{table}
 
-No entanto, apesar das melhorias, o algoritmo genético ainda não foi capaz de superar o resultado obtido pelo $CMOST^1$. O VPL médio obtido por essa ferramenta ainda é cerca de 33\% superior ao obtido pelo AG desse experimento. Ainda assim, o AGRPM foi capaz de completar as 500 avaliações com um tempo consideravelmente menor, cerca de 38\% do tempo gasto pelo $CMOST^1$.
+No entanto, apesar das melhorias, o algoritmo genético ainda não foi capaz de superar o resultado obtido pelo $CMOST^500$. O VPL médio obtido por essa ferramenta ainda é cerca de 33\% superior ao obtido pelo AG desse experimento. Ainda assim, o AGRPM foi capaz de completar as 500 avaliações com um tempo consideravelmente menor, cerca de 38\% do tempo gasto pelo $CMOST^500$.
 
 A Figura 12 apresenta a evolução do VPL da melhor solução, do VPL médio da população e do VPL da pior solução obtidos ao longo da 1a execução dessa versão do algoritmo. É possível notar, pela Figura 12, que há evolução do VPL médio da população, basicamente, em todas as iterações, um comportamento semelhante ao observado pelo $AG^{RPC-3}$ no experimento anterior. Vale ressaltar que, para as demais execuções, os gráficos são apresentados no Apêndice D.
 
@@ -310,17 +308,17 @@ Como é possível notar pela Tabela 6, apesar do $AG^{CO-1}$ ter resultados dife
 
 Na segunda etapa dos experimentos o foco esteve na exploração das duas versões da busca local descritas no Capítulo 3.5. No total, foram dois experimentos realizados nessa etapa, sendo que em cada um dos experimentos foi utilizada uma das versões do operador de busca local proposto, em conjunto com o AG que obteve o melhor desempenho na etapa anterior, nesse caso o $AG^{RPM}$ do Experimento 4 da Etapa 1. No primeiro experimento dessa segunda etapa foi utilizado com o $AG^{RPM}$ a primeira versão da busca local ($AG^{BL-1}$). No segundo experimento realizado o AGRPM foi executado com a segunda versão da busca local ($AG^{BL-2}$). Vale ressaltar que os operadores de busca local refinam somente a melhor solução encontrada pelo AG, conforme descrito no Capítulo 3.5.
 
-Apesar da intenção de se comparar os resultados aqui obtidos com os resultados alcançados por $AG^{RPM}$ e  $CMOST^{1}$ na Etapa 1, tal comparação não seria de todo justa. Os AGs dos experimentos realizados nessa etapa precisaram, em média, de um total de 720 avaliações da função objetivo (simulações) para concluir cada execução, 220 avaliações a mais que as utilizadas durante a etapa anterior. Sendo assim, o $AG^{RPM}$ foi executado novamente, mas com um limite de 720 avaliações como critério de parada para que, dessa forma, a comparação fosse justa. O mesmo foi feito para a ferramenta CMOST. Para não haver confusão, o $AG^{RPM}$ executado nessa etapa será referenciado como $AG^{RPM-2}$ e o CMOST como $CMOST^{2}$. 
+Apesar da intenção de se comparar os resultados aqui obtidos com os resultados alcançados por $AG^{RPM}$ e  $CMOST^{500}$ na Etapa 1, tal comparação não seria de todo justa. Os AGs dos experimentos realizados nessa etapa precisaram, em média, de um total de 720 avaliações da função objetivo (simulações) para concluir cada execução, 220 avaliações a mais que as utilizadas durante a etapa anterior. Sendo assim, o $AG^{RPM}$ foi executado novamente, mas com um limite de 720 avaliações como critério de parada para que, dessa forma, a comparação fosse justa. O mesmo foi feito para a ferramenta CMOST. Para não haver confusão, o $AG^{RPM}$ executado nessa etapa será referenciado como $AG^{RPM-2}$ e o CMOST como $CMOST^{2}$. 
 
-A Tabela 12 apresenta o melhor VPL obtido por cada uma das dez execuções do $AG^{BL-1}$ e do $AG^{BL-2}$. Além disso, também é apresentado o VPL médio de cada algoritmo, o desvio padrão, o tempo médio, em horas, gasto para cada execução do algoritmo ser concluída e a média de avaliações necessárias para completar a execução dos AGs com busca local. Esses resultados, com exceção da média de avaliações, também são apresentados para $AG^{RPM-2}$ e $CMOST^2$.
+A Tabela 12 apresenta o melhor VPL obtido por cada uma das dez execuções do $AG^{BL-1}$ e do $AG^{BL-2}$. Além disso, também é apresentado o VPL médio de cada algoritmo, o desvio padrão, o tempo médio, em horas, gasto para cada execução do algoritmo ser concluída e a média de avaliações necessárias para completar a execução dos AGs com busca local. Esses resultados, com exceção da média de avaliações, também são apresentados para $AG^{RPM-2}$ e $CMOST^730$.
 
 \begin{table}[H]
 \centering
-\caption{Tabela 12- Resultados obtidos pela execução dos AGs com Busca Local, do melhor da Etapa 1 ($AG^{RPM}$) do CMOST com 730 avaliações.}
+\caption{Tabela 12- Resultados obtidos pela execução dos AGs com Busca Local, do melhor da Etapa 1 ($AG^{RPM}$) e do CMOST, ambos com 730 avaliações.}
 
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-Execução & AGBL-1 & AGBL-2 & AGRPM-2 & CMOST2 \\ \hline
+Execução & AGBL-1 & AGBL-2 & AGRPM-2 & $CMOST^730$ \\ \hline
 1 & 1,47E+09 & 1,53E+09 & 1,46E+09 & 1,75E+09 \\ \hline
 2 & 1,54E+09 & 1,57E+09 & 1,28E+09 & 1,70E+09 \\ \hline
 3 & 1,44E+09 & 1,53E+09	& 1,26E+09 & 1,87E+09 \\ \hline
@@ -348,22 +346,22 @@ Como descrito no Capítulo 4.3, nesse experimento o AG foi executado em conjunto
 
 A adição do operador de busca local ao algoritmo genético levou a um ganho de cerca de 29\% do VPL médio quando comparado com o $AG^{RPM}$, executado no Experimento 4 da etapa anterior. O AG com a busca local conseguiu um VPL médio de 1,52E+09 enquanto o $AG^{RPM}$ da Etapa 1 conseguiu um VPL de 1,18E+09. A diferença entre os resultados dessas duas versões do AG é significativa, conforme indica o teste de Mann-Whitney-Wilcoxon, com um limiar de 5\% (Tabela 13). No entanto, para que tal resultado fosse obtido, foram necessárias cerca de 220 avaliações a mais e cerca do dobro do tempo utilizado até então.
 
-Em relação ao VPL médio obtido pelo $CMOST^{1}$ na etapa anterior, a diferença fica em torno de 3\%. Sendo que, apesar de ter utilizado um maior número de avaliações, o AG com a busca local precisou, em média, de 4 horas e 18 minutos para concluir uma execução, contra as 7 horas e 15 minutos exigidas pelo $CMOST^{1}$. O AG utiliza cerca de 59\% do tempo gasto pelo $CMOST^{1}$, o que é uma diferença considerável. Os resultados ainda se mostraram estatisticamente significativos conforme o teste de Mann-Whitney-Wilcoxon  (Tabela 13).
+Em relação ao VPL médio obtido pelo $CMOST^{500}$ na etapa anterior, a diferença fica em torno de 3\%. Sendo que, apesar de ter utilizado um maior número de avaliações, o AG com a busca local precisou, em média, de 4 horas e 18 minutos para concluir uma execução, contra as 7 horas e 15 minutos exigidas pelo $CMOST^{500}$. O AG utiliza cerca de 59\% do tempo gasto pelo $CMOST^{500}$, o que é uma diferença considerável. Os resultados ainda se mostraram estatisticamente significativos conforme o teste de Mann-Whitney-Wilcoxon  (Tabela 13).
 
 \begin{table}[H]
 \centering
-\caption{Tabela 13 - Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{BL-1}$ com o $AG^{RPM}$ e o $CMOST^{1}$.}
+\caption{Tabela 13 - Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{BL-1}$ com o $AG^{RPM}$ e o $CMOST^{500}$.}
 
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{BL-1}$ & $AG^{RPM}$ & 2\% \\ \hline
-$AG^{BL-1}$ & $CMOST^{1}$ & 1,4\% \\ \hline
+$AG^{BL-1}$ & $CMOST^{500}$ & 1,4\% \\ \hline
 
 \end{tabular}
 \end{table}
 
-Apesar dos ganhos apresentados pelo AGBL-1, a comparação realizada entre o $AG^{BL-1}$ e o $CMOST^{1}$ não são totalmente justas, uma vez que aqui o AGBL-1 realizou cerca de 720 avaliações da função objetivo contra 500 avaliações para os experimentos anteriores. Sendo assim tais algoritmos foram novamente executados com um número maior de avaliações, esse valor passou de 500 para 720. 
+Apesar dos ganhos apresentados pelo $AG^{BL-1}$, a comparação realizada entre o $AG^{BL-1}$ e o $CMOST^{500}$ não são totalmente justas, uma vez que aqui o AGBL-1 realizou cerca de 720 avaliações da função objetivo contra 500 avaliações para os experimentos anteriores. Sendo assim tais algoritmos foram novamente executados com um número maior de avaliações, esse valor passou de 500 para 720. 
 
 Pelos resultados apresentados na Tabela 12 (coluna $AG^{RPM-2}$) é possível afirmar que o operador de busca local utilizado aqui efetivamente leva a um maior VPL, dado que o $AG^{BL-1}$ obteve um VPL Médio cerca de 13\% maior que o obtido pelo $AG^{RPM-2}$. Apesar do $CMOST^{2}$ ter conseguindo um VPL médio cerca de 20\% maior que o $AG^{RPM-2}$ desse experimento e 12,5\% maior que o obtido pelo $AG^{BL-1}$, o $CMOST^{2}$ precisou de cerca de quase 23 horas para concluir todas as 730 avaliações, enquanto que o $AG^{RPM-2}$ utilizou cerca de 17\% desse tempo e o $AG^{BL-1}$ usou somente 19\% desse tempo, uma diferença considerável.
 
