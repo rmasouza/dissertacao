@@ -23,9 +23,10 @@ Apesar da “direção do poço”, da “largura do poço”, do “tipo do po�
 Sendo assim, o número total de variáveis no processo de otimização vai depender da quantidade de poços definidos para a estratégia de produção: sendo N o número máximo de poços, a quantidade de variáveis a ser considerada será igual 3 $\times$ N. A Figura 3 apresenta o esquema de uma solução candidata de estratégia de produção a ser utilizada pelo algoritmo genético. Como pode ser visto na Figura \ref{fig:fig3_1}, cada indivíduo é representado, neste trabalho, por um vetor de valores discretos.
 
 \begin{figure}[htb]
-\includegraphics[scale=1]{3}
-\caption{Esquema da representação de uma solução candidata.}
-\label{fig:fig3_1}
+  \centering
+  \includegraphics[scale=0.5]{3}
+  \caption{Esquema da representação de uma solução candidata.}
+  \label{fig:fig3_1}
 \end{figure}
 
 \section{Função Objetivo}
@@ -55,6 +56,7 @@ O Pseudocódigo \ref{alg:aggc} apresenta o AG Geracional encontrado no framework
       \For {$N$ vezes} \State:
         \State Selecione 2 soluções da população $P$;
         \State Aplique o operador de recombinação as soluções selecionadas;
+        \State Aplique o operador de mutação a nova solução gerada;
         \State Avalie as novas soluções;
         \State Adicione as novas soluções a população sucessora $PS$;
       \EndFor
@@ -67,106 +69,94 @@ O Pseudocódigo \ref{alg:aggc} apresenta o AG Geracional encontrado no framework
 
 \subsubsection{Algoritmo Genético de Regime Permanente}
 
-Como foi discutido no Capitulo 2.1.4, a estratégia de substituição é um aspecto importante do algoritmo genético de regime permanente. A versão do algoritmo encontrado no JMetal substitui a pior solução da população pela nova solução gerada, caso esta solução seja melhor. As etapas deste algoritmo são detalhadas no Pseudocódigo 2.
+Como foi discutido no Capitulo 2.1.4, a estratégia de substituição é um aspecto importante do algoritmo genético de regime permanente. A versão do algoritmo encontrado no JMetal substitui a pior solução da população pela nova solução gerada, caso esta solução seja melhor. As etapas deste algoritmo são detalhadas no Pseudocódigo \ref{alg:agrpc}.
 
-Pseudocódigo 2 – Algoritmo Genético de Regime Permanente Clássico
-
-\begin{enumerate}
-\item Inicialize a população P com T soluções geradas aleatoriamente;
-\item Avalie as N soluções da população P;
-\item Enquanto não for atingido o critério de parada, faça:
-
-\begin{enumerate}
-
-\item Selecione 2 soluções da população P;
-\item Aplique o operador de recombinação às soluções selecionadas;
-\item Aplique o operador de mutação a nova solução gerada em b;
-
-\item Avalie a nova solução;
-\item Adicione as novas soluções a população sucessora PS;
-\item Se a nova solução é melhor que a pior solução da população P:
-\begin{enumerate}
-\item Substitua a pior solução da população pela nova solução	
-\end{enumerate}
-
-\end{enumerate}
-\item Fim do processo.
-
-\end{enumerate}
+\begin{algorithm}[H]
+  \floatname{algorithm}{Pseudocódigo}
+  \caption{Algoritmo Genético de Regime Permanente Clássico}
+  \label{alg:agrpc}
+  \begin{algorithmic}
+    \State Inicialize a população $P$ com $T$ soluções geradas aleatoriamente;
+    \State Avalie as $N$ soluções da população $P$;
+    \While{não for atingido o critério de parada }
+      \For {$N$ vezes} \State:
+        \State Selecione 2 soluções da população $P$;
+        \State Aplique o operador de recombinação as soluções selecionadas para gerar uma nova solução $i$;
+        \State Aplique o operador de mutação a nova solução $i$;
+        \State Avalie a novas solução $i$;
+        \If{a nova solução $i$ for melhor que a pior solução da população $P$} 
+          \State Substitua a pior solução da população pela nova solução $i$	
+        \EndIf
+      \EndFor
+    \EndWhile
+  \end{algorithmic}
+\end{algorithm}
 
 \subsection{Segunda Versão}
 
 Para a segunda versão, foi considerado somente o AG de Regime Permanente, uma vez que esse apresentou resultados melhores nos primeiros experimentos realizados (mais detalhes no Capítulo 5). 
 
-A principal alteração feita foi em relação ao uso do operador de mutação. Na versão clássica do AG de Regime Permanente, apresentado anteriormente, o operador de mutação é executado logo após a nova solução candidata ser criada pelo operador de recombinação. Aqui essa ordem foi alterada. Na versão proposta aqui, o operador é utilizado após a nova solução candidata ser avaliada, caso essa solução não seja boa o suficiente para ser incluída na população. Essa decisão foi tomada para adequar o AG ao operador de mutação que será descrito no Capítulo 3.4 que, por utilizar o IEP para realizar alterações nas soluções, exige que a solução tenha sido avaliada previamente para que tais indicadores possam ser calculados. O Pseudocódigo 3 apresenta todas as etapas dessa versão do AG de Regime Permanente.
+A principal alteração feita foi em relação ao uso do operador de mutação. Na versão clássica do AG de Regime Permanente, apresentado anteriormente, o operador de mutação é executado logo após a nova solução candidata ser criada pelo operador de recombinação. Aqui essa ordem foi alterada. Na versão proposta aqui, o operador é utilizado após a nova solução candidata ser avaliada, caso essa solução não seja boa o suficiente para ser incluída na população. Essa decisão foi tomada para adequar o AG ao operador de mutação que será descrito no Capítulo 3.4 que, por utilizar o IEP para realizar alterações nas soluções, exige que a solução tenha sido avaliada previamente para que tais indicadores possam ser calculados. O Pseudocódigo \ref{alg:agrpm} apresenta todas as etapas dessa versão do AG de Regime Permanente.
 
-Pseudocódigo 3 – Primeira modificação do Algoritmo Genético Regime Permanente 
-
-\begin{enumerate}
-\item Inicialize a população P com T soluções geradas aleatoriamente;
-\item Avalie as N soluções da população P;
-\item Enquanto não for atingido o critério de parada, faça:
-
- \begin{enumerate}
-
-\item Selecione 2 soluções da população P;
-\item Aplique o operador de recombinação às soluções selecionadas;
-
-\item Avalie a nova solução;
-\item Adicione as novas soluções a população sucessora PS;
-\item Se a nova solução é melhor que a pior solução da população P:
-  \begin{enumerate}
-\item Substitua a pior solução da população pela nova solução
-
-\end{enumerate}
-\item Senão:	
-  \begin{enumerate}
-\item Aplique o operador de mutação a nova solução gerada em b;
-\item Avalie a solução gerada pela etapa i
-\item Se a nova solução é melhor que a pior solução da população P: 
-  \begin{enumerate}
-\item Substitua a pior solução da população pela nova solução
-\end{enumerate}
-\end{enumerate}
-\end{enumerate}
-\item Fim do processo.
-
-\end{enumerate}
+\begin{algorithm}[H]
+  \floatname{algorithm}{Pseudocódigo}
+  \caption{Primeira modificação do Algoritmo Genético de Regime Permanente}
+  \label{alg:agrpm}
+  \begin{algorithmic}
+    \State Inicialize a população $P$ com $T$ soluções geradas aleatoriamente;
+    \State Avalie as $N$ soluções da população $P$;
+    \While{não for atingido o critério de parada }
+      \For {$N$ vezes} \State:
+        \State Selecione 2 soluções da população $P$;
+        \State Aplique o operador de recombinação as soluções selecionadas para gerar uma nova solução $i$;
+        \State Avalie a solução $i$;
+        \If{a solução $i$ for melhor que a pior solução da população $P$} 
+          \State Substitua a pior solução da população pela solução $i$	
+        \Else
+          \State Aplique o operador de mutação a solução $i$	
+          \State Avalie novamente a solução $i$;
+          \If{a solução $i$ for melhor que a pior solução da população $P$} 
+            \State Substitua a pior solução da população pela solução $i$
+          \EndIf
+        \EndIf
+      \EndFor
+    \EndWhile
+  \end{algorithmic}
+\end{algorithm}
 
 \subsection{Terceira Versão}
 
-A segunda modificação feita ao AG foi para adicionar um novo operador para contar a quantidade de vezes que um valor foi escolhido para as coordenadas I, J e K que definem a posição de um poço. Essa informação é utilizada, posteriormente, pelos operadores de recombinação e mutação para gerar novas soluções privilegiando as coordenadas mais frequentes e que apresentaram melhores IEPs, mais detalhes desse operador são apresentados na Seção 3.6 desse capitulo. O Pseudocódigo 4 apresenta o AG com as modificações feitas.
+A segunda modificação feita ao AG foi para adicionar um novo operador para contar a quantidade de vezes que um valor foi escolhido para as coordenadas I, J e K que definem a posição de um poço. Essa informação é utilizada, posteriormente, pelos operadores de recombinação e mutação para gerar novas soluções privilegiando as coordenadas mais frequentes e que apresentaram melhores IEPs, mais detalhes desse operador são apresentados na Seção 3.6 desse capitulo. O Pseudocódigo \ref{alg:agrpm2} apresenta o AG com as modificações feitas.
 
-Pseudocódigo 4 – Segunda Modificação do Algoritmo Genético Regime Permanente 
 
-\begin{enumerate}
-\item Inicialize a população P com T soluções geradas aleatoriamente;
-\item Avalie as N soluções da população P;
-\item \textbf{ Inicialize a contagem de ocorrências dos valores das coordenadas I, J e K de cada um dos poços da N soluções da população P;}
-\item Enquanto não for atingido o critério de parada, faça:
-
- \begin{enumerate}
-
-\item Selecione 2 soluções da população P;
-\item Aplique o operador de recombinação às soluções selecionadas;
-
-\item Avalie a nova solução;
-\item Adicione as novas soluções a população sucessora PS;
-\item \textbf{Atualize a contagem de ocorrências dos valores das coordenadas I, J e K de cada um dos poços da nova solução;}
-\item Se a nova solução é melhor que a pior solução da população P:
-  \begin{enumerate}
-\item Substitua a pior solução da população pela nova solução
-
-  \end{enumerate}
-\item Senão:	
-  \begin{enumerate}
-\item Aplique o operador de mutação a nova solução gerada em b;
-\item Avalie a solução gerada pela etapa i
-\item \textbf{Atualize a contagem de ocorrências dos valores das coordenadas I, J e K de cada um dos poços da solução da etapa anterior;}
-\item Se a nova solução é melhor que a pior solução da população P:
-  \end{enumerate}
- \end{enumerate}
-\end{enumerate}
+\begin{algorithm}[H]
+  \floatname{algorithm}{Pseudocódigo}
+  \caption{Segunda Modificação do Algoritmo Genético Regime Permanente}
+  \label{alg:agrpm2}
+  \begin{algorithmic}
+    \State Inicialize a população $P$ com $T$ soluções geradas aleatoriamente;
+    \State Avalie as $N$ soluções da população $P$;
+    \State Inicialize a contagem de ocorrências dos valores das coordenadas $I$, $J$ e $K$ de cada um dos poços da $N$ soluções da população $P$;
+    \While{não for atingido o critério de parada }
+      \For {$N$ vezes} \State:
+        \State Selecione 2 soluções da população $P$;
+        \State Aplique o operador de recombinação as soluções selecionadas para gerar uma nova solução $i$;
+        \State Avalie a solução $i$;
+        \If{a solução $i$ for melhor que a pior solução da população $P$} 
+          \State Substitua a pior solução da população pela solução $i$	
+          \State Atualize a contagem de ocorrências com os valores das coordenadas $I$, $J$ e $K$ de cada um dos poços da solução $i$;
+        \Else
+          \State Aplique o operador de mutação a solução $i$	
+          \State Avalie novamente a solução $i$;
+          \If{a solução $i$ for melhor que a pior solução da população $P$} 
+            \State Substitua a pior solução da população pela solução $i$
+            \State Atualize a contagem de ocorrências com os valores das coordenadas $I$, $J$ e $K$ de cada um dos poços da solução $i$;
+          \EndIf
+        \EndIf
+      \EndFor
+    \EndWhile
+  \end{algorithmic}
+\end{algorithm}
 
 \section{Operador de Seleção}
 
@@ -179,9 +169,10 @@ Os operadores de recombinação encontrados no framework JMetal são voltados pa
 O segundo operador foi implementado especificamente para esse problema.  Tal operador também gera uma nova solução candidata O a partir de duas soluções candidatas EP1 e EP2. No entanto, os valores I, J e K de cada poço p de O são escolhidos de forma aleatória a partir de um conjunto de valores delimitados pelas coordenadas I, J e K do poço p de EP1 e EP2. Dessa forma os poços de EP1 e EP2 servem para limitar coordenadas dos poços de O. A Figura 4, esquematiza a recombinação realizada por esse operador. No exemplo apresentado pela Figura \ref{fig:fig3_2}, a coordenada K do Poço da Nova solução O é 19, um valor escolhido aleatoriamente através do intervalo definido pelas coordenadas K do Solução EP1 e EP2, nesse caso valores entre 18 e 22. A mesma lógica é aplicada as coordenadas I e J. O processo é então repetido para todos os poços que compõem a solução.
 
 \begin{figure}[htb]
-\includegraphics[scale=1]{4}
-\caption{Exemplo ilustrativo do operador de recombinação proposto para a resolução do problema de DEP.}
-\label{fig:fig3_2}
+  \centering
+  \includegraphics[scale=0.25]{4}
+  \caption{Exemplo ilustrativo do operador de recombinação proposto para a resolução do problema de DEP.}
+  \label{fig:fig3_2}
 \end{figure}
 
 \section{Operadores de Mutação}
