@@ -99,13 +99,13 @@ Dentre as meta-heurísticas apresentadas anteriormente, os Algoritmos Genéticos
 
 A terminologia utilizada nesses algoritmos também é fortemente inspirada na biologia. Por exemplo, a estrutura do indivíduo (a solução candidata) aqui é chamada de cromossomo, o valor de cada variável que compõe o cromossomo é denominado alelo e cada variável pode ser chamada de lócus ou mesmo gene \cite{Back1997}.
 
-Proposto por \citeonline{Holland1992}, na Universidade de Michigan, com o objetivo de abstrair e explicar o processo adaptativo da seleção natural e, também, de desenvolver sistemas artificiais que possuam características importantes da seleção natural, os algoritmos genéticos consistem em, a cada iteração (ou geração), produzir uma nova população de indivíduos através do uso de três operadores: seleção, recombinação (ou crossover) e mutação. Mais detalhes sobres os três operadores são dados nos tópicos a seguir. A Figura 1 apresenta um fluxograma da estrutura geral de um algoritmo genético. 
+Proposto por \citeonline{Holland1992}, na Universidade de Michigan, com o objetivo de abstrair e explicar o processo adaptativo da seleção natural e, também, de desenvolver sistemas artificiais que possuam características importantes da seleção natural, os algoritmos genéticos consistem em, a cada iteração (ou geração), produzir uma nova população de indivíduos através do uso de três operadores: seleção, recombinação (ou crossover) e mutação. Mais detalhes sobres os três operadores são dados nos tópicos a seguir. A Figura \ref{fig:fig2-1} apresenta um fluxograma da estrutura geral de um algoritmo genético. 
 
 \begin{figure}[htb]
 \centering
-
+\includegraphics[scale=1]{1}
 \caption{Fluxograma apresentando a estrutura geral de um algoritmo genético.}
-
+\label{fig:fig2-1}
 \end{figure}
 
 \subsubsection{Operador de seleção}
@@ -116,13 +116,13 @@ No entanto, apesar de ser desejável que soluções melhores sejam selecionadas 
 \subsubsection{Operador de recombinação}
 A recombinação é um dos recursos que mais distingue algoritmos genéticos das outras meta-heurísticas \cite{Luke2013Metaheuristics}. Esse é o operador responsável por gerar novos indivíduos que possivelmente farão parte da população do algoritmo. O operador realiza a combinação de dois ou mais indivíduos para a criação de pelo menos um novo indivíduo. Espera-se que a combinação de partes dos indivíduos pais acabe por gerar descendentes que sejam melhores que os indivíduos originais \cite{Kacprzyk2015} e que mantenham parte das características de cada pai.
 
-A forma como as combinações entre os indivíduos selecionados é realizada varia conforme a codificação escolhida. Para codificações baseadas em vetor, como a cadeia binária, é comum o uso de um dos de três operadores clássicos para essa tarefa: o Crossover de Um Ponto, de 2-Pontos e o Crossover Uniforme \cite{Talbi2009}. O operador de 1-Ponto seleciona aleatoriamente uma posição da cadeia e troca todos os valores do cromossomo entre indivíduos que estiverem abaixo dessa posição.  A mesma lógica é utilizada pelo operador de 2-Pontos, a diferença aqui é que duas posições são escolhidas e os valores entre as posições são trocados entre os indivíduos. Por fim, o operador de Recombinação Uniforme escolhe aleatoriamente, para cada um dos valores do cromossomo, o valor de um dos indivíduos selecionados para a recombinação. A Figura 2 ilustra o funcionamento desses três operadores.
+A forma como as combinações entre os indivíduos selecionados é realizada varia conforme a codificação escolhida. Para codificações baseadas em vetor, como a cadeia binária, é comum o uso de um dos de três operadores clássicos para essa tarefa: o Crossover de Um Ponto, de 2-Pontos e o Crossover Uniforme \cite{Talbi2009}. O operador de 1-Ponto seleciona aleatoriamente uma posição da cadeia e troca todos os valores do cromossomo entre indivíduos que estiverem abaixo dessa posição.  A mesma lógica é utilizada pelo operador de 2-Pontos, a diferença aqui é que duas posições são escolhidas e os valores entre as posições são trocados entre os indivíduos. Por fim, o operador de Recombinação Uniforme escolhe aleatoriamente, para cada um dos valores do cromossomo, o valor de um dos indivíduos selecionados para a recombinação. A Figura \ref{fig:fig2_2} ilustra o funcionamento desses três operadores.
 
 \begin{figure}[htb]
 \centering
-
+\includegraphics[scale=1]{2}
 \caption{Exemplo ilustrando o funcionamento dos operadores de Crossover de 1-Ponto, Crossover de 2-Pontos e Crossover Uniforme.}
-
+\label{fig:fig2_2}
 \end{figure}
 
 Já para soluções representadas através de codificações de valores reais, os operadores são divididos em dois grupos: (i) recombinação centrada na média e (ii) recombinação centrada nos pais \cite{Talbi2009}. No primeiro grupo os indivíduos são gerados com base no centroide dos pais, sendo o Crossover Simplex \cite{Tsutsui1999} e o Crossover Geométrico \cite{Michalewicz1996} são exemplos de operadores que utilizam essa estratégia. Já o segundo grupo procura gerar indivíduos que façam parte da vizinhança dos pais, dessa forma os novos indivíduos serão semelhantes aos pais que os geraram: o Crossover Binário Simulado \cite{Deb1994} é um exemplo de operador desse grupo.   

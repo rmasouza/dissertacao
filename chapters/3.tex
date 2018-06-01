@@ -20,12 +20,12 @@ Cada indivíduo que compõe a população do algoritmo genético é uma estraté
 
 Apesar da “direção do poço”, da “largura do poço”, do “tipo do poço” e do “estado do poço” serem considerados para a representação do poço, estas variáveis não foram utilizadas no processo de otimização, tendo seus valores definidos a priori em conjunto com os engenheiros do grupo UNISIM. Além disso, a quantidade de cada tipo de poço também foi pré-determinada. 
 
-Sendo assim, o número total de variáveis no processo de otimização vai depender da quantidade de poços definidos para a estratégia de produção: sendo N o número máximo de poços, a quantidade de variáveis a ser considerada será igual 3 $\times$ N. A Figura 3 apresenta o esquema de uma solução candidata de estratégia de produção a ser utilizada pelo algoritmo genético. Como pode ser visto na Figura 3, cada indivíduo é representado, neste trabalho, por um vetor de valores discretos.
+Sendo assim, o número total de variáveis no processo de otimização vai depender da quantidade de poços definidos para a estratégia de produção: sendo N o número máximo de poços, a quantidade de variáveis a ser considerada será igual 3 $\times$ N. A Figura 3 apresenta o esquema de uma solução candidata de estratégia de produção a ser utilizada pelo algoritmo genético. Como pode ser visto na Figura \ref{fig:fig3_1}, cada indivíduo é representado, neste trabalho, por um vetor de valores discretos.
 
 \begin{figure}[htb]
-
+\includegraphics[scale=1]{3}
 \caption{Esquema da representação de uma solução candidata.}
-
+\label{fig:fig3_1}
 \end{figure}
 
 \section{Função Objetivo}
@@ -42,33 +42,28 @@ A primeira versão consiste nas implementações clássicas tanto do AG Geracion
 
 \subsubsection{Algoritmo Genético Geracional}
 
-O Pseudocódigo 1 apresenta o AG Geracional encontrado no framework JMetal. É possível notar que, apesar de uma população de novas soluções ser criada a cada iteração, o algoritmo implementado utiliza Elitismo. Essa versão do algoritmo substitui as duas piores soluções da população sucessora por duas das melhores soluções da população atual.
+O Pseudocódigo \ref{alg:aggc} apresenta o AG Geracional encontrado no framework JMetal. É possível notar que, apesar de uma população de novas soluções ser criada a cada iteração, o algoritmo implementado utiliza Elitismo. Essa versão do algoritmo substitui as duas piores soluções da população sucessora por duas das melhores soluções da população atual.
 
-Pseudocódigo 1 – Algoritmo Genético Geracional Clássico 
-
-\begin{enumerate}
-\item Inicialize a população P com T soluções geradas aleatoriamente;
-\item Avalie as N soluções da população P;
-\item Enquanto não for atingido o critério de parada, faça:
-
-\begin{enumerate}
-\item Repita N vezes:
-
-\begin{enumerate}
-\item Selecione 2 soluções da população P;
-\item Aplique o operador de recombinação as soluções selecionadas;
-\item Aplique o operador de mutação às novas soluções geradas em ii;
-\item Avalie as novas soluções;
-\item Adicione as novas soluções a população sucessora PS;
-\end{enumerate}
-
-\item Adicione as duas melhores soluções da população P à população sucessora PS;
-\item Remova as duas piores soluções da população sucessora PS;
-\item Substitua a população P pela população sucessora PS;
-\end{enumerate}
-\item Fim do processo.
-
-\end{enumerate}
+\begin{algorithm}
+  \floatname{algorithm}{Pseudocódigo}
+  \caption{Algoritmo Genético Geracional Clássico}
+  \label{alg:aggc}
+  \begin{algorithmic}
+    \State Inicialize a população $P$ com $T$ soluções geradas aleatoriamente;
+    \State Avalie as $N$ soluções da população $P$;
+    \While{não for atingido o critério de parada }
+      \For {$N$ vezes} \State:
+        \State Selecione 2 soluções da população $P$;
+        \State Aplique o operador de recombinação as soluções selecionadas;
+        \State Avalie as novas soluções;
+        \State Adicione as novas soluções a população sucessora $PS$;
+      \EndFor
+      \State Adicione as duas melhores soluções da população $P$ à população sucessora $PS$;
+      \State Remova as duas piores soluções da população sucessora $PS$;
+      \State Substitua a população $P$ pela população sucessora $PS$;
+    \EndWhile
+  \end{algorithmic}
+\end{algorithm}
 
 \subsubsection{Algoritmo Genético de Regime Permanente}
 
@@ -181,22 +176,24 @@ O operador utilizado para a seleção das soluções é o de Seleção por Torne
 
 Os operadores de recombinação encontrados no framework JMetal são voltados para tratar problemas de otimização em espaços contínuos (com codificação real), problemas de otimização combinatória (que utilizam codificações que correspondem a permutações de valores inteiros) e problemas que utilizam representação por cadeias binárias. Sendo assim, foi implementado aqui dois operadores de recombinação para esse problema. O primeiro operador escolhido é conhecido como Operador de Recombinação Uniforme, apresentado no Capítulo 2.1.3, e seu funcionamento consiste basicamente em selecionar aleatoriamente cada elemento que comporá uma nova solução a partir dos elementos de uma das soluções pais escolhidos para o processo \cite{Talbi2009, Kacprzyk2015}.
 
-O segundo operador foi implementado especificamente para esse problema.  Tal operador também gera uma nova solução candidata O a partir de duas soluções candidatas EP1 e EP2. No entanto, os valores I, J e K de cada poço p de O são escolhidos de forma aleatória a partir de um conjunto de valores delimitados pelas coordenadas I, J e K do poço p de EP1 e EP2. Dessa forma os poços de EP1 e EP2 servem para limitar coordenadas dos poços de O. A Figura 4, esquematiza a recombinação realizada por esse operador. No exemplo apresentado pela Figura 4, a coordenada K do Poço da Nova solução O é 19, um valor escolhido aleatoriamente através do intervalo definido pelas coordenadas K do Solução EP1 e EP2, nesse caso valores entre 18 e 22. A mesma lógica é aplicada as coordenadas I e J. O processo é então repetido para todos os poços que compõem a solução.
+O segundo operador foi implementado especificamente para esse problema.  Tal operador também gera uma nova solução candidata O a partir de duas soluções candidatas EP1 e EP2. No entanto, os valores I, J e K de cada poço p de O são escolhidos de forma aleatória a partir de um conjunto de valores delimitados pelas coordenadas I, J e K do poço p de EP1 e EP2. Dessa forma os poços de EP1 e EP2 servem para limitar coordenadas dos poços de O. A Figura 4, esquematiza a recombinação realizada por esse operador. No exemplo apresentado pela Figura \ref{fig:fig3_2}, a coordenada K do Poço da Nova solução O é 19, um valor escolhido aleatoriamente através do intervalo definido pelas coordenadas K do Solução EP1 e EP2, nesse caso valores entre 18 e 22. A mesma lógica é aplicada as coordenadas I e J. O processo é então repetido para todos os poços que compõem a solução.
 
 \begin{figure}[htb]
-
+\includegraphics[scale=1]{4}
 \caption{Exemplo ilustrativo do operador de recombinação proposto para a resolução do problema de DEP.}
-
-
+\label{fig:fig3_2}
 \end{figure}
 
 \section{Operadores de Mutação}
 
 Por fim, durante os experimentos realizados, dois operadores de mutação foram utilizados. O primeiro operador é conhecido por Mutação Pontual \cite{Kacprzyk2015}, voltado para utilização em algoritmos que adotam representações de valores discretos. Seu funcionamento consiste na alteração do valor de cada variável de um indivíduo, conforme uma probabilidade pré-definida, por outro valor dentro do conjunto de valores possíveis.
 
-O segundo operador também aplica alterações aleatórias à posição de cada poço da estratégia de produção. No entanto a amplitude dessa alteração varia conforme a qualidade de cada poço, ou seja, quanto pior a qualidade de um dado poço, maior a variação que ele sofrerá durante a mutação. Para tal, é utilizado aqui o Indicador Econômico do Poço (IEP), apresentado no Capitulo 2.2. A amplitude da variação que é aplicada à localização do poço é calculada conforme a Equação 3:
+O segundo operador também aplica alterações aleatórias à posição de cada poço da estratégia de produção. No entanto a amplitude dessa alteração varia conforme a qualidade de cada poço, ou seja, quanto pior a qualidade de um dado poço, maior a variação que ele sofrerá durante a mutação. Para tal, é utilizado aqui o Indicador Econômico do Poço (IEP), apresentado no Capitulo 2.2. A amplitude da variação que é aplicada à localização do poço é calculada conforme a Equação \ref{eq:eq3_1}:
 
-$$a_i = 1 - \frac{IEP_m -IEP_i}{IEP_m -IEP_p}$$
+\begin{equation}
+  \label{eq:eq3_1}
+  a_i = 1 - \frac{IEP_m -IEP_i}{IEP_m -IEP_p}
+\end{equation}
 
 onde $a_i$ é a amplitude do poço i, $IEP_m$ o IEP do melhor poço, $IEP_p$ o IEP do pior poço e o $IEP_i$  o IEP do poço i que está sendo alterado. Um detalhe importante sobre o cálculo da amplitude da variação é que, para um dado poço i de uma solução S, o $IEP_m$ e o $IEP_p$, utilizados para o cálculo, são IEPs de poços de outras soluções que compõem a população do algoritmo. Tais poços são poços que respeitam a mesma restrição de localização do poço i. Essa decisão foi tomada por acreditar-se que não seria justo utilizar o IEP dos poços da mesma estratégia, uma vez que esses ocupam regiões diferentes e, consequentemente, têm IEPs distintos. Por fim, a componente aleatória desse operador fica por conta da escolha da direção para a qual o poço i será deslocado com base na amplitude calculada.
 
@@ -212,9 +209,12 @@ O segundo operador de busca local desenvolvido também procura deslocar cada po�
   
 Para a cada um dos poços que compõem uma estratégia de produção é possível definir um conjunto de valores I, J e K mínimos e máximos para limitar uma área no qual esses poços podem ser posicionados. O operador proposto aqui contabiliza a ocorrência dos valores do intervalo definido para cada uma das coordenadas. Tal informação é, posteriormente, utilizada pelos operadores de recombinação e mutação no momento de gerar valores aleatórios. Esse operador funciona de forma semelhante à Seleção por Roleta, utilizado para seleção de indivíduos pelo AG, onde indivíduos com fitness maiores têm mais chances de serem selecionados. No operador proposto aqui, os valores do intervalo de um eixo são escolhidos de forma aleatória, porém a probabilidade de escolha de um determinado é proporcional ao número de ocorrências desse valor. Dessa forma, espera-se que os valores com mais ocorrências sejam os mais promissores dentro do intervalo definido para um poço.
 
-Entretanto, ainda pode acontecer de um valor do intervalo ser pouco promissor e ainda ter um alto número de ocorrências. Para contornar essa situação, é calculado um score para cada valor de um dado intervalo. Esse cálculo leva em consideração a média do IEP obtido pelo poço e o número de ocorrências do valor do intervalo das restrições de área o poço, conforme Equação 4.
+Entretanto, ainda pode acontecer de um valor do intervalo ser pouco promissor e ainda ter um alto número de ocorrências. Para contornar essa situação, é calculado um score para cada valor de um dado intervalo. Esse cálculo leva em consideração a média do IEP obtido pelo poço e o número de ocorrências do valor do intervalo das restrições de área o poço, conforme Equação \ref{eq:eq3_2}.
 
-$$ S_{vi} = N_{vi} \times (\frac{IEP_{vi}}{IEP_{max}})$$ 
+\begin{equation}
+  \label{eq:eq3_2}
+  S_{vi} = N_{vi} \times (\frac{IEP_{vi}}{IEP_{max}})
+\end{equation}
   
 sendo $S_{vi}$ o score do valor i de um dado intervalo, $N_{vi}$ o número de ocorrências do valor i do dado intervalo, $IEP_{vi}$ a média do IEP obtido pelo valor i do intervalo e o $IEP_{max}$, a maior média do IEP no dado intervalo. 
 

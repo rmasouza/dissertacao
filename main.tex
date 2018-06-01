@@ -20,11 +20,37 @@
         %O pacote a seguir gera um dummy text. Elimine a linha quando
         % for editar seu texto.
 \usepackage{lipsum}
-\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage[Algorithm,ruled]{algorithm}
+\usepackage{algpseudocode}
 \usepackage{indentfirst}
 \usepackage{multirow}
 \usepackage{float}
 \usepackage{longtable} 
+
+
+% Declaracoes em Português
+\algrenewcommand\algorithmicend{\textbf{fim}}
+\algrenewcommand\algorithmicdo{\textbf{faça}}
+\algrenewcommand\algorithmicwhile{\textbf{enquanto}}
+\algrenewcommand\algorithmicfor{\textbf{repita}}
+\algrenewcommand\algorithmicif{\textbf{se}}
+\algrenewcommand\algorithmicthen{\textbf{então}}
+\algrenewcommand\algorithmicelse{\textbf{senão}}
+\algrenewcommand\algorithmicreturn{\textbf{devolve}}
+\algrenewcommand\algorithmicfunction{\textbf{função}}
+% \algrenewcommand\algorithmc{Pseudocódigo}
+% Rearranja os finais de cada estrutura
+\algrenewtext{EndWhile}{\algorithmicend\ \algorithmicwhile}
+\algrenewtext{EndFor}{\algorithmicend\ \algorithmicfor}
+\algrenewtext{EndIf}{\algorithmicend\ \algorithmicif}
+\algrenewtext{EndFunction}{\algorithmicend\ \algorithmicfunction}
+
+% O comando For, a seguir, retorna 'para #1 -- #2 até #3 faça'
+\algnewcommand\algorithmicto{\textbf{até}}
+\algrenewtext{For}[3]%
+{\algorithmicfor\ #1  }
+
 \begin{document}
         
         % Escolha entre autor ou autora:
