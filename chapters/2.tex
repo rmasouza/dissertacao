@@ -4,11 +4,11 @@ Nesse capítulo são apresentadas as principais características das meta-heurí
 
 \section{Meta-heurísticas}
 \label{sec:section21}
-Diariamente lidamos com uma série de problemas dos mais diversos tipos. Para \cite{Michalewicz2004}, um problema existe quando há uma diferença entre um estado atual e um estado no qual se deseja estar. Ainda segundo \cite{Michalewicz2004}, alocar recursos que estejam disponíveis para diminuir a diferença entre esses estados é o que chamamos de solução. É comum que exista mais de uma solução viável para a resolução de um problema, nesse caso, é sempre desejável que a solução ótima, ou a mais próxima disso, seja a escolhida para ser executada.
+Diariamente lidamos com uma série de problemas dos mais diversos tipos. Para \citeonline{Michalewicz2004}, um problema existe quando há uma diferença entre um estado atual e um estado no qual se deseja estar. Ainda segundo \citeonline{Michalewicz2004}, alocar recursos que estejam disponíveis para diminuir a diferença entre esses estados é o que chamamos de solução. É comum que exista mais de uma solução viável para a resolução de um problema, nesse caso, é sempre desejável que a solução ótima, ou a mais próxima disso, seja a escolhida para ser executada.
 
 Nesse cenário, em que há diversas soluções candidatas para resolver um determinado problema, encontrar a solução ótima é um problema por si só. Esse problema em questão é conhecido como problema de otimização.  Tal otimização consiste em buscar pela solução ótima dentro de um conjunto de soluções (que formam o chamado espaço de busca), visando atender a algum critério. Geralmente tal critério é um determinado aspecto de interesse (objetivo) como lucro, desempenho, tempo ou distância, que deve ser maximizado ou minimizado. Na maioria das vezes é possível representar esse objetivo através de uma função matemática, conhecida como função objetivo e responsável por atribuir um número real a cada solução candidata do problema, indicando, dessa forma, o quão bem uma determinada solução resolve o problema.
 
-São diversos os métodos que existem para resolver problemas de otimização. É possível partir para estratégias mais simples como a realização de uma busca por força bruta, enumerando e avaliando todas as soluções candidatas e escolhendo a melhor entre as opções, ou mesmo utilizar métodos mais clássicos como os baseados em gradiente. No entanto, a utilização de métodos como esses pode se mostrar ineficiente e até mesmo infactível, dependendo do problema que se deseja otimizar. \cite{Michalewicz2004} relatam algumas das características que tornam certos problemas de otimização difíceis de serem resolvidos:
+São diversos os métodos que existem para resolver problemas de otimização. É possível partir para estratégias mais simples como a realização de uma busca por força bruta, enumerando e avaliando todas as soluções candidatas e escolhendo a melhor entre as opções, ou mesmo utilizar métodos mais clássicos como os baseados em gradiente. No entanto, a utilização de métodos como esses pode se mostrar ineficiente e até mesmo infactível, dependendo do problema que se deseja otimizar. \citeonline{Michalewicz2004} relatam algumas das características que tornam certos problemas de otimização difíceis de serem resolvidos:
 
 \begin{itemize}
 \item O problema possui uma quantidade grande de soluções candidatas;
@@ -18,20 +18,20 @@ São diversos os métodos que existem para resolver problemas de otimização. �
 
 Problemas com essas características tornam inviável a avaliação de todas as soluções candidatas ou não permitem a definição de uma função objetivo que seja diferenciável, característica essencial para métodos baseados em gradiente, uma vez que esses métodos utilizam a derivada da função objetivo para direcionar a busca pela solução ótima. Para esse tipo de problema, é possível utilizar um grupo de métodos conhecidos por meta-heurísticas. 
 
-Definir o que são meta-heurísticas não é uma tarefa simples. O termo foi vagamente introduzido por \cite{Glover1986} ao descrever a Busca Tabu como uma sobreposição de outra heurística. \cite{sorensen2013metaheuristics} propuseram uma definição mais concreta para o termo:
+Definir o que são meta-heurísticas não é uma tarefa simples. O termo foi vagamente introduzido por \citeonline{Glover1986} ao descrever a Busca Tabu como uma sobreposição de outra heurística. \citeonline{sorensen2013metaheuristics} propuseram uma definição mais concreta para o termo:
 
-
+\begin{quote}
 “Uma meta-heurística é uma estrutura algorítmica de alto nível e independente do problema que fornece um conjunto de orientações e estratégias para desenvolver algoritmos de otimização heurística. O termo também é utilizado para referir-se à implementação para um problema específico de tais algoritmos segundo as orientações destes” \cite{sorensen2013metaheuristics}.
-
+\end{quote}
 De forma geral, é possível dizer que meta-heurísticas são metodologias de alto nível que podem ser usadas para desenvolver heurísticas a fim de resolver um problema específico de otimização \cite{Talbi2009}. Tais metodologias fazem parte de um campo maior de estudo conhecido por Otimização Estocástica \cite{Luke2013Metaheuristics}. A principal característica de algoritmos de otimização estocástica é o uso de técnicas que utilizam probabilidades para realizar operações durante o processo de busca por soluções ótimas. O uso de tal metodologia é comum em problemas de otimização para os quais nenhum outro método clássico pode ser aplicado com sucesso.
 
 As meta-heurísticas tradicionalmente conseguem ser aplicadas a estes problemas por serem ferramentas de propósito geral que não exigem grandes adaptações, diferentemente de grande parte dos métodos clássicos de otimização. Ademais, as meta-heurísticas possuem estratégias que procuram escapar de soluções que representem ótimos locais do espaço de busca. Em contrapartida, principalmente pelo caráter estocástico destas metodologias, não há garantias de que a solução ótima, ou mesmo uma solução aceitável, será encontrada durante o processo de busca \cite{Talbi2009}. 
 
 Apesar de não exigirem grandes adaptações, outros desafios surgem ao lidar com meta-heurísticas. Dentre eles, há a escolha de uma representação da solução candidata do problema, a definição da função objetivo a ser otimizada, as formas como as restrições do problema serão tratadas e a definição de parâmetros do algoritmo. Estes quatro pontos são detalhados a seguir.
 
-\subsection{Representação da solução candidata}
+\subsection{Representação da Solução Candidata}
 \label{subsec:subc211}
-A forma como uma solução candidata para o problema será representada computacionalmente ditará grande parte da estratégia de busca da meta-heurística, definindo diretamente o tamanho do espaço de busca que deve ser explorado e os operadores de busca que deverão ser utilizados. Uma solução candidata pode ser codificada de várias formas, sendo que grande parte dos problemas podem ter soluções representadas por codificações clássicas presentes na literatura, tais como cadeias binárias, vetores de valores discretos, vetores de valores reais ou permutações de valores inteiros. \cite{Talbi2009} sugere que uma representação da solução candidata deve possuir as seguintes características:
+A forma como uma solução candidata para o problema será representada computacionalmente ditará grande parte da estratégia de busca da meta-heurística, definindo diretamente o tamanho do espaço de busca que deve ser explorado e os operadores de busca que deverão ser utilizados. Uma solução candidata pode ser codificada de várias formas, sendo que grande parte dos problemas podem ter soluções representadas por codificações clássicas presentes na literatura, tais como cadeias binárias, vetores de valores discretos, vetores de valores reais ou permutações de valores inteiros. \citeonline{Talbi2009} sugere que uma representação da solução candidata deve possuir as seguintes características:
 
 \begin{itemize}
 \item \textbf{Plenitude:} relacionada à capacidade de a codificação representar toda as possíveis soluções para o problema.
@@ -53,7 +53,7 @@ Cada meta-heurística possui seu conjunto próprio de parâmetros a serem defini
 \label{subsec:subc214}
 É comum encontrar problemas em que nem todas as soluções candidatas podem ser implementadas com sucesso, por violarem uma ou mais restrições que, geralmente, são intrínsecas ao problema. Em um primeiro momento, considerar as restrições do problema no processo de busca pode ser vantajoso, uma vez que tais restrições limitam a quantidade de soluções possíveis, reduzindo o espaço de busca. No entanto, deve-se considerar que, ao reduzir o espaço de busca, pode-se dificultar o processo de geração de soluções que atendam às condições estabelecidas.
 
-Sendo assim, cria-se a necessidade de que os operadores de busca sejam capazes de gerar soluções factíveis \cite{Michalewicz2004}, o que nem sempre é uma tarefa simples. Outra abordagem seria o uso de estratégias para lidar com soluções candidatas que violem uma ou mais restrições do problema, o que, segundo \cite{Talbi2009}, poderia ser feito da seguinte maneira:
+Sendo assim, cria-se a necessidade de que os operadores de busca sejam capazes de gerar soluções factíveis \cite{Michalewicz2004}, o que nem sempre é uma tarefa simples. Outra abordagem seria o uso de estratégias para lidar com soluções candidatas que violem uma ou mais restrições do problema, o que, segundo \citeonline{Talbi2009}, poderia ser feito da seguinte maneira:
 
 \begin{itemize}
 \item \textbf{Rejeição:} A forma mais simples de lidar com soluções infactíveis é rejeitá-las do processo de busca. Dessa forma, somente soluções factíveis são consideradas. Esta abordagem conservadora pode não ser eficiente quando o espaço de busca é limitado.
@@ -65,17 +65,17 @@ Sendo assim, cria-se a necessidade de que os operadores de busca sejam capazes d
 
 \subsection{Classificação das Meta-Heurísticas}
 \label{subsec:subc215}
-A quantidade de meta-heurísticas disponíveis na literatura é vasta, o que levou à utilização de vários critérios para a classificação destes algoritmos. Tais critérios podem ser vistos em \cite{Blum2003}, \cite{Talbi2009} e \cite{Boussaid2013}. De forma geral, as meta-heurísticas podem ser classificadas levando-se em consideração algumas de suas características, tais como a inspiração para a criação do algoritmo (inspirados ou não por eventos naturais), a forma com que elas lidam com as informações extraídas durante o processo de busca (com memória ou sem memória) ou a maneira como exploram o espaço de busca.
+A quantidade de meta-heurísticas disponíveis na literatura é vasta, o que levou à utilização de vários critérios para a classificação destes algoritmos. Tais critérios podem ser vistos em \citeonline{Blum2003}, \citeonline{Talbi2009} e \citeonline{Boussaid2013}. De forma geral, as meta-heurísticas podem ser classificadas levando-se em consideração algumas de suas características, tais como a inspiração para a criação do algoritmo (inspirados ou não por eventos naturais), a forma com que elas lidam com as informações extraídas durante o processo de busca (com memória ou sem memória) ou a maneira como exploram o espaço de busca.
 
 Esta última característica é um grande dilema ao projetar uma meta-heurística. Se por um lado, deseja-se diversidade nas soluções ao percorrer o espaço de busca (para que se tenha uma maior exploração do espaço), por outro deseja-se também uma boa capacidade de refinamento de soluções promissoras (explotação). Tal dilema é traduzido na forma como as meta-heurísticas gerenciam as soluções candidatas, sendo possível percorrer o espaço de busca com uma única solução (meta-heurísticas baseadas em solução única) ou com um conjunto de soluções (meta-heurísticas populacionais).
 
-\subsubsection{Meta-heurísticas baseadas em solução única}
+\subsubsection{Meta-heurísticas Baseadas em Solução Única}
 \label{subsec:subc2151}
 As meta-heurísticas de solução única trabalham fortemente com o conceito de vizinhança. Ao menos para problemas de otimização combinatória, a vizinhança de uma solução s pode ser definida como o conjunto de soluções s', sendo que a distância entre s e s' deve ser menor ou igual a um limite de distância $\epsilon$ \cite{Talbi2009}. A forma como obtém-se a distância entre duas soluções e qual o valor ideal de $\epsilon$, no entanto, depende da representação da solução candidata e do problema em questão.
 
 Sendo assim, o processo de busca por uma solução ótima das meta-heurísticas de solução única consiste, primariamente, em refinar uma solução inicial buscando melhorias através da vizinhança desta solução, priorizando desta forma a explotação do espaço de busca. Ainda assim, algumas meta-heurísticas possuem mecanismos para evitar que suas soluções fiquem presas em soluções de mínimo local. Conforme visto em \citeonline{Blum2003}, \citeonline{Talbi2009} e \citeonline{Boussaid2013} temos como exemplo de algoritmos deste grupo o Simulated Annealing (SA), Busca Tabu, Greedy Randomized Adaptive Search Procedure (GRASP), Variable Neighborhood Search, Busca Local Guiada e Busca Local Iterada.
 
-\subsubsection{Meta-heurísticas populacionais}
+\subsubsection{Meta-heurísticas Populacionais}
 \label{subsec:subc2152}
 Ao contrário das meta-heurísticas baseadas em solução única, as meta-heurísticas populacionais lidam com um conjunto soluções candidatas (ou população). Existem duas abordagens para lidar com uma população de soluções \cite{Freitas2003,Ishibuchi1997}: a abordagem Pittsburgh, na qual cada elemento (indivíduo) do conjunto representa uma solução candidata ao problema; e a abordagem Michigan, onde a população como um todo representa a solução. Na abordagem Michigan é necessário, no entanto, que o problema possa ser decomposto em partes menores e que seja possível a avaliação destas partes.
 
@@ -108,19 +108,19 @@ Proposto por \citeonline{Holland1992}, na Universidade de Michigan, com o objeti
 \label{fig:fig2-1}
 \end{figure}
 
-\subsubsection{Operador de seleção}
+\subsubsection{Operador de Seleção}
 O operador de seleção possui um papel importante no desempenho do algoritmo genético, uma vez que esse é o operador responsável por selecionar os indivíduos que farão parte do processo de recombinação.  Aqui é utilizada a analogia da seleção natural (Goldberg, 1985), em que indivíduos com fitness melhores têm mais chances de serem selecionados. Um exemplo de operador clássico que utiliza dessa lógica é a Seleção por Roleta \cite{Talbi2009, Kacprzyk2015, Luke2013Metaheuristics}.
 
 No entanto, apesar de ser desejável que soluções melhores sejam selecionadas para que possam gerar soluções ainda mais promissoras, pode acontecer de tal pressão seletiva levar a uma população com pouca, ou nenhuma, diversidade. Dessa forma o algoritmo pode convergir para um ponto do espaço de busca de forma prematura. Sendo assim, alguns operadores de seleção utilizam estratégias diferentes para lidar com a tarefa de selecionar um indivíduo da população, seja manipulando o fitness para uma distribuição de probabilidades mais equilibrada, como a Seleção por Ranqueamento \cite{Talbi2009, Kacprzyk2015}, ou realizando competições entre os indivíduos e selecionando aquele com melhor desempenho como a Seleção por Torneios \cite{Talbi2009, Kacprzyk2015}. 
 
-\subsubsection{Operador de recombinação}
+\subsubsection{Operador de Recombinação}
 A recombinação é um dos recursos que mais distingue algoritmos genéticos das outras meta-heurísticas \cite{Luke2013Metaheuristics}. Esse é o operador responsável por gerar novos indivíduos que possivelmente farão parte da população do algoritmo. O operador realiza a combinação de dois ou mais indivíduos para a criação de pelo menos um novo indivíduo. Espera-se que a combinação de partes dos indivíduos pais acabe por gerar descendentes que sejam melhores que os indivíduos originais \cite{Kacprzyk2015} e que mantenham parte das características de cada pai.
 
 A forma como as combinações entre os indivíduos selecionados é realizada varia conforme a codificação escolhida. Para codificações baseadas em vetor, como a cadeia binária, é comum o uso de um dos de três operadores clássicos para essa tarefa: o Crossover de Um Ponto, de 2-Pontos e o Crossover Uniforme \cite{Talbi2009}. O operador de 1-Ponto seleciona aleatoriamente uma posição da cadeia e troca todos os valores do cromossomo entre indivíduos que estiverem abaixo dessa posição.  A mesma lógica é utilizada pelo operador de 2-Pontos, a diferença aqui é que duas posições são escolhidas e os valores entre as posições são trocados entre os indivíduos. Por fim, o operador de Recombinação Uniforme escolhe aleatoriamente, para cada um dos valores do cromossomo, o valor de um dos indivíduos selecionados para a recombinação. A Figura \ref{fig:fig2_2} ilustra o funcionamento desses três operadores.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=1]{2}
+\includegraphics[scale=0.4]{2}
 \caption{Exemplo ilustrando o funcionamento dos operadores de Crossover de 1-Ponto, Crossover de 2-Pontos e Crossover Uniforme.}
 \label{fig:fig2_2}
 \end{figure}
@@ -129,7 +129,7 @@ Já para soluções representadas através de codificações de valores reais, o
 
 Independentemente da codificação escolhida, dois pontos devem ser levados em consideração ao se definir, ou mesmo desenvolver, um operador de recombinação: (i) hereditariedade e (ii) validade \cite{Talbi2009}. O primeiro diz respeito à capacidade do operador de preservar as características dos indivíduos “pais” ao gerar um indivíduo descendente. Já a validade é a capacidade do operador de gerar um indivíduo válido, ou seja, uma solução factível para o problema. Essa característica pode tornar-se difícil de atingir em problemas onde diversas restrições devem ser consideradas durante o processo de otimização.
 
-\subsubsection{Operador de mutação}
+\subsubsection{Operador de Mutação}
 
 Apesar dos operadores de seleção e recombinação terem um papel primário no processo de busca dos algoritmos genéticos, esses operadores, ocasionalmente, podem acabar levando à perda de características importantes dos indivíduos \cite{Goldberg1989}. Sendo assim, o operador de mutação permite contornar essas perdas realizando pequenas variações no cromossomo de um determinado indivíduo. Tal operação ainda permite explorar pontos do espaço de busca que, sozinho, o operador de recombinação pode não ser capaz de atingir.
 
@@ -147,7 +147,7 @@ A estratégia de Regime Permanente apresenta uma abordagem mais conservadora de 
 
 Nesse trabalho os AGs, tanto em versão geracional quanto de regime permanente, foram utilizados para a resolução do problema de DEP.  Em um primeiro momento foram utilizadas as versões clássicas dessas duas variações do AG e dos operadores de seleção, recombinação e mutação. Em um seguida os AGs aqui estudados foram utilizados como base para o desenvolvimento de uma versão modificada que apesente um melhor desempenho para a resolução do problema. O mesmo foi feito com os operadores de recombinação e mutação, além da inclusão de um operador de busca local. Mais detalhes são apresentados no Capítulo 3.
 
-\section{Gerenciamento de campos de petróleo}
+\section{Gerenciamento de Campos de Petróleo}
 \label{sec:section22}
 Desenvolver e gerenciar campos de petróleo é uma tarefa que traz uma série de desafios, associados, dentre outros, à aquisição de dados sísmicos — visando o mapeamento inicial da região de um campo em potencial —, à modelagem geológica, à definição da estratégia de produção a ser adotada pela empresa exploradora do campo e à adequação dos processos adotados para o atendimento das regulamentações ambientais \cite{Morais2013}. Ainda, são altos os investimentos necessários para tal atividade e a tomada de decisão durante esse processo torna-se de alto risco devido ao elevado grau de incertezas envolvidas.
 
@@ -196,7 +196,7 @@ O problema de definição de estratégia de produção pode ser modelado como um
 Os indicadores técnicos são utilizados quando se tem como objetivo avaliar as medidas de produção. Temos como exemplos desses indicadores a produção de óleo, produção de gás, produção acumulada de água, injeção de água e a razão entre óleo e gás, dentre outros \cite{Neves2004, Avansi2008}.
 
 \subsubsection{Indicadores Econômicos}
-
+\label{indicadoresEconomicos}
 Os indicadores econômicos permitem fazer uma avaliação da estratégia de produção sob o ponto de vista financeiro. Aqui são considerados os investimentos realizados para a exploração do campo, o fluxo de caixa e o lucro obtido ao fim do período de exploração, por exemplo. Dentre os indicadores econômicos, o mais popular é o Valor Presente Líquido \cite{Neves2004, Nogueira2009, Marques2012, Barreto2014}, que representa a medida do valor presente da riqueza futura gerada pelo projeto \cite{Puccini2011}. \citeonline{Puccini2011} ainda destaca que o critério de decisão para esse indicador é bastante simples. Projetos no qual o VPL é negativo não são promissores, ao contrário de projetos com o VPL positivo. Segundo \citeonline{Neves2004}, tal indicador é vantajoso por possuir um cálculo simples e poder ser utilizado para hierarquizar projetos. Por esse motivo, esse foi o indicador escolhido para avaliar as estratégias de produção geradas pelos algoritmos estudados nesse trabalho.  O cálculo do VPL é dado pela Equação 1.
 
 
@@ -220,7 +220,7 @@ Os indicadores apresentados anteriormente são utilizados para avaliar o sistema
 
 Nesse trabalho será utilizado o IEP, tanto de poços produtores quanto injetores, para auxiliar os operadores de busca do algoritmo genético na busca por soluções melhores (mais detalhes de tais operadores são dados no Capitulo 3). Dos indicadores de poços apresentados, esse é o indicador obtido através das ferramentas utilizadas aqui para a simulação de campos de petróleo (mais detalhes são apresentados no Capítulo 4).
 
-\subsection{Seleção de estratégia de produção com meta-heurísticas}
+\subsection{Seleção de Estratégia de Produção com Meta-heurísticas}
 
 A quantidade de trabalhos que visam estudar formas de otimizar estratégias de produção é vasta. Sendo assim, a revisão bibliográfica realizada aqui voltou-se para a solução desse problema através do uso de meta-heurísticas.
 
