@@ -36,7 +36,7 @@ Tempo Médio & 02:39 & 02:36 & 02:34 & 02:31 & 02:44 & 02:10 \\ \hline
 \label{tab:results1_2}
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
-Execução & $AG^{RPM}$ &	$AG^{CO-1}$ & $AG^{CO-2}$ & BA & $CMOST^{500}$ \\ \hline
+Execução & $AG^{RPM}$ &	$AG^{CO-{100}}$ & $AG^{CO-{50}}$ & BA & $CMOST^{500}$ \\ \hline
 1  & 1,19E+09 & 1,07E+09 & 1,21E+09	 & 8,54E+08	 & 1,54E+09 \\ \hline
 2 & 1,21E+09 & 1,22E+09 & 1,18E+09	 & 7,06E+08	 & 1,67E+09 \\ \hline
 3  & 1,19E+09 & 1,06E+09 & 1,09E+09	 & 7,63E+08	 & 1,40E+09 \\ \hline
@@ -90,9 +90,9 @@ Para verificar o quão significativo foram os resultados obtidos nesse experimen
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{RPC-1}$ &	$AG^{GC-1}$ & 79,590\% \\ \hline
-$AG^{RPC-1}$ & $CMOST^500$ & 0,018\% \\ \hline
+$AG^{RPC-1}$ & $CMOST^{500}$ & 0,018\% \\ \hline
 $AG^{RPC-1}$ & BA & 0,032\% \\ \hline
-$AG^{GC-1}$ & $CMOST^500$ & 0,018\% \\ \hline
+$AG^{GC-1}$ & $CMOST^{500}$ & 0,018\% \\ \hline
 $AG^{GC-1}$ & BA & 0,049\% \\ \hline
 
 \end{tabular}
@@ -106,7 +106,7 @@ Nesse experimento, a principal mudança realizada foi a alteração do operador 
 
 Como é possível perceber à partir dos resultados apresentados na Tabela \ref{tab:results1_1}, tanto o $AG^{RPC-2}$ quanto o $AG^{GC-2}$ apresentaram desempenho melhor que os obtidos pelos AGs do Experimento 1. A mudança do operador de recombinação se mostrou satisfatória, principalmente em relação à abordagem de regime permanente. Em média, os resultados do $AGR^{RPC-2}$ foram 23\% melhores que ao obtidos pelo $AG^{RPC-1}$. A versão geracional do AG utilizada nesse experimento também apresentou melhoras em relação ao experimento anterior, mas os resultados obtidos pelo $AG^{GC-2}$ foram, em média, apenas 9\% melhores.
 
-No entanto, apesar das melhorias observadas, ambas as versões do AG novamente tiveram um desempenho aquém da BA e, principalmente, do $CMOST^500$. Apesar dos AGs levarem cerca 36\% do tempo gasto pelo $CMOST^500$ para concluírem as 500 avaliações, o VPL médio obtido pelo $CMOST^500$ ainda chega a ser o dobro do VPL médio obtido pelos AGs. Com as configurações adotadas nesse experimento, os AGs ainda não foram capazes de explorar de forma adequada o espaço de busca para obter soluções de boa qualidade. 
+No entanto, apesar das melhorias observadas, ambas as versões do AG novamente tiveram um desempenho aquém da BA e, principalmente, do $CMOST^{500}$. Apesar dos AGs levarem cerca 36\% do tempo gasto pelo $CMOST^{500}$ para concluírem as 500 avaliações, o VPL médio obtido pelo $CMOST^{500}$ ainda chega a ser o dobro do VPL médio obtido pelos AGs. Com as configurações adotadas nesse experimento, os AGs ainda não foram capazes de explorar de forma adequada o espaço de busca para obter soluções de boa qualidade. 
 
 Ao aplicar o teste de Mann-Whitney-Wilcoxon entre o $AG^{RPC-2}$ e o $AG^{GC-2}$, a diferença entre os resultados se mostraram mais significativas obtendo o valor de 5,24\%, apesar do resultado ser acima do limiar de 5\%, aqui já é possível observar há uma diferença entre as abordagens geracional e de regime permanente. A Tabela \ref{tab:mw2_1} reporta o resultado do teste ao comparar os resultados do $AG^{RPC-2}$ com os AGs do Experimento 1, o CMOST e a BA. 
 
@@ -119,7 +119,7 @@ Ao aplicar o teste de Mann-Whitney-Wilcoxon entre o $AG^{RPC-2}$ e o $AG^{GC-2}$
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{RPC-2}$ & $AG^{RPC-1}$ & 0,68\% \\ \hline
 $AG^{RPC-2}$ & $AG^{GC-1}$ & 0,21\% \\ \hline
-$AG^{RPC-2}$ & $CMOST^500$ & 0,02\% \\ \hline
+$AG^{RPC-2}$ & $CMOST^{500}$ & 0,02\% \\ \hline
 $AG^{RPC-2}$ & BA & 27,99\% \\ \hline
 \end{tabular}
 \end{table}
@@ -128,14 +128,14 @@ Além do desempenho melhor do $AG^{RPC-2}$ em relação aos AGs do Experimento 1
 
 \begin{table}[htb]
 \centering
-\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-2}$, os AGs do Experimento 1, o $CMOST^500$ e a BA.}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-2}$, os AGs do Experimento 1, o $CMOST^{500}$ e a BA.}
 \label{tab:mw2_2}
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{GC-2}$ & $AG^{RPC-1}$ & 27,99\% \\ \hline
 $AG^{GC-2}$ & $AG^{GC-1}$ & 48,13\% \\ \hline
-$AG^{GC-2}$ & $CMOST^500$ & 0,02\% \\ \hline
+$AG^{GC-2}$ & $CMOST^{500}$ & 0,02\% \\ \hline
 $AG^{GC-2}$ & BA & 2,32\% \\ \hline
 
 \end{tabular}
@@ -170,31 +170,31 @@ Ao aplicar o teste de Mann-Whitney-Wilcoxon com limiar de 5\%, observou-se que a
 
 \begin{table}[H]
 \centering
-\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-3}$, os AGs do Experimento 2, o $CMOST^500$ e a BA.}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPC-3}$, os AGs do Experimento 2, o $CMOST^{500}$ e a BA.}
 \label{tab:mw3_1}
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{RPC-3}$ & $AG^{RPC-2}$ & 0,0011\% \\ \hline
 $AG^{RPC-3}$ & $AG^{GC-2}$ & 0,0043\% \\ \hline
-$AG^{RPC-3}$ & $CMOST^500$ & 0,0182\% \\ \hline
+$AG^{RPC-3}$ & $CMOST^{500}$ & 0,0182\% \\ \hline
 $AG^{RPC-3}$ & BA & 0,0011\% \\ \hline
 
 \end{tabular}
 \end{table}
 
-Como é possível notar n Tabela \ref{tab:mw3_1}, a diferença entre os resultados obtidos pelo $AG^{RPC-1}$ e os AGs do Experimento 2 é estatisticamente significativa, e o mesmo pode ser dito em relação à comparação do $AG^{RPC-1}$ com o $CMOST^500$ e a BA. O $AG^{GC-3}$ também obteve um resultado semelhante, conforme pode ser observado pela Tabela \ref{tab:mw3_2}.
+Como é possível notar n Tabela \ref{tab:mw3_1}, a diferença entre os resultados obtidos pelo $AG^{RPC-1}$ e os AGs do Experimento 2 é estatisticamente significativa, e o mesmo pode ser dito em relação à comparação do $AG^{RPC-1}$ com o $CMOST^{500}$ e a BA. O $AG^{GC-3}$ também obteve um resultado semelhante, conforme pode ser observado pela Tabela \ref{tab:mw3_2}.
 
 \begin{table}[H]
 \centering
-\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-3}$, os AGs do Experimento 2, o $CMOST^500$ e a BA}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{GC-3}$, os AGs do Experimento 2, o $CMOST^{500}$ e a BA}
 \label{tab:mw3_2}
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{GC-3}$ & $AG^{RPC-2}$ & 0,6841\% \\ \hline
 $AG^{GC-3}$ & $AG^{GC-2}$ & 0,8931\% \\ \hline
-$AG^{GC-3}$ & $CMOST^500$ & 0,0182\% \\ \hline
+$AG^{GC-3}$ & $CMOST^{500}$ & 0,0182\% \\ \hline
 $AG^{GC-3}$ & BA & 1,8540\% \\ \hline
 
 \end{tabular}
@@ -226,14 +226,14 @@ Utilizar o IEP como parâmetro para manipulação dos poços da Estratégia de P
 
 \begin{table}[H]
 \centering
-\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPM}$, os AGs do Experimento 3, o $CMOST^500$ e a BA}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{RPM}$, os AGs do Experimento 3, o $CMOST^{500}$ e a BA}
 \label{tab:mw4_1}
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
 $AG^{RPM}$ & $AG^{RPC-3}$ & 0,0011\% \\ \hline
 $AG^{RPM}$ & $AG^{GC-3}$ & 0,0011\% \\ \hline
-$AG^{RPM}$ & $CMOST^500$ & 0,0182\% \\ \hline
+$AG^{RPM}$ & $CMOST^{500}$ & 0,0182\% \\ \hline
 $AG^{RPM}$ & BA & 0,0011\% \\ \hline
 
 
@@ -255,40 +255,40 @@ A Figura \ref{fig:graph4_1} apresenta a evolução do VPL da melhor solução, d
 
 \subsection{Experimento 5}
 
-Para o último experimento dessa etapa, foi considerada a terceira versão do algoritmo genético apresentado no Capítulo 3.1.3, que também segue a abordagem de regime permanente. Para testar o conceito proposto para essa versão do AG, foram utilizados dois tamanhos de população: 100 indivíduos ($AG^{CO-1}$) e 50 indivíduos ($AG^{CO-2}$). Tal escolha foi feita, nesse experimento, a fim de se observar como o algoritmo se comporta com o operador proposto no Capítulo 3.6, uma vez que os valores escolhidos para as soluções que compõem a população inicial servem como ponto de partida para esse operador (cálculo do \textit{score}).
+Para o último experimento dessa etapa, foi considerada a terceira versão do algoritmo genético apresentado no Capítulo 3.1.3, que também segue a abordagem de regime permanente. Para testar o conceito proposto para essa versão do AG, foram utilizados dois tamanhos de população: 100 indivíduos ($AG^{CO-{100}}$) e 50 indivíduos ($AG^{CO-{50}}$). Tal escolha foi feita, nesse experimento, a fim de se observar como o algoritmo se comporta com o operador proposto no Capítulo 3.6, uma vez que os valores escolhidos para as soluções que compõem a população inicial servem como ponto de partida para esse operador (cálculo do \textit{score}).
 
-O $AG^{CO-2}$ apresentou um VPL médio consideravelmente melhor que o $AG^{CO-1}$ (Tabela \ref{tab:results1_2}). É possível intuir que, com uma população menor a distribuição dos valores para cada intervalo definido para as restrições de posicionamento dos poços foi mais equilibrada. No $AG^{CO-2}$ posições pouco promissoras para os poços podem ter apresentado maior probabilidade de serem escolhidas pelo operador, gerando soluções não tão promissoras. Observando a evolução da população do $AG^{CO-2}$, apresentada na Figura \ref{fig:graph5_2}, percebe-se que a média do VPL da população se aproxima bastante do VPL da melhor solução, mais que o próprio $AG^{CO-1}$, cuja evolução é dada na Figura \ref{fig:graph5_1}, e dos AGs dos experimentos anteriores. Isso pode indicar uma perda da diversidade entre os indivíduos da população, o que não é algo desejado para uma boa exploração do espaço de busca. Apesar do ganho de VPL com a população menor nesse AG, há o risco da perda da diversidade da população. Mais uma vez, os gráficos para as demais execuções das duas versões aqui apresentadas encontram-se no Apêndice E.
+O $AG^{CO-{50}}$ apresentou um VPL médio consideravelmente melhor que o $AG^{CO-{100}}$ (Tabela \ref{tab:results1_2}). É possível intuir que, com uma população menor a distribuição dos valores para cada intervalo definido para as restrições de posicionamento dos poços foi mais equilibrada. No $AG^{CO-{50}}$ posições pouco promissoras para os poços podem ter apresentado maior probabilidade de serem escolhidas pelo operador, gerando soluções não tão promissoras. Observando a evolução da população do $AG^{CO-{50}}$, apresentada na Figura \ref{fig:graph5_2}, percebe-se que a média do VPL da população se aproxima bastante do VPL da melhor solução, mais que o próprio $AG^{CO-{100}}$, cuja evolução é dada na Figura \ref{fig:graph5_1}, e dos AGs dos experimentos anteriores. Isso pode indicar uma perda da diversidade entre os indivíduos da população, o que não é algo desejado para uma boa exploração do espaço de busca. Apesar do ganho de VPL com a população menor nesse AG, há o risco da perda da diversidade da população. Mais uma vez, os gráficos para as demais execuções das duas versões aqui apresentadas encontram-se no Apêndice E.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{13}
-\caption{Evolução do VPL obtido pela melhor solução, pior solução e a média da população na $2^a$ execução do $AG^{CO-1}$}
+\caption{Evolução do VPL obtido pela melhor solução, pior solução e a média da população na $2^a$ execução do $AG^{CO-{100}}$}
 \label{fig:graph5_1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{14}
-\caption{Evolução do VPL obtido pela melhor solução, pior solução e a média da população obtida na $2^a$ execução do $AG^{CO-2}$}
+\caption{Evolução do VPL obtido pela melhor solução, pior solução e a média da população obtida na $2^a$ execução do $AG^{CO-{50}}$}
 \label{fig:graph5_2}
 \end{figure}
 
-Ao aplicar o teste de Mann-Whitney-Wilcoxon entre o $AG^{CO-1}$ e o $AG^{CO-2}$, constata-se que a diferença entre os resultados desses AGs é significativa. Mais uma vez utilizando o limiar de 5\%, o teste obteve como resultado 1,40\%.  Tal teste também foi aplicado entre os AGs desse experimento e o $AG^{RPM}$, versão do AG que obteve o melhor resultado até o momento. Os resultados são apresentados na Tabela \ref{tab:mw5_1}.
+Ao aplicar o teste de Mann-Whitney-Wilcoxon entre o $AG^{CO-{100}}$ e o $AG^{CO-{50}}$, constata-se que a diferença entre os resultados desses AGs é significativa. Mais uma vez utilizando o limiar de 5\%, o teste obteve como resultado 1,40\%.  Tal teste também foi aplicado entre os AGs desse experimento e o $AG^{RPM}$, versão do AG que obteve o melhor resultado até o momento. Os resultados são apresentados na Tabela \ref{tab:mw5_1}.
 
 \begin{table}[H]
 \centering
-\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{CO-1}$ e do $AG^{CO-2}$ com o $AG^RPM$}
+\caption{Resultados do teste de Mann-Whitney-Wilcoxon para comparar os resultados do $AG^{CO-{100}}$ e do $AG^{CO-{50}}$ com o $AG^RPM$}
 \label{tab:mw5_1}
 \begin{tabular}{|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{Algoritmos Comparados} & Resultados \\ \hline
-$AG^{CO-1}$ & $AG^{RPM}$ & 0,10\% \\ \hline
-$AG^{CO-2}$ & $AG^{RPM}$ & 6,40\% \\ \hline
+$AG^{CO-{100}}$ & $AG^{RPM}$ & 0,10\% \\ \hline
+$AG^{CO-{50}}$ & $AG^{RPM}$ & 6,40\% \\ \hline
 
 \end{tabular}
 \end{table}
 
-Como é possível notar pela Tabela \ref{tab:mw5_1}, apesar do $AG^{CO-1}$ ter resultados diferentes e estatisticamente significativos, o $AG^{CO-2}$, que apresentou resultados melhores, não possui uma diferença estatisticamente significativa. Sendo assim, optou-se por não levar adiante essa abordagem.
+Como é possível notar pela Tabela \ref{tab:mw5_1}, apesar do $AG^{CO-{100}}$ ter resultados diferentes e estatisticamente significativos, o $AG^{CO-{50}}$, que apresentou resultados melhores, não possui uma diferença estatisticamente significativa. Sendo assim, optou-se por não levar adiante essa abordagem.
 
 \section{Etapa 2 – Com Busca Local}
 
@@ -296,7 +296,7 @@ Na segunda etapa dos experimentos o foco esteve na exploração das duas versõe
 
 Apesar da intenção de se comparar os resultados aqui obtidos com os resultados alcançados por $AG^{RPM}$ e  $CMOST^{500}$ na Etapa 1, tal comparação não seria de todo justa. Os AGs dos experimentos realizados nessa etapa precisaram, em média, de um total de 720 avaliações da função objetivo (simulações) para concluir cada execução, 220 avaliações a mais que as utilizadas durante a etapa anterior. Sendo assim, o $AG^{RPM}$ foi executado novamente, mas com um limite de 730 avaliações como critério de parada para que, dessa forma, a comparação fosse justa. O mesmo foi feito para a ferramenta CMOST. Para não haver confusão, o $AG^{RPM}$ executado nessa etapa será referenciado como $AG^{RPM-730}$ e o CMOST como $CMOST^{730}$. 
 
-A Tabela \ref{tab:results2_1} apresenta o melhor VPL obtido por cada uma das dez execuções do $AG^{BL-1}$ e do $AG^{BL-2}$. Além disso, também é apresentado o VPL médio de cada algoritmo, o desvio padrão, o tempo médio, em horas, gasto para cada execução do algoritmo ser concluída e a média de avaliações necessárias para completar a execução dos AGs com busca local. Esses resultados, com exceção da média de avaliações, também são apresentados para $AG^{RPM-730}$ e $CMOST^730$.
+A Tabela \ref{tab:results2_1} apresenta o melhor VPL obtido por cada uma das dez execuções do $AG^{BL-1}$ e do $AG^{BL-2}$. Além disso, também é apresentado o VPL médio de cada algoritmo, o desvio padrão, o tempo médio, em horas, gasto para cada execução do algoritmo ser concluída e a média de avaliações necessárias para completar a execução dos AGs com busca local. Esses resultados, com exceção da média de avaliações, também são apresentados para $AG^{RPM-730}$ e $CMOST^{730}$.
 
 \begin{table}[H]
 \centering
@@ -304,7 +304,7 @@ A Tabela \ref{tab:results2_1} apresenta o melhor VPL obtido por cada uma das dez
 \label{tab:results2_1}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-Execução & $AG^{BL-1}$ & $AG^{BL-2}$ & $AG^{RPM-730}$ & $CMOST^730$ \\ \hline
+Execução & $AG^{BL-1}$ & $AG^{BL-2}$ & $AG^{RPM-730}$ & $CMOST^{730}$ \\ \hline
 1 & 1,47E+09 & 1,53E+09 & 1,46E+09 & 1,75E+09 \\ \hline
 2 & 1,54E+09 & 1,57E+09 & 1,28E+09 & 1,70E+09 \\ \hline
 3 & 1,44E+09 & 1,53E+09	& 1,26E+09 & 1,87E+09 \\ \hline

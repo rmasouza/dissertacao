@@ -4,7 +4,7 @@ Nesse trabalho procurou-se otimizar estratégias de produção através da busca
 
 Quanto aos operadores de busca necessários para o bom desempenho do algoritmo, foram implementados operadores clássicos, encontrados na literatura, e proposto novos operadores que utilizam de conhecimento do problema para gerar soluções candidatas melhores. Por fim, também foram desenvolvidos duas versões de um operadores de busca local para refinar as soluções encontradas pelos AGs. Os tópicos a seguir apresentam com mais detalhes a estrutura escolhida para representar as soluções candidatas; a função objetivo escolhida, a estrutura dos AGs clássicos e dos AGs modificados que foram implementados nesse trabalho; os operadores de seleção, recombinação e mutação desenvolvidos; o operador de busca local em conjunto com um novo operador que contabiliza o número de ocorrências das coordenadas de posição de cada poço da estratégia de produção; e, por fim o tratamento de restrições adotadas.  
 
-\section{representação da Solução}
+\section{Representação da Solução}
 
 Cada indivíduo que compõe a população do algoritmo genético é uma estratégia de produção completa, que, por sua vez, é um conjunto de poços. Cada poço dessa estratégia é representado por um conjunto de sete variáveis de decisão, sendo elas:
 
@@ -35,15 +35,15 @@ Sendo assim, o número total de variáveis no processo de otimização vai depen
 
 \section{Estrutura Geral dos Algoritmos Genéticos}
 
-Tanto o Algoritmo Genético Geracional quanto o Algoritmo Genético de Regime Permanente foram implementados nesse trabalho. No entanto, conforme o avanço dos experimentos realizados, alterações foram propostas para estes algoritmos, visando adequar os AGs aos novos operadores de busca propostos.  No total, foram três versões de AG utilizados aqui.  Os próximos tópicos apresentam com mais detalhes da estrutura das versões de AG aqui empregadas.
+Tanto o Algoritmo Genético Geracional Clássico ($AG^{GC}$) quanto o Algoritmo Genético de Regime Permanente Clássico ($AG^{RPC}$) foram implementados nesse trabalho. No entanto, conforme o avanço dos experimentos realizados, alterações foram propostas para estes algoritmos, visando adequar os AGs aos novos operadores de busca propostos.  No total, foram três versões de AG utilizados aqui.  Os próximos tópicos apresentam com mais detalhes da estrutura das versões de AG aqui empregadas.
 
 \subsection{Primeira versão}
 
 A primeira versão consiste nas implementações clássicas tanto do AG Geracional quanto do AG de Regime Perante. Essa versão utiliza como base as implementações encontradas no framework JMetal (mais detalhes no Capitulo 4.1).
 
-\subsubsection{Algoritmo Genético Geracional}
+\subsubsection{Algoritmo Genético Geracional Clássico}
 
-O Pseudocódigo \ref{alg:aggc} apresenta o AG Geracional encontrado no framework JMetal. É possível notar que, apesar de uma população de novas soluções ser criada a cada iteração, o algoritmo implementado utiliza Elitismo. Essa versão do algoritmo substitui as duas piores soluções da população sucessora por duas das melhores soluções da população atual.
+O Pseudocódigo \ref{alg:aggc} apresenta o AG Geracional encontrado no \textit{framework} JMetal. É possível notar que, apesar de uma população de novas soluções ser criada a cada iteração, o algoritmo implementado utiliza Elitismo. Essa versão do algoritmo substitui as duas piores soluções da população sucessora por duas das melhores soluções da população atual.
 
 \begin{algorithm}
   \floatname{algorithm}{Pseudocódigo}
@@ -67,7 +67,7 @@ O Pseudocódigo \ref{alg:aggc} apresenta o AG Geracional encontrado no framework
   \end{algorithmic}
 \end{algorithm}
 
-\subsubsection{Algoritmo Genético de Regime Permanente}
+\subsubsection{Algoritmo Genético de Regime Permanente Clássico}
 
 Como foi discutido no Capitulo 2.1.4, a estratégia de substituição é um aspecto importante do algoritmo genético de regime permanente. A versão do algoritmo encontrado no JMetal substitui a pior solução da população pela nova solução gerada, caso esta solução seja melhor. As etapas deste algoritmo são detalhadas no Pseudocódigo \ref{alg:agrpc}.
 
@@ -94,13 +94,13 @@ Como foi discutido no Capitulo 2.1.4, a estratégia de substituição é um aspe
 
 \subsection{Segunda Versão}
 
-Para a segunda versão, foi considerado somente o AG de Regime Permanente, uma vez que esse apresentou resultados melhores nos primeiros experimentos realizados (mais detalhes no Capítulo 5). 
+Para a segunda versão, foi considerado somente o $AG^{RPC}$, uma vez que esse apresentou resultados melhores nos primeiros experimentos realizados (mais detalhes no Capítulo 5). 
 
-A principal alteração feita foi em relação ao uso do operador de mutação. Na versão clássica do AG de Regime Permanente, apresentado anteriormente, o operador de mutação é executado logo após a nova solução candidata ser criada pelo operador de recombinação. Aqui essa ordem foi alterada. Na versão proposta aqui, o operador é utilizado após a nova solução candidata ser avaliada, caso essa solução não seja boa o suficiente para ser incluída na população. Essa decisão foi tomada para adequar o AG ao operador de mutação que será descrito no Tópico 3.4 que, por utilizar o IEP para realizar alterações nas soluções, exige que a solução tenha sido avaliada previamente para que tais indicadores possam ser calculados. O Pseudocódigo \ref{alg:agrpm} apresenta todas as etapas dessa versão do AG de Regime Permanente.
+A principal alteração feita foi em relação ao uso do operador de mutação. O $AG^{RPC}$, apresentado anteriormente, o operador de mutação é executado logo após a nova solução candidata ser criada pelo operador de recombinação. Aqui essa ordem foi alterada. Na versão proposta aqui, o operador é utilizado após a nova solução candidata ser avaliada, caso essa solução não seja boa o suficiente para ser incluída na população. Essa decisão foi tomada para adequar o AG ao operador de mutação que será descrito no Tópico 3.4 que, por utilizar o IEP para realizar alterações nas soluções, exige que a solução tenha sido avaliada previamente para que tais indicadores possam ser calculados. O Pseudocódigo \ref{alg:agrpm} apresenta todas as etapas do Alortimo Genético de Regime Permanente Modificado ($AG^{RPM}$).
 
 \begin{algorithm}[H]
   \floatname{algorithm}{Pseudocódigo}
-  \caption{Primeira modificação do Algoritmo Genético de Regime Permanente}
+  \caption{Algoritmo Genético de Regime Permanente Modificado}
   \label{alg:agrpm}
   \begin{algorithmic}
     \State Inicialize a população $P$ com $T$ soluções geradas aleatoriamente;
@@ -126,12 +126,11 @@ A principal alteração feita foi em relação ao uso do operador de mutação. 
 
 \subsection{Terceira Versão}
 
-A segunda modificação feita ao AG foi para adicionar um novo operador para contar a quantidade de vezes que um valor foi escolhido para as coordenadas I, J e K que definem a posição de um poço. Essa informação é utilizada, posteriormente, pelos operadores de recombinação e mutação para gerar novas soluções privilegiando as coordenadas mais frequentes e que apresentaram melhores IEPs, mais detalhes desse operador são apresentados na Seção 3.6 desse capitulo. O Pseudocódigo \ref{alg:agrpm2} apresenta o AG com as modificações feitas.
-
+A segunda modificação feita ao AG foi para adicionar um novo operador para contar a quantidade de ocorrências de um valor as coordenadas I, J e K que definem a posição de um poço. Essa informação é utilizada, posteriormente, pelos operadores de recombinação e mutação para gerar novas soluções privilegiando as coordenadas mais frequentes e que apresentaram melhores IEPs, mais detalhes desse operador são apresentados na Seção 3.6 desse capitulo. O Pseudocódigo \ref{alg:agrpm2} apresenta o AG com com tal operador ($AG^{CO}$).
 
 \begin{algorithm}[H]
   \floatname{algorithm}{Pseudocódigo}
-  \caption{Segunda Modificação do Algoritmo Genético Regime Permanente}
+  \caption{Algoritmo Genético Regime Permanente com Contador de Ocorrências}
   \label{alg:agrpm2}
   \begin{algorithmic}
     \State Inicialize a população $P$ com $T$ soluções geradas aleatoriamente;
