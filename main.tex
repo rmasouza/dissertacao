@@ -27,6 +27,7 @@
 \usepackage{multirow}
 \usepackage{float}
 \usepackage{longtable} 
+\usepackage{tabto}
 
 % Declaracoes em Português
 \algrenewcommand\algorithmicend{\textbf{fim}}
@@ -150,14 +151,16 @@
         \listoftables
         
         % A lista de abreviações e siglas é opcional:
-        % \prefacesection{Lista de Abreviações e Siglas}
         
+        % $ABC$	COlônia de Abelhas Artificiaiadadasaas
+        \include{./chapters/nomenclatures}
+
         % A lista de símbolos é opcional:
         % \prefacesection{Lista de Símbolos}
         
         % Quem usa o pacote nomencl para abreviaturas pode incluir:
-        \renewcommand{\nomname}{Lista de Abreviações e Siglas}
-        \printnomenclature[3cm]
+        % \renewcommand{\nomname}{Lista de Abreviações e Siglas}
+        % \printnomenclature[3cm]
         
         % O sumário vem aqui:
         \tableofcontents
