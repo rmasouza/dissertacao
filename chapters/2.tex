@@ -1,9 +1,9 @@
 \chapter{Revisão Bibliográfica}
-\label{ch:ch2}
+\label{ch:2_RevisaoBibliografica}
 Nesse capítulo são apresentadas as principais características das meta-heurísticas, com um foco maior no algoritmo escolhido para aplicação ao problema de DEP: os Algoritmos Genéticos. Além disso são discutidas também as características e dificuldades do gerenciamento de campos de petróleo, bem com uma revisão dos principais trabalhos que se propuseram a resolver o problema de DEP com o uso de meta-heurísticas.
 
 \section{Meta-heurísticas}
-\label{sec:section21}
+\label{sec:2-1_MetaHeuristicas}
 Diariamente lidamos com uma série de problemas dos mais diversos tipos. Para \citeonline{Michalewicz2004}, um problema existe quando há uma diferença entre um estado atual e um estado no qual se deseja estar. Ainda segundo \citeonline{Michalewicz2004}, alocar recursos que estejam disponíveis para diminuir a diferença entre esses estados é o que chamamos de solução. É comum que exista mais de uma solução viável para a resolução de um problema, nesse caso, é sempre desejável que a solução ótima, ou a mais próxima disso, seja a escolhida para ser executada.
 
 Nesse cenário, em que há diversas soluções candidatas para resolver um determinado problema, encontrar a solução ótima é um problema por si só. Esse problema em questão é conhecido como problema de otimização.  Tal otimização consiste em buscar pela solução ótima dentro de um conjunto de soluções (que formam o chamado espaço de busca), visando atender a algum critério. Geralmente tal critério é um determinado aspecto de interesse (objetivo) como lucro, desempenho, tempo ou distância, que deve ser maximizado ou minimizado. Na maioria das vezes é possível representar esse objetivo através de uma função matemática, conhecida como função objetivo e responsável por atribuir um número real a cada solução candidata do problema, indicando, dessa forma, o quão bem uma determinada solução resolve o problema.
@@ -30,7 +30,7 @@ As meta-heurísticas tradicionalmente conseguem ser aplicadas a estes problemas 
 Apesar de não exigirem grandes adaptações, outros desafios surgem ao lidar com meta-heurísticas. Dentre eles, há a escolha de uma representação da solução candidata do problema, a definição da função objetivo a ser otimizada, as formas como as restrições do problema serão tratadas e a definição de parâmetros do algoritmo. Estes quatro pontos são detalhados a seguir.
 
 \subsection{Representação da Solução Candidata}
-\label{subsec:subc211}
+\label{subsec:2-1_RepresentacaoSolucao}
 A forma como uma solução candidata para o problema será representada computacionalmente ditará grande parte da estratégia de busca da meta-heurística, definindo diretamente o tamanho do espaço de busca que deve ser explorado e os operadores de busca que deverão ser utilizados. Uma solução candidata pode ser codificada de várias formas, sendo que grande parte dos problemas podem ter soluções representadas por codificações clássicas presentes na literatura, tais como cadeias binárias, vetores de valores discretos, vetores de valores reais ou permutações de valores inteiros. \citeonline{Talbi2009} sugere que uma representação da solução candidata deve possuir as seguintes características:
 
 \begin{itemize}
@@ -40,17 +40,17 @@ A forma como uma solução candidata para o problema será representada computac
 \end{itemize}
 
 \subsection{Função Objetivo}
-\label{subsec:subc212}
+\label{subsec:2-1_FuncaoObjetivo}
 A função objetivo, ou função de avaliação, é o componente responsável por guiar o processo de busca de uma meta-heurística em direção à solução ótima do problema, visando atingir um objetivo determinado. Para cada solução candidata gerada durante o processo de busca, a função objetivo atribui um valor numérico indicativo da qualidade desta solução. Em alguns problemas, é comum que a própria formulação matemática do objetivo a ser atingido com a otimização do problema sirva como função objetivo, entretanto, existem casos nos quais não é possível definir uma formulação matemática explícita para o problema, como no problema de Definição de Estratégias de Produção (DEP) estudado neste trabalho. Para esses problemas é necessário recorrer a outras ferramentas para avaliação das soluções candidatas, como simuladores. Nesses casos, a função objetivo é uma função de caixa preta \cite{Talbi2009}. Em se tratando de meta-heurísticas, a definição de função objetivo geralmente é o único momento no qual se considera o conhecimento que se tem acerca do problema no processo de busca pela solução ótima.
 
 \subsection{Definição de Parâmetros}
-\label{subsec:subc213}
+\label{subsec:2-1_DefinicaoParametros}
 É comum a necessidade de definição de valores para uma série de parâmetros antes da aplicação de uma meta-heurística a um dado problema. Tais parâmetros controlam o funcionamento do algoritmo e têm grande influência no desempenho e na eficiência da busca pela solução ótima. Entretanto, a escolha dos valores ótimos destes parâmetros não é óbvia, além de tais valores não serem universais. A tarefa de ajustar os parâmetros depende bastante do problema ou, até mesmo, de uma instância do problema \cite{Talbi2009}.
 
 Cada meta-heurística possui seu conjunto próprio de parâmetros a serem definidos, mas, de forma geral, tais parâmetros estão relacionados à quantidade de iterações do algoritmo e à probabilidade de um determinado operador ser executado. No caso de meta-heurísticas populacionais, ou seja, daquelas que trabalham simultaneamente com um conjunto de soluções candidatas, considera-se também importante a definição do número de soluções na população. Mais detalhes sobre os parâmetros utilizados para o algoritmo estudado serão dados no Capítulo 4.
 
 \subsection{Tratamentos de Restrições}
-\label{subsec:subc214}
+\label{subsec:2-1_TratamentosRestricoes}
 É comum encontrar problemas em que nem todas as soluções candidatas podem ser implementadas com sucesso, por violarem uma ou mais restrições que, geralmente, são intrínsecas ao problema. Em um primeiro momento, considerar as restrições do problema no processo de busca pode ser vantajoso, uma vez que tais restrições limitam a quantidade de soluções possíveis, reduzindo o espaço de busca. No entanto, deve-se considerar que, ao reduzir o espaço de busca, pode-se dificultar o processo de geração de soluções que atendam às condições estabelecidas.
 
 Sendo assim, cria-se a necessidade de que os operadores de busca sejam capazes de gerar soluções factíveis \cite{Michalewicz2004}, o que nem sempre é uma tarefa simples. Outra abordagem seria o uso de estratégias para lidar com soluções candidatas que violem uma ou mais restrições do problema, o que, segundo \citeonline{Talbi2009}, poderia ser feito da seguinte maneira:
@@ -64,19 +64,19 @@ Sendo assim, cria-se a necessidade de que os operadores de busca sejam capazes d
 \end{itemize}
 
 \subsection{Classificação das Meta-Heurísticas}
-\label{subsec:subc215}
+\label{subsec:2-1_ClassificacaoMetaHeuristicas}
 A quantidade de meta-heurísticas disponíveis na literatura é vasta, o que levou à utilização de vários critérios para a classificação destes algoritmos. Tais critérios podem ser vistos em \citeonline{Blum2003}, \citeonline{Talbi2009} e \citeonline{Boussaid2013}. De forma geral, as meta-heurísticas podem ser classificadas levando-se em consideração algumas de suas características, tais como a inspiração para a criação do algoritmo (inspirados ou não por eventos naturais), a forma com que elas lidam com as informações extraídas durante o processo de busca (com memória ou sem memória) ou a maneira como exploram o espaço de busca.
 
 Esta última característica é um grande dilema ao projetar uma meta-heurística. Se por um lado, deseja-se diversidade nas soluções ao percorrer o espaço de busca (para que se tenha uma maior exploração do espaço), por outro deseja-se também uma boa capacidade de refinamento de soluções promissoras (explotação). Tal dilema é traduzido na forma como as meta-heurísticas gerenciam as soluções candidatas, sendo possível percorrer o espaço de busca com uma única solução (meta-heurísticas baseadas em solução única) ou com um conjunto de soluções (meta-heurísticas populacionais).
 
 \subsubsection{Meta-heurísticas Baseadas em Solução Única}
-\label{subsec:subc2151}
+\label{subsec:2-1_MetaHeuristicasSolucaoUnica}
 As meta-heurísticas de solução única trabalham fortemente com o conceito de vizinhança. Ao menos para problemas de otimização combinatória, a vizinhança de uma solução s pode ser definida como o conjunto de soluções s', sendo que a distância entre s e s' deve ser menor ou igual a um limite de distância $\epsilon$ \cite{Talbi2009}. A forma como obtém-se a distância entre duas soluções e qual o valor ideal de $\epsilon$, no entanto, depende da representação da solução candidata e do problema em questão.
 
 Sendo assim, o processo de busca por uma solução ótima das meta-heurísticas de solução única consiste, primariamente, em refinar uma solução inicial buscando melhorias através da vizinhança desta solução, priorizando desta forma a explotação do espaço de busca. Ainda assim, algumas meta-heurísticas possuem mecanismos para evitar que suas soluções fiquem presas em soluções de mínimo local. Conforme visto em \citeonline{Blum2003}, \citeonline{Talbi2009} e \citeonline{Boussaid2013} temos como exemplo de algoritmos deste grupo o Simulated Annealing (SA), Busca Tabu, Greedy Randomized Adaptive Search Procedure (GRASP), Variable Neighborhood Search, Busca Local Guiada e Busca Local Iterada.
 
 \subsubsection{Meta-heurísticas Populacionais}
-\label{subsec:subc2152}
+\label{subsec:2-1_MetaHeuristicasPopulacionais}
 Ao contrário das meta-heurísticas baseadas em solução única, as meta-heurísticas populacionais lidam com um conjunto soluções candidatas (ou população). Existem duas abordagens para lidar com uma população de soluções \cite{Freitas2003,Ishibuchi1997}: a abordagem Pittsburgh, na qual cada elemento (indivíduo) do conjunto representa uma solução candidata ao problema; e a abordagem Michigan, onde a população como um todo representa a solução. Na abordagem Michigan é necessário, no entanto, que o problema possa ser decomposto em partes menores e que seja possível a avaliação destas partes.
 
 Independentemente da abordagem utilizada, as meta-heurísticas populacionais buscam melhorar os indivíduos da população realizando interações entre esses indivíduos, seja através de combinações entre eles, aplicando mutações ou realizando buscas locais, utilizando membros como ponto de referência para os demais indivíduos ou, ainda, combinando esforços entre os indivíduos para atingir o objetivo desejado. Meta-heurísticas populacionais procuram manter diversidade entre as soluções, com o objetivo de explorar melhor o espaço de busca. Como exemplos de meta-heurísticas populacionais temos a Programação Evolutiva (PE), Algoritmos Genéticos (AG), Estratégias Evolutivas (EE) e Otimização por Colônia de Formigas (ACO, do inglês Ant Colony Optimization), apresentados por \citeonline{Blum2003}, \citeonline{Talbi2009} e \citeonline{Boussaid2013}.\citeonline{Boussaid2013} dividem as meta-heurísticas populacionais em dois grupos, (i) inspirados em computação evolutiva e (ii) inspirados em inteligência de enxame. 
@@ -94,7 +94,7 @@ Os algoritmos AG, EE e PE, apresentados em \citeonline{Blum2003} e também visto
 Os algoritmos inspirados por inteligência de enxame buscam simular o comportamento social de um grupo de indivíduos. A principal característica dessa abordagem é o fato que de cada indivíduo é um agente simples, pouco sofisticado, que coopera com os demais indivíduos para que se movimentem no espaço de busca \cite{Talbi2009}. Os principais algoritmos deste grupo, apresentados por \citeonline{Talbi2009} e \citeonline{Boussaid2013}, são o ACO e Otimização por Enxame de Partículas (PSO, do inglês Particle Swarm Optimization). \citeonline{Boussaid2013} inclui ainda Bacterial Foraging Optimization Algorithm e Colônia de Abelhas Artificiais (ABC, do inglês Artificial Bee Colony) como parte deste grupo.
 
 \subsection{Algoritmos Genéticos}
-
+\label{subsec:2-1_AlgortimosGeneticos}
 Dentre as meta-heurísticas apresentadas anteriormente, os Algoritmos Genéticos foram os escolhidos para a resolução do problema de DEP. AGs são algoritmos de busca inspirados pelos mecanismos da seleção natural e princípios de genética \cite{Goldberg1989}. Ainda segundo \citeonline{Goldberg1989}, a combinação entre a sobrevivência do indivíduo mais apto e a troca estruturada, e aleatória, de características entre os indivíduos tornam o AG um algoritmo robusto de busca. Ademais, a simplicidade do processo e sua eficiência são duas das principais características que tornam algoritmos genéticos tão atrativos e permitem usá-los para resolver os mais diversos tipos de problemas, que vão desde problemas mais clássicos, como o problema do caixeiro viajante \cite{Grefenstette1985}, até problemas mais sofisticados como o controle de tráfego aéreo \cite{Sergeeva2017}. 
 
 A terminologia utilizada nesses algoritmos também é fortemente inspirada na biologia. Por exemplo, a estrutura do indivíduo (a solução candidata) aqui é chamada de cromossomo, o valor de cada variável que compõe o cromossomo é denominado alelo e cada variável pode ser chamada de lócus ou mesmo gene \cite{Back1997}.
@@ -109,11 +109,13 @@ Proposto por \citeonline{Holland1992}, na Universidade de Michigan, com o objeti
 \end{figure}
 
 \subsubsection{Operador de Seleção}
+\label{subsec:2-1_OperadorSelecao}
 O operador de seleção possui um papel importante no desempenho do algoritmo genético, uma vez que esse é o operador responsável por selecionar os indivíduos que farão parte do processo de recombinação.  Aqui é utilizada a analogia da seleção natural \cite{Goldberg1989}, em que indivíduos com fitness melhores têm mais chances de serem selecionados. Um exemplo de operador clássico que utiliza dessa lógica é a Seleção por Roleta \cite{Talbi2009, Kacprzyk2015, Luke2013Metaheuristics}.
 
 No entanto, apesar de ser desejável que soluções melhores sejam selecionadas para que possam gerar soluções ainda mais promissoras, pode acontecer de tal pressão seletiva levar a uma população com pouca, ou nenhuma, diversidade. Dessa forma o algoritmo pode convergir para um ponto do espaço de busca de forma prematura. Sendo assim, alguns operadores de seleção utilizam estratégias diferentes para lidar com a tarefa de selecionar um indivíduo da população, seja manipulando o fitness para uma distribuição de probabilidades mais equilibrada, como a Seleção por Ranqueamento \cite{Talbi2009, Kacprzyk2015}, ou realizando competições entre os indivíduos e selecionando aquele com melhor desempenho como a Seleção por Torneios \cite{Talbi2009, Kacprzyk2015}. 
 
 \subsubsection{Operador de Recombinação}
+\label{subsec:2-1_OperadorRecombinacao}
 A recombinação é um dos recursos que mais distingue algoritmos genéticos das outras meta-heurísticas \cite{Luke2013Metaheuristics}. Esse é o operador responsável por gerar novos indivíduos que possivelmente farão parte da população do algoritmo. O operador realiza a combinação de dois ou mais indivíduos para a criação de pelo menos um novo indivíduo. Espera-se que a combinação de partes dos indivíduos pais acabe por gerar descendentes que sejam melhores que os indivíduos originais \cite{Kacprzyk2015} e que mantenham parte das características de cada pai.
 
 A forma como as combinações entre os indivíduos selecionados é realizada varia conforme a codificação escolhida. Para codificações baseadas em vetor, como a cadeia binária, é comum o uso de um dos de três operadores clássicos para essa tarefa: o Crossover de Um Ponto, de 2-Pontos e o Crossover Uniforme \cite{Talbi2009}. O operador de 1-Ponto seleciona aleatoriamente uma posição da cadeia e troca todos os valores do cromossomo entre indivíduos que estiverem abaixo dessa posição.  A mesma lógica é utilizada pelo operador de 2-Pontos, a diferença aqui é que duas posições são escolhidas e os valores entre as posições são trocados entre os indivíduos. Por fim, o operador de Recombinação Uniforme escolhe aleatoriamente, para cada um dos valores do cromossomo, o valor de um dos indivíduos selecionados para a recombinação. A Figura \ref{fig:fig2_2} ilustra o funcionamento desses três operadores.
@@ -130,7 +132,7 @@ Já para soluções representadas através de codificações de valores reais, o
 Independentemente da codificação escolhida, dois pontos devem ser levados em consideração ao se definir, ou mesmo desenvolver, um operador de recombinação: (i) hereditariedade e (ii) validade \cite{Talbi2009}. O primeiro diz respeito à capacidade do operador de preservar as características dos indivíduos “pais” ao gerar um indivíduo descendente. Já a validade é a capacidade do operador de gerar um indivíduo válido, ou seja, uma solução factível para o problema. Essa característica pode tornar-se difícil de atingir em problemas onde diversas restrições devem ser consideradas durante o processo de otimização.
 
 \subsubsection{Operador de Mutação}
-
+\label{subsec:2-1_OperadorMutacao}
 Apesar dos operadores de seleção e recombinação terem um papel primário no processo de busca dos algoritmos genéticos, esses operadores, ocasionalmente, podem acabar levando à perda de características importantes dos indivíduos \cite{Goldberg1989}. Sendo assim, o operador de mutação permite contornar essas perdas realizando pequenas variações no cromossomo de um determinado indivíduo. Tal operação ainda permite explorar pontos do espaço de busca que, sozinho, o operador de recombinação pode não ser capaz de atingir.
 
 Assim como o operador de recombinação, o operador de mutação também deve se preocupar em gerar indivíduos válidos. \cite{Talbi2009} ainda afirma que tal operador deve ser capaz alcançar qualquer ponto do espaço de busca e as alterações realizadas devem ser controladas. A forma mais comum de se controlar tal operação é atribuir uma probabilidade consideravelmente baixa para que o operador seja executado.
@@ -138,7 +140,7 @@ Assim como o operador de recombinação, o operador de mutação também deve se
 A mutação de um indivíduo também varia conforme a codificação escolhida para seu cromossomo. No entanto, a ideia geral do operador de mutação é variar de forma aleatória os valores do cromossomo de um indivíduo. 
 
 \subsubsection{Manutenção da População}
-
+\label{subsec:2-1_ManutencaoPopulacao}
 Como já foi abordado anteriormente, algoritmos genéticos lidam com uma população de soluções. Sendo assim, a estratégia utilizada por tais algoritmos para a manutenção dessa população é um tópico que merece atenção. Há duas estratégias bastante difundidas na literatura para tal manutenção, tais estratégias recebem os nomes de Geracional e Regime Permanente \cite{Kacprzyk2015}.
 
 Na estratégia Geracional, uma nova população é criada a cada geração. Isso é feito selecionando-se um par de soluções e gerando novos indivíduos até que a nova população esteja completa. Tal estratégia pode levar a uma perda prematura dos melhores indivíduos, já que existe a possibilidade desses indivíduos não serem selecionados para o processo de recombinação e passarem suas características a próxima geração. Uma forma de contornar esse problema é garantir que os k melhores indivíduos de uma população de tamanho n estejam na nova população, sendo assim serão gerados somente n-k novos indivíduos para a próxima geração. Essa abordagem é conhecida como Elitismo \cite{Talbi2009}, sendo os k elementos denominados Elite.
@@ -148,7 +150,7 @@ A estratégia de Regime Permanente apresenta uma abordagem mais conservadora de 
 Nesse trabalho os AGs, tanto em versão geracional quanto de regime permanente, foram utilizados para a resolução do problema de DEP.  Em um primeiro momento foram utilizadas as versões clássicas dessas duas variações do AG e dos operadores de seleção, recombinação e mutação. Em um seguida os AGs aqui estudados foram utilizados como base para o desenvolvimento de uma versão modificada que apesente um melhor desempenho para a resolução do problema. O mesmo foi feito com os operadores de recombinação e mutação, além da inclusão de um operador de busca local. Mais detalhes são apresentados no Capítulo 3.
 
 \section{Gerenciamento de Campos de Petróleo}
-\label{sec:section22}
+\label{subsec:2-2_GerenciamentoCampoPetroleo}
 Desenvolver e gerenciar campos de petróleo é uma tarefa que traz uma série de desafios, associados, dentre outros, à aquisição de dados sísmicos — visando o mapeamento inicial da região de um campo em potencial —, à modelagem geológica, à definição da estratégia de produção a ser adotada pela empresa exploradora do campo e à adequação dos processos adotados para o atendimento das regulamentações ambientais \cite{Morais2013}. Ainda, são altos os investimentos necessários para tal atividade e a tomada de decisão durante esse processo torna-se de alto risco devido ao elevado grau de incertezas envolvidas.
 
 Dentre as incertezas relacionadas ao problema podemos citar: (i) as incertezas geológicas, relacionadas às propriedades físicas do reservatório de petróleo, como porosidade e permeabilidade; (ii) as econômicas, que dizem respeito à dinâmica do mercado e são associadas às flutuações no preço futuro do petróleo, nas taxas de juros e nos valores de câmbio; e (iii) as operacionais, tais como eventuais quebras de equipamentos. Tais incertezas têm um impacto direto na tomada de decisão e, por conta dos altos investimentos envolvidos nessa atividade, são diversos os trabalhos que se focam em encontrar métodos para reduzir tais incertezas \cite{Oliveira2017,Maschio2010, Silva2012}.
@@ -174,7 +176,7 @@ A fim reduzir a complexidade durante o desenvolvimento e gerenciamento de campos
 Dentre as etapas listadas, o planejamento da estratégia para extração de petróleo (ou estratégia de produção), referente às etapas 6, 9 e 10, é particularmente relevante, uma vez que tal estratégia deverá ser adotada, pelo menos em sua essência, durante todo o período em que o campo será explorado. \citeonline{Barreto2014} ainda ressalta que esta etapa de planejamento é o momento que necessita de maior esforço, isso porque os problemas de engenharia são de maior escala e envolvem mais riscos e recursos financeiros.
 
 \subsection{Estratégia de produção }
-
+\label{subsec:2-2_EstrategiaProducao}
 Em Engenharia de Reservatórios, estratégia de produção é o termo utilizado para referir-se às características operacionais e de infraestrutura do sistema de produção que será utilizado para a exploração do campo de petróleo. Tal sistema é composto por uma série de processos e equipamentos. 
 
 Dentre todos os processos que o sistema de produção envolve, \citeonline{Figueira2014} cita como sendo os principais: o processo de recuperação, que consiste na metodologia para extração dos fluidos das rochas do reservatório; o sistema de elevação e escoamento, pelo qual o fluido é transportado dos poços até a superfície; e o processamento primário de produção, que corresponde a uma série de processos que visam separar os diferentes produtos do fluido extraído, separando-os em óleo, gás e água. 
@@ -188,15 +190,15 @@ Definir uma estratégia de produção para explorar de forma eficiente o reserva
 Outra dificuldade dessa tarefa encontra-se no momento de avaliar o desempenho de uma estratégia de produção. Para avaliar o comportamento de um campo de petróleo durante o período de concessão, supondo uma dada estratégia de produção, engenheiros e pesquisadores recorrem a softwares de simulação computacional. A desvantagem dessa abordagem é que, dependendo da complexidade e do grau de detalhamento do modelo do reservatório, tal simulação pode demandar de alguns minutos até alguns dias de tempo computacional, mesmo sendo executada em clusters com dezenas de processadores. Apesar disso, é através de simulações computacionais que é possível obter diversos dados acerca do desempenho da estratégia de produção durante o período de exploração que podem ser utilizados como critérios de avaliação para a definição de estratégia de produção. 
 
 \subsubsection{Critérios de Avalição}
-
+\label{subsec:2-2_CriterioAvaliacao}
 O problema de definição de estratégia de produção pode ser modelado como um problema de otimização combinatória no qual o objetivo final é dimensionar o sistema de produção a ser adotado em um dado campo de petróleo a fim de maximizar, ou minimizar, algum critério. São diversos os indicadores que podem ser utilizados como critério de otimização. Tais indicadores podem ser separados em dois grupos, os indicadores técnicos e os indicadores econômicos, detalhados nos próximos tópicos. 
 
 \subsubsection{Indicadores Técnicos}
-
+\label{subsec:2-2_IndicadoresTecnicos}
 Os indicadores técnicos são utilizados quando se tem como objetivo avaliar as medidas de produção. Temos como exemplos desses indicadores a produção de óleo, produção de gás, produção acumulada de água, injeção de água e a razão entre óleo e gás, dentre outros \cite{Neves2004, Avansi2008}.
 
 \subsubsection{Indicadores Econômicos}
-\label{indicadoresEconomicos}
+\label{subsec:2-2_IndicadoresEconomicos}
 Os indicadores econômicos permitem fazer uma avaliação da estratégia de produção sob o ponto de vista financeiro. Aqui são considerados os investimentos realizados para a exploração do campo, o fluxo de caixa e o lucro obtido ao fim do período de exploração, por exemplo. Dentre os indicadores econômicos, o mais popular é o Valor Presente Líquido \cite{Neves2004, Nogueira2009, Marques2012, Barreto2014}, que representa a medida do valor presente da riqueza futura gerada pelo projeto \cite{Puccini2011}. \citeonline{Puccini2011} ainda destaca que o critério de decisão para esse indicador é bastante simples. Projetos no qual o VPL é negativo não são promissores, ao contrário de projetos com o VPL positivo. Segundo \citeonline{Neves2004}, tal indicador é vantajoso por possuir um cálculo simples e poder ser utilizado para hierarquizar projetos. Por esse motivo, esse foi o indicador escolhido para avaliar as estratégias de produção geradas pelos algoritmos estudados nesse trabalho.  O cálculo do VPL é dado pela Equação 1.
 
 
@@ -211,7 +213,7 @@ sendo R a receita e CO os custos associados à produção; Roy, PE e PPC são ta
 Além do VPL também há outros indicadores econômicos que podem ser utilizados como alternativas ao VPL, como o Retorno sobre o Investimento, que nada mais é do que a razão entre o lucro e o valor investido no projeto, e o Valor Monetário Esperado, comumente utilizado quando deseja-se considerar vários cenários para a análise do projeto \cite{Marques2012}.
 
 \subsubsection{Indicadores de Poços}
-
+\label{subsec:2-2_IndicadoresPocos}
 Os indicadores apresentados anteriormente são utilizados para avaliar o sistema de produção de extração de petróleo como um todo. Há também indicadores para a análise do desempenho de cada um dos poços de uma estratégia de produção. \cite{Moreno2002} utilizaram seis indicadores para a análise dos poços. Estes indicadores são: produção total de óleo, gás e água, tempo de operação do poço, injeção total de água e, por fim, o valor presente líquido associado ao poço.  Os valores desses indicadores são analisados individualmente e classificados comparando-os com os valores obtidos pelo sistema de produção ao qual os poços pertencem.
 
 \citeonline{Ravagnani2011} introduziram o conceito de Indicador Econômico de Poço (IEP), voltado para identificar poços produtores e injetores de baixo desempenho visando otimizar a quantidade de poços de uma estratégia de produção. Tais indicadores levam em consideração somente os custos e receitas relacionados ao próprio poço, sendo divididos em dois tipos: o Indicador de Poços Produtores (IEPP) e Indicador de Poços Injetores (IEPI). O IEPP é obtido a partir da receita do poço, subtraindo-se os custos de produção e o investimento inicial. Como os poços injetores não geram receita, para o IEPI contabiliza-se somente os custos de produção e os investimentos do poço.
@@ -221,7 +223,7 @@ Os indicadores apresentados anteriormente são utilizados para avaliar o sistema
 Nesse trabalho será utilizado o IEP, tanto de poços produtores quanto injetores, para auxiliar os operadores de busca do algoritmo genético na busca por soluções melhores (mais detalhes de tais operadores são dados no Capitulo 3). Dos indicadores de poços apresentados, esse é o indicador obtido através das ferramentas utilizadas aqui para a simulação de campos de petróleo (mais detalhes são apresentados no Capítulo 4).
 
 \subsection{Seleção de Estratégia de Produção com Meta-heurísticas}
-
+\label{subsec:2-2_SelecaoEstrategiaProducao}
 A quantidade de trabalhos que visam estudar formas de otimizar estratégias de produção é vasta. Sendo assim, a revisão bibliográfica realizada aqui voltou-se para a solução desse problema através do uso de meta-heurísticas.
 
 \citeonline{Nasrabadi2012} fizeram uma revisão geral dos métodos mais utilizados para otimizar a localização de poços, descrevendo em mais detalhes os métodos baseados em gradiente, Programação Linear Inteira Mista e AG. Além destes, são mencionadas brevemente as técnicas de SA, Sobrevivência dos Mais Aptos, Simultaneous Perturbation Stochastic Approximation, Adaptação de Matriz de Covariância, EE e PSO. \citeonline{Nasrabadi2012} também apresentam uma revisão sobre modelos de reservatórios e técnicas para lidar com as incertezas inerentes ao problema. Com relação aos métodos de otimização, os autores concluem que geralmente há um compromisso entre a capacidade de identificação da solução ótima e o desempenho do algoritmo. Segundo eles, os métodos baseados em gradiente tendem a ser mais rápidos, mas raramente encontram uma solução ótima, enquanto que os Algoritmos Genéticos são mais confiáveis na localização da solução ótima (apesar de não garantirem sua obtenção), perdendo em desempenho por conta do número excessivo de simulações que são necessárias durante sua execução.

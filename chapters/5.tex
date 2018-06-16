@@ -1,9 +1,9 @@
-\chapter{Resultados e Discução}
-\label{ch:ch5}
+\chapter{Resultados e Discussão}
+\label{ch:5_ResultadosDiscucao}
 Nesse Capítulo são apresentados os resultados obtidos pelos algoritmos e operadores propostos no Capítulo 3. Conforme mencionado no capítulo anterior, os testes foram estruturados em duas etapas, os resultados da primeira etapa são apresentados na Seção 5.1 enquanto que na Seção 5.2 são apresentados os resultados da segunda etapa.
 
 \section{Etapa 1 – Sem Busca Local}
-
+\label{ch:5_Etapa1}
 A Tabela \ref{tab:results1_1} apresenta os resultados obtidos pela execução das versões clássicas do algoritmo genético durante a primeira etapa. Nessa tabela são apresentados o melhor VPL obtido em cada uma das dez execuções das versões do AG. Além disso também são apresentados o VPL médio, o desvio padrão e o tempo médio que cada algoritmo levou para atingir o critério de parada (realizar as 500 avaliações da função objetivo). A Tabela \ref{tab:results1_2} apresenta os mesmo resultados para a execuçao das versões modoficadas do algortimo genético, bem como a Busca Aleatória (BA) e o CMOST realizando 500 avaliações da função objetivo ($CMOST^{500}$).
 
 \begin{table}[H]
@@ -59,7 +59,7 @@ Tempo Médio   & 02:45 & 05:12 & 04:16 & 02:53 & 07:15 \\ \hline
 As próximas seções apresentam, com mais detalhes, cada um dos experimentos realizados e os resultados obtidos.
 
 \subsection{Experimento 1}
-
+\label{ch:5_Experimento1}
 Nesse primeiro experimento foram utilizadas as versões clássicas do Algoritmo Genético Geracional ($AG^{GC-1}$) e do Algoritmo Genético de Regime Permanente ($AG^{RPC-1}$), bem como versões clássicas dos operadores de seleção, recombinação e mutação. Ao observar os resultados obtidos pelo $AG^{GC-1}$ e o $AG^{RPC-1}$ é possível notar que o desempenho das versões clássicas do AG, com os operadores clássicos, foi aquém do esperado. Os AGs com as configurações propostas não foram capazes de obter soluções superiores às da busca aleatória.  A BA conseguiu obter soluções com VPL 32\% melhor às do $AG^{RPC-1}$ e 27\% melhor que as do $AG^{GC-1}$, uma diferença considerável. Ao comparar os AGs com o $CMOST^{500}$ a diferença foi ainda maior. O VPL médio das soluções obtidas pelo $CMOST^{500}$ é cerca de 2,5 vezes superior aos resultados obtidos pelos AGs.
 
 As Figuras \ref{fig:graph1_1} e \ref{fig:graph1_2}, apresentam a evolução da melhor solução, da pior solução e da média da população durante a 4ª execução do $AG^{RPC-1}$ e da 1ª execução do $AG^{GC-1}$. Os gráficos para as demais execuções são apresentados no Apêndice A.
@@ -101,7 +101,7 @@ $AG^{GC-1}$ & BA & 0,049\% \\ \hline
 Pelos resultados reportados pela Tabela \ref{tab:mw1_1}, podemos concluir que, além dos resultados inferiores aos obtidos pela BA e CMOST, não há diferença entre utilizar o AG Geracional ($AG^{GC-1}$) ou o AG de Regime Permanente ($AG^{RPC-1}$) com os parâmetros e operadores adotados nesse primeiro experimento. No entanto, a diferença entre os resultados dos AG e o $CMOST^{500}$ e a BA se mostraram  significativas.
 
 \subsection{Experimento 2}
-
+\label{ch:5_Experimento2}
 Nesse experimento, a principal mudança realizada foi a alteração do operador de recombinação dos AGs. No lugar da Recombinação Uniforme optou-se por um operador novo, conforme descrito no Capítulo 3.3. Tal operador posiciona os poços da nova solução dentro da região delimitada pelas coordenadas dos poços de duas soluções previamente selecionadas (pais). Novamente, foram utilizadas tanto a versão clássica do Algoritmo Genético Geracional ($AG^{GC-2}$) quanto o Algoritmo Genético de Regime permanente ($AG^{RPC-2}$).
 
 Como é possível perceber à partir dos resultados apresentados na Tabela \ref{tab:results1_1}, tanto o $AG^{RPC-2}$ quanto o $AG^{GC-2}$ apresentaram desempenho melhor que os obtidos pelos AGs do Experimento 1. A mudança do operador de recombinação se mostrou satisfatória, principalmente em relação à abordagem de regime permanente. Em média, os resultados do $AGR^{RPC-2}$ foram 23\% melhores que ao obtidos pelo $AG^{RPC-1}$. A versão geracional do AG utilizada nesse experimento também apresentou melhoras em relação ao experimento anterior, mas os resultados obtidos pelo $AG^{GC-2}$ foram, em média, apenas 9\% melhores.
@@ -161,7 +161,7 @@ Como dito anteriormente, esse é um reflexo da abordagem escolhida para a manute
 \end{figure}
 
 \subsection{Experimento 3}
-
+\label{ch:5_Experimento3}
 Para o terceiro experimento dessa etapa ainda foram consideradas as versões clássicas dos AGs. Tanto a abordagem de regime permanente ($AG^{RPC-3}$) quanto a geracional ($AG^{GC-3}$) foram mantidas, e o mesmo vale para os operadores de seleção, recombinação e mutação. A principal alteração realizada nesse terceiro experimento se deu em relação aos parâmetros utilizados pelos AGs. Analisando-se os parâmetros dos algoritmos, percebeu-se que um aumento no número de indivíduos da população inicial poderia distribuir melhor as soluções iniciais. Sendo assim, conforme apresentado no Capítulo 4.3, esse parâmetro passou de 10 para 100 indivíduos.
 
 Ao observar os resultados reportados na Tabela \ref{tab:results1_1} nota-se uma melhora no VPL médio obtido pelos AGs utilizando os parâmetros propostos nesse terceiro experimento em relação ao VPL médio obtido anteriormente. Dessa vez os AGs conseguiram um VPL médio cerca de 24\% melhor que o apresentado pelos AGs do Experimento 2. Quando comparados com a BA (Tabela \ref{tab:results1_2}), a melhora fica em cerca de 19\% para o $AG^{RPC-3}$ e de 6\% para o $AG^{GC-3}$. No entanto, apesar dos resultados melhores, as duas versões do AG novamente não conseguiram superar as soluções obtidas pelo $CMOST^{500}$. Ainda assim, é importante destacar que os AGs desse experimento completam as 500 avaliações com cerca de 37\% do tempo que o $CMOST^{500}$ (Tabela \ref{tab:results1_2}) precisou para concluir a mesma quantidade de avaliações.
@@ -219,7 +219,7 @@ As Figuras \ref{fig:graph3_1} e \ref{fig:graph3_2} apresentam os gráficos da ev
 Ao comparar evolução do VPL médio da população e do pior VPL do $AG^{RPC-3}$ (Figura \ref{fig:graph3_1}) e comparar com a evolução da população do $AG^{RPC-2}$ (Figura \ref{fig:graph2_1}), percebe-se que a população do $AG^{RPC-3}$ raramente passa alguma geração sem apresentar uma melhora no fitness médio da população ou no pior fitness, ao contrário do que acontece com o $AG^{RPC-2}$. Quanto à versão geracional do algoritmo, o $AG^{GC-3}$, nota-se que a quantidade de gerações foi consideravelmente reduzida, uma vez que, ao considerar-se uma população com 100 indivíduos, a cada geração, 100 novas avaliações da função objetivo são realizadas, sendo assim são necessários somente 5 gerações dessa versão do AG para atingir o limite de 500 avaliações. Apesar disso, o $AG^{GC-3}$ ainda apresentou um resultado melhor que o das duas versões de AG do experimento anterior. Sendo assim, pode-se afirmar que o aumento da população foi vantajoso para as duas versões do AG, uma vez que esses algoritmos utilizam a população como um repertório para explorar o espaço de busca. Com um repertório maior, a exploração tornou-se mais eficiente.
 
 \subsection{Experimento 4}
-
+\label{ch:5_Experimento4}
 A partir dos resultados dos três primeiros experimentos, é possível notar que o AG de Regime Permanente levou ao melhor desempenho até então. Diante disso, essa variação do algoritmo genético foi tomada como base para as alterações da segunda versão do AG apresentada no Capítulo 3.1.2.  Nesse quarto experimento, a tentativa de melhoria dessa versão do algoritmo se deu através da introdução de um novo operador de mutação que utiliza alterações aleatória nos poços da solução com base no IEP de cada poço: a amplitude da alteração realizada em um dado poço é inversamente proporcional ao IEP desse poço, conforme apresentado no Capítulo 3.4. Os demais operadores e parâmetros foram mantidos.
 
 Utilizar o IEP como parâmetro para manipulação dos poços da Estratégia de Produção trouxe grandes melhorias ao desempenho do algoritmo. Como é possível observar nos dados apresentados na Tabela \ref{tab:results1_2} (coluna $AG^{RPM}$), em todas as execuções o VPL obtido foi superior aos resultados obtidos pelos AGs dos experimentos anteriores. A modificação do operador de mutação levou a um ganho de 21,5\% no VPL médio do algoritmo em relação ao experimento anterior. Este ganho observado também foi considerado estatisticamente significativo, segundo o teste de Mann-Whitney-Wilcoxon (considerando um limiar de 5\%), comparando o algoritmo desse experimento com os AGs do experimento anterior. A Tabela \ref{tab:mw4_1} apresenta o resultado do teste estatístico.
@@ -254,7 +254,7 @@ A Figura \ref{fig:graph4_1} apresenta a evolução do VPL da melhor solução, d
 \end{figure}
 
 \subsection{Experimento 5}
-
+\label{ch:5_Experimento5}
 Para o último experimento dessa etapa, foi considerada a terceira versão do algoritmo genético apresentado no Capítulo 3.1.3, que também segue a abordagem de regime permanente. Para testar o conceito proposto para essa versão do AG, foram utilizados dois tamanhos de população: 100 indivíduos ($AG^{CO-{100}}$) e 50 indivíduos ($AG^{CO-{50}}$). Tal escolha foi feita, nesse experimento, a fim de se observar como o algoritmo se comporta com o operador proposto no Capítulo 3.6, uma vez que os valores escolhidos para as soluções que compõem a população inicial servem como ponto de partida para esse operador (cálculo do \textit{score}).
 
 O $AG^{CO-{50}}$ apresentou um VPL médio consideravelmente melhor que o $AG^{CO-{100}}$ (Tabela \ref{tab:results1_2}). É possível intuir que, com uma população menor a distribuição dos valores para cada intervalo definido para as restrições de posicionamento dos poços foi mais equilibrada. No $AG^{CO-{50}}$ posições pouco promissoras para os poços podem ter apresentado maior probabilidade de serem escolhidas pelo operador, gerando soluções não tão promissoras. Observando a evolução da população do $AG^{CO-{50}}$, apresentada na Figura \ref{fig:graph5_2}, percebe-se que a média do VPL da população se aproxima bastante do VPL da melhor solução, mais que o próprio $AG^{CO-{100}}$, cuja evolução é dada na Figura \ref{fig:graph5_1}, e dos AGs dos experimentos anteriores. Isso pode indicar uma perda da diversidade entre os indivíduos da população, o que não é algo desejado para uma boa exploração do espaço de busca. Apesar do ganho de VPL com a população menor nesse AG, há o risco da perda da diversidade da população. Mais uma vez, os gráficos para as demais execuções das duas versões aqui apresentadas encontram-se no Apêndice E.
@@ -291,7 +291,7 @@ $AG^{CO-{50}}$ & $AG^{RPM}$ & 6,40\% \\ \hline
 Como é possível notar pela Tabela \ref{tab:mw5_1}, apesar do $AG^{CO-{100}}$ ter resultados diferentes e estatisticamente significativos, o $AG^{CO-{50}}$, que apresentou resultados melhores, não possui uma diferença estatisticamente significativa. Sendo assim, optou-se por não levar adiante essa abordagem.
 
 \section{Etapa 2 – Com Busca Local}
-
+\label{ch:5_Etapa2}
 Na segunda etapa dos experimentos o foco esteve na exploração das duas versões da busca local descritas no Capítulo 3.5. No total, foram dois experimentos realizados nessa etapa, sendo que em cada um dos experimentos foi utilizada uma das versões do operador de busca local proposto, em conjunto com o AG que obteve o melhor desempenho na etapa anterior, nesse caso o $AG^{RPM}$ do Experimento 4 da Etapa 1. No primeiro experimento dessa segunda etapa foi utilizado com o $AG^{RPM}$ a primeira versão da busca local ($AG^{BL-1}$). No segundo experimento realizado o AGRPM foi executado com a segunda versão da busca local ($AG^{BL-2}$). Vale ressaltar que os operadores de busca local refinam somente a melhor solução encontrada pelo AG, conforme descrito no Capítulo 3.5.
 
 Apesar da intenção de se comparar os resultados aqui obtidos com os resultados alcançados por $AG^{RPM}$ e  $CMOST^{500}$ na Etapa 1, tal comparação não seria de todo justa. Os AGs dos experimentos realizados nessa etapa precisaram, em média, de um total de 720 avaliações da função objetivo (simulações) para concluir cada execução, 220 avaliações a mais que as utilizadas durante a etapa anterior. Sendo assim, o $AG^{RPM}$ foi executado novamente, mas com um limite de 730 avaliações como critério de parada para que, dessa forma, a comparação fosse justa. O mesmo foi feito para a ferramenta CMOST. Para não haver confusão, o $AG^{RPM}$ executado nessa etapa será referenciado como $AG^{RPM-730}$ e o CMOST como $CMOST^{730}$. 
@@ -327,7 +327,7 @@ Os próximos tópicos discutem, com mais detalhes, os experimentos realizados e 
 
 
 \subsection{Experimento 1}
-
+\label{ch:5_Experimento6}
 Como descrito no Capítulo 4.3, nesse experimento o AG foi executado em conjunto com a primeira versão da busca local proposta no Capítulo 3.5. Esse operador de busca local procura, para cada poço da estratégia de produção, verificar uma nova posição em sua vizinhança que leve a ganhos do VPL. Essa busca é realizada até que não haja novas posições que levem a ganhos.
 
 A adição do operador de busca local ao algoritmo genético levou a um ganho de cerca de 29\% do VPL médio quando comparado com o $AG^{RPM}$, executado no Experimento 4 da etapa anterior. O AG com a busca local conseguiu um VPL médio de 1,52E+09 enquanto o $AG^{RPM}$ da Etapa 1 conseguiu um VPL de 1,18E+09. A diferença entre os resultados dessas duas versões do AG é significativa, conforme indica o teste de Mann-Whitney-Wilcoxon, com um limiar de 5\% (Tabela \ref{tab:mw6_1}). No entanto, para que tal resultado fosse obtido, foram necessárias cerca de 220 avaliações a mais e cerca do dobro do tempo utilizado até então.
@@ -367,7 +367,7 @@ $CMOST^{730}$ & $AG^{BL-1}$ & 2,17\% \\ \hline
 \end{table}
 
 \subsection{Experimento 2}
-
+\label{ch:5_Experimento7}
 Para o AG desse experimento, a principal mudança se deu no operador de busca local utilizado. Aqui, a segunda versão desse operador foi escolhida para ser executada com o AG. De uma forma semelhante à primeira versão da busca local, a segunda versão do operador de busca local só termina sua execução caso não exista nenhuma localização, para os poços da estratégia, que melhore a solução. No entanto, o objetivo desse operador é primeiramente melhorar o IEP do poço. O VPL da solução só é considerado caso não seja possível melhorar o IEP do poço alterando sua posição.
 
 O resultado médio obtido pelo $AG^{BL-2}$ não foi muito diferente do obtido pelo $AG^{BL-1}$, já que o VPL obtido foi apenas 1\% melhor. Apesar de ter conseguido concluir com menos avaliações da função objetivo (680 avaliações, em média, contra 720 do $AG^{BL-1}$), o $AG^{BL-2}$ levou mais tempo que o $AG^{BL-1}$, uma diferença de quase 47\%. Ainda assim um tempo consideravelmente menor que o levado pelo $CMOST^{730}$ para concluir as 720 avaliações.
